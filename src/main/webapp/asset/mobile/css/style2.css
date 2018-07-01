@@ -1,0 +1,141 @@
+* {margin:0; padding:0}
+body {font:14px Helvetica, sans-serif;  background:#F4F4F4}
+ul.line{
+	height: 30px;
+	
+	overflow: hidden;
+	
+} 
+ul.line li {
+    height: 30px;
+    text-indent: 15px;
+    font-size: 12px;
+    line-height: 30px;
+    list-style: none;
+    background: white;
+    margin-top: 0;
+    overflow: hidden;
+    width:300px;
+}
+.lunbo img{    height: 15px;
+    position: absolute;
+    top: 18px;}
+
+.an{
+	    font-size: 16px;
+
+}
+			.title {
+				margin: 20px 15px 10px;
+				color: #6d6d72;
+				font-size: 15px;
+			}
+			
+			.oa-contact-cell.mui-table .mui-table-cell {
+				padding: 11px 0;
+				vertical-align: middle;
+			}
+			
+			.oa-contact-cell {
+				position: relative;
+				margin: -11px 0;
+			}
+			
+			.oa-contact-avatar {
+				width: 75px;
+			}
+			
+			.oa-contact-avatar img {
+				border-radius: 50%;
+			}
+			
+			.oa-contact-content {
+				width: 100%;
+			}
+			
+			.oa-contact-name {
+				margin-right: 20px;
+			}
+			
+			.oa-contact-name,
+			oa-contact-position {
+				float: left;
+			}
+			body{
+				list-style:none;
+			}
+			.mui-bar-nav~.mui-content {
+    padding-top: 44px;
+}
+.box{
+	background: #f5a42e;height: 200px;border-radius:8px;margin:9px;
+}
+.xx{
+	float: left;
+  width: 64%;
+    font-size: 15px;
+    font-weight: 300;
+    color: white;
+
+    padding-top: 8px;
+   
+}
+.hx{
+	border-bottom: 1px rgba(255, 254, 254, 0.24) solid;
+    height: 108px;
+    width: 90%;
+    margin: auto;
+}
+.je{
+	font-size: 22px;
+    padding-left: 27px;
+}
+.fh{
+	color: #6f6f6f;
+	font-size: 14px
+}
+.tx{
+	    float: right;
+    padding-top: 27px;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+        color: white;
+}
+.zc{
+	    text-align: center;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 52px;
+}
+input,img{vertical-align:middle;}
+.mc{
+	font-size: 19px;
+}
+.czbtn{
+	float: left;
+    width: 44%;
+    height: 35px;
+    background: #ff9800;
+    color: white;
+    text-align: center;
+    line-height: 35px;
+    margin-left:15px;
+    border-radius: 20px;
+}
+.txbtn{
+    float: left;
+    width: 44%;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+     margin-left:15px;
+    border-radius: 20px;
+        border: 1px solid #929191;
+    color: #777777;
+}
+.zcl{
+	float: left;
+	width: 50%;
+}

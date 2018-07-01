@@ -1,0 +1,68 @@
+*{margin: 0;padding: 0;}
+li{list-style: none}
+a{text-decoration: none}
+body {text-align:left;}
+img {border:none;}
+/*注册页面1*/
+.registerindex{background: #F8F8F8;width: 100%;height: 710px;    padding: 50px 0;}
+.register{width: 840px;margin:0 auto;border: 1px solid rgba(205, 205, 205, 0.68);background: #fff;height:100%;}
+.registrationprocess{height: 14%; margin: 0 20px;border-bottom: 1px solid rgba(205, 205, 205, 0.44);}
+.registrationprocess ul{height: 100%;}
+.registrationprocess span{padding: 3px 10px;background: #E3E7E6;border-radius: 50%;margin-right: 10px;}
+.registrationprocess li{float: left;width: 25%;margin: 0 4%;line-height: 88px;height:100%; font-size: 20px;text-align: center;    font-weight: bold;color: #959696;}
+.RegisterClass{height: 85%;width: 100%}
+.RegisterClassleft,.RegisterClassleft2{width: 32%;margin: 5% 10% 0 8%;    float: left;}
+.phone,.pass,.referrer,.input-group,.name,.idCard,.TradeName,.charter{height: 64px;width: 100%}
+.input-group .col-md-8 , .input-group .col-md-3{float: left;    padding: 0;}
+.input-group .col-md-8{width: 56%;}
+.input-group .col-md-3{margin-left: 4%;width: 40%;text-align: center}
+.input-group .col-md-3 button{border: 1px solid transparent;height: 40px;background:rgba(0, 128, 0, 0.71);width: 100%;color: #fff;}
+.form-control{    font-weight: 500; height: 40px; width: 100%;      text-indent: 20px;     border: 1px solid #ccc; display: block;    font-size: 14px;}
+.error-tip {color: red;font-weight: bold;display: block;height: 20px;    text-align: left;}
+.checkbox{text-align: left;font-size: 12px;margin: 0;height: 20px;line-height: 20px;}
+.RegisterClassright{float: right;width: 50%;margin: 5% 0;    height: 333px;    padding-right: 7%;}
+#phone{background: url('img/1.png') 8px center no-repeat;}
+#checkcode{background: url('img/2.png') 8px center no-repeat;}
+#password,#repassword{background: url('img/3.png') 8px center no-repeat;}
+#refferee{background: url('img/5.png') 8px center no-repeat;}
+#submit{height: 38px;width: 200px;margin-top: 20px;background: #D22E2F;color: #fff;border: none;font-size: 16px;font-weight: bold;}
+.registrationprocess .currentpage a{color: #D22E2F}
+.registrationprocess .currentpage{border-bottom: 3px solid #D22E2F;color: #D22E2F}
+.registrationprocess .currentpage span{  color: #fff;  background: #D22E2F;}
+.RegisterClassright .login{  font-size: 14px;color: #CAC5BB  ; text-align: right}
+.carousel { width: 100%; position: relative; margin: 0 auto;    height: 100%;}
+#indexFocus .ui-ifPrevBtn {background:url(img/arrow-left-dark.png) no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, src='img/arrLeftFocus.png');_background:none;float:left;}
+#indexFocus .ui-ifNextBtn {background:url(img/arrow-right-dark.png) no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, src='img/arrRigFocus.png');_background:none;float:right;}
+#indexFocus, #indexFocus .ui-ifPrevWrap .ui-prevImg, #indexFocus .ui-ifNextWrap .ui-nextImg {display:none;cursor:pointer;    height: 100%;}
+#indexFocus .ui-ifPrevWrap, #indexFocus .ui-ifNextWrap {position:absolute;z-index:99;bottom:80px;height:56px;overflow:hidden;}
+#indexFocus .ui-ifPrevBtn, #indexFocus .ui-ifNextBtn {display:inline-block;width:34px;height:56px;text-indent:-1000px;overflow:hidden;}
+#indexFocus .indexFocusCon {width:70%;height:333px;overflow:hidden;position:relative;z-index:0;margin: 0 auto;}
+#indexFocus ul.indexFocusList li {height:333px;position:relative;z-index:0;}
+#indexFocus .indexFocusList .A{width: 248px}
+#indexFocus .indexFocusList .B{width: 248px}
+.indexFocusList li h3{margin: 12px 0;color: black;font-size: 20px}
+.indexFocusList li p {margin-bottom: 3px;font-size: 13px;color: #716F6F;}
+#indexFocus ul.indexFocusList li #indexFocus p {position:absolute;bottom:30px;color:#fff;width:100%;height:40px;line-height:40px;font-size:18px;text-indent:20px;}
+#indexFocus .indexFocusNum {position:absolute;z-index:99;right:43%;bottom:10px;    bottom: 7%;}
+#indexFocus .indexFocusNum a {float:left;display:inline-block;width:10px;height:10px;background:#eee;text-indent:-100px;overflow:hidden;margin:0 5px;border-radius: 50%}
+.carousel img {width: 150px;height: 150px;    margin-top: 8px;}
+#indexFocus .ui-ifPrevWrap, .litImgList .ui-ifPrevWrap {left:0;    top: 105px;}
+#indexFocus .ui-ifNextWrap, .litImgList .ui-ifNextWrap {right:0;    top: 105px;}
+.indexFocusList a{height: 333px;text-align: center;display: block;}
+#indexFocus ul.indexFocusList, .litImgList ul.indexFocusList {position:absolute;z-index:0;left:0;top:0;    height: 100%;}
+#indexFocus .indexFocusNum .hover, .litImgList .indexFocusNum .hover {background:#F58F90;}
+.greatTopic .photoText h4 a, .heavyRec .photoText h4 a, .depthReports .photoText h4 a, .financeObserver .photoText h4 a, .carNews .photoText h4 a, .tv .photoText h4 a {font-size:14px;font-weight:700;}
+
+/*注册页面2*/
+.RegisterClassleft2{border: 1px solid #ccc;    margin-top: 6%;}
+.lanrenzhijia{ width:100%}
+.lanrenzhijia .tab{overflow: hidden;width: 215px;border: 1px solid #ccc;margin: 25px 20px 10px 20px;}
+.lanrenzhijia .tab a{    display: block;text-align: center;line-height: 38px;float: left;text-decoration: none;color: #333;width: 50%;    font-weight: bold;}
+.lanrenzhijia .tab a.on{ background:#E64E3F; color:#fff; text-decoration:none;}
+.lanrenzhijia .content{ overflow:hidden;    padding: 10px 20px 40px 20px;}
+.lanrenzhijia .content li{ display:none;}
+#name{background: url('img/9.png') 8px center no-repeat;}
+#idCardNum{background: url('img/10.png') 8px center no-repeat;}
+#TradeName{background: url('img/7.png') 8px center no-repeat;}
+#charter{background: url('img/8.png') 8px center no-repeat;}
+.content .form-control{text-indent: 25px}

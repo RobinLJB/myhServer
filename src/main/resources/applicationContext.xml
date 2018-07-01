@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-4.0.xsd
+						http://www.springframework.org/schema/mvc
+						http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-4.0.xsd" >
+	<!-- property 配置文件 -->
+	<context:property-placeholder location="classpath:application.properties" />
+	<bean class="com.spark.p2p.config.Config">
+		<property name="md5Key" value="${app.md5Key}" />
+		<property name="desKey" value="${app.desKey}" />
+		<property name="apiKey" value="${app.apiKey}" />
+		<property name="debugMode" value="${app.debug}" />
+		<property name="host" value="${resource.siteUrl}" />
+		<property name="wapDomain" value="${resource.wapDomain}"/>
+		<property name="sftpHost" value="222.73.39.37"/>
+		<property name="sftpPort" value="50022"/>
+		<property name="sftpUsername" value="200004595271"/>
+		<property name="sftpPrivateKey" value="/data/key/sftp/test_rsa"/>
+	</bean>
+	<!-- BEGIN ehcache -->
+	<bean id="defaultCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">  
+    	<property name="configLocation">  
+        	<value>classpath:ehcache.xml</value>  
+      	</property>  
+    </bean>
+	<!-- 定义ehCache的工厂，并设置所使用的Cache name -->  
+    <bean id="ehCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">  
+      	<property name="cacheManager" ref="defaultCacheManager"></property>
+      	<property name="cacheName">
+        	<value>DEFAULT_CACHE</value>
+      	</property>
+    </bean>
+	<!-- END ehcache -->
+	<!--配置支付接口参数 -->
+	<!-- 测试商户号 -->
+	<!-- 正式商户号 
+	<bean id="sinaPayService" class="com.spark.p2p.service.SinaPayService">
+		
+	    <property name="uidPrefix" value="GDR" />
+		<property name="partnerId" value="200004595271" />
+		<property name="mgsGateway" value="https://testgate.pay.sina.com.cn/mgs/gateway.do" />
+		<property name="masGateway" value="https://testgate.pay.sina.com.cn/mas/gateway.do" />
+		<property name="privateKey" value="MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAO/6rPCvyCC+IMalLzTy3cVBz/+wamCFNiq9qKEilEBDTttP7Rd/GAS51lsfCrsISbg5td/w25+wulDfuMbjjlW9Afh0p7Jscmbo1skqIOIUPYfVQEL687B0EmJufMlljfu52b2efVAyWZF9QBG1vx/AJz1EVyfskMaYVqPiTesZAgMBAAECgYEAtVnkk0bjoArOTg/KquLWQRlJDFrPKP3CP25wHsU4749t6kJuU5FSH1Ao81d0Dn9m5neGQCOOdRFi23cV9gdFKYMhwPE6+nTAloxI3vb8K9NNMe0zcFksva9c9bUaMGH2p40szMoOpO6TrSHO9Hx4GJ6UfsUUqkFFlN76XprwE+ECQQD9rXwfbr9GKh9QMNvnwo9xxyVl4kI88iq0X6G4qVXo1Tv6/DBDJNkX1mbXKFYL5NOW1waZzR+Z/XcKWAmUT8J9AkEA8i0WT/ieNsF3IuFvrIYG4WUadbUqObcYP4Y7Vt836zggRbu0qvYiqAv92Leruaq3ZN1khxp6gZKl/OJHXc5xzQJACqr1AU1i9cxnrLOhS8m+xoYdaH9vUajNavBqmJ1mY3g0IYXhcbFm/72gbYPgundQ/pLkUCt0HMGv89tn67i+8QJBALV6UgkVnsIbkkKCOyRGv2syT3S7kOv1J+eamGcOGSJcSdrXwZiHoArcCZrYcIhOxOWB/m47ymfE1Dw/+QjzxlUCQCmnGFUO9zN862mKYjEkjDN65n1IUB9Fmc1msHkIZAQaQknmxmCIOHC75u4W0PGRyVzq8KkxpNBq62ICl7xmsPM=" />
+		<property name="sinaPublicKey" value="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCBpueNweMbYdb+CMl8dUNv5g5THYLD9Z33cAMA4GNjmPYsbcNQLyO5QSlLNjpbCwopt7b5lFP8TGLUus4x0Ed6S4Wd9KmNw6NLbszNEmppP9HXlT9sT4/ShL0CpVF4ofFS8O/gXwCTJjYZJ0HvK3GBTSP2C9WlipTpWQ+9QJugewIDAQAB" />
+		<property name="merchantAcct" value="ceshishanghuhao" />
+		
+		
+		<property name="uidPrefix" value="IZHLC" />
+		<property name="partnerId" value="200037876479" />
+		<property name="mgsGateway" value="https://gate.pay.sina.com.cn/mgs/gateway.do" />
+		<property name="masGateway" value="https://gate.pay.sina.com.cn/mas/gateway.do" />
+		<property name="privateKey" value="MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAPwesSE0e+HaH9nUjCnKuf0SWAEm9k1nBnj6GMhUwHx4/hCxOUI9SRdH82Vv6A81zXd+bRZ3eEH5lPgSyC/wg3KRItLlDFd6ehBv+kBzK8pFgakfQOfDzEpvANgT9B738WGuPTfZ7NSO83yOiJg4CW/c/3S9ilIjfCUrbcQwHiVbAgMBAAECgYBOM5btncHvRCEtB+iR7ffSr6XsdZFgYNx5GdomCWPLOBxWQSJpkWjid8bfZ96rGR0qO2TK2zPKAwhaCjld5VRfz1ngPU/njuet/Ri9YSWMK8lWGoD6QsCfjYyc2zH1+2X/ymZCSti73k8HzaTaEhNLJsPQsH8ToeR95nridndRwQJBAP8KJrb6bjP4fGbiyKhHSJCFxWl6cZof8LlV8lFbyEwT308LYICzTz0H/QNsEKnkvYSstMZYoeYM6tTJfA4bK1UCQQD9EbnkUiCACu/BrXM8MmsfZ6pv3i2T0zXEBaQTNUno3kZsA6PAc/h8mbb/HT0D8119T4hmOJaJf1miMVEVF+3vAkB51xKpxbgSMfrUeDFeWzeqe43VFz7gX7P0BsBN5+gnmDLNo2TF92O6h29zTBQl5fY4RP3T6BHoQnGJmHwgjRBFAkEAnKEF/qxd9SHPtn2V3uINrwhIUqieaOnGUyZyoHjQ39ICoAO4q/qbBvNUcZ01EGblrBM3hpzrfvpVDa+cUYPX/QJBAJiUIwcfe3pNRIHF52OgnK+JUIj3dHo6uRt69k+KX4JySmgMBBYybBKREq6pJedqxJm+FJVSjzu7TZ07zLmY8eI=" />
+		<property name="sinaPublicKey" value="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDcCGf+wUBSm/KZjNv/RiLOpTU8BG8LOVQAzWbbfC/V8feI3lZJ3UiRhCGrHi+v07ZEMoD4GF9WjulNM7YURR7FUY+nCKgdMpz4kvk+3cQ5JyHVGEM9oS3kFkEi49At2GRQ/V1oxfQBcDKXo0Dbhf8FenD4UteMoBxN21UpkH4VEwIDAQAB" />
+		<property name="merchantAcct" value="ceshishanghuhao" />
+		
+	</bean>
+	-->
+	<!--自动注解 -->
+	<context:component-scan base-package="com.spark.p2p.dao" />
+	<context:component-scan base-package="com.spark.p2p.dao.admin" />
+	<context:component-scan base-package="com.spark.p2p.event" />
+	<context:component-scan base-package="com.spark.p2p.service" />
+	<context:component-scan base-package="com.spark.p2p.service.admin" />
+    <import resource="classpath:/config/database-config.xml" />
+	<import resource="classpath:/config/shiro.xml" />
+</beans>

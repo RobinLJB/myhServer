@@ -1,0 +1,307 @@
+body {
+    background-color: #fff;
+    color: #666;
+    line-height: 24px;
+    font-family: "微软雅黑",Arial,Lucida,Verdana,Helvetica,sans-serif;
+}
+.container{
+	width: 1200px;
+}
+.condition dt,
+.condition dd,
+.condition li{
+	float: left;
+}
+.condition>dl{
+	overflow: hidden;
+}
+.condition dt{
+	width: 85px;
+	line-height: 30px;
+	font-size: 16px;
+	color: #a9a9a9;
+}
+.condition dd{
+	margin-bottom: 8px;
+}
+.condition li{
+	margin-left: 10px;
+	padding: 0 15px;
+	font-size: 16px;
+	line-height: 30px;
+	padding: 0 15px;
+	cursor: pointer;
+}
+
+.type_act_b,
+.scope_act_b,
+.repay_act_b,
+.repayType_act_b{
+   background-color: #41D8F1;
+   border-radius: 5px;
+   -webkit-border-radius:5px;
+   color: #fff;
+}
+/*Ͷ���б�*/
+.invest-list{
+	clear: both;
+}
+.invest-list {
+    background: #f8f8f8;
+    padding-top: 30px;
+    overflow: hidden;
+}
+.invest-list .con24 {
+    padding-bottom: 20px;
+}
+.ul_h li {
+    padding-right: 50px;
+}
+.con24 {
+    margin: 0 auto;
+    width: 1000px;
+    text-align: left;
+}
+.hd {
+    color: #1c87ca;
+    font-size: 24px;
+    font-weight: normal;
+}
+h3, .hd {
+    position: relative;
+    height: 33px;
+    margin-bottom: 10px;
+}
+.invest-list {
+    position: relative;
+    padding-bottom: 30px;
+    overflow: hidden;
+    color: #999;
+    width: 100%;
+}
+textarea, div, p, li {
+    word-wrap: break-word;
+}
+.invest-list dl {
+    height: 120px;
+    background: #fff;
+    border-bottom: 1px solid #b1b1b1;
+    border-left: 4px solid #2ea7e0;
+    margin-bottom: 20px;
+    width: 1050px;
+    position: relative;
+    overflow: hidden;
+}
+.invest-list dt {
+    width: 660px;
+    margin-left: 20px;
+    padding-top: 15px;
+}
+.invest-list dt, .invest-list dd {
+    height: 105px;
+    border-right: 1px solid #e6e6e6;
+}
+.invest-list h3 {
+    font-size: 16px;
+    margin: 0;
+    font-weight: normal;
+    color: #333;
+}
+.invest-list .con2 {
+    position: relative;
+    font-size: 14px;
+    padding-top: 8px;
+}
+.invest-list li {
+    padding-right: 50px;
+}
+.invest-list .con2 li i {
+    color: #f60;
+}
+.invest-list .con2 i, .invest-list .con2 em, .invest-list .con2 li span {
+    font-size: 24px;
+}
+.invest-list i, .invest-list em {
+    font-style: normal;
+}
+.invest-list .con2 p {
+    font-size: 12px;
+    padding-left: 2px;
+}
+.invest-list .tool {
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    width: 200px;
+    border-left: 1px solid #e6e6e6;
+    padding-left: 15px;
+    color: #999;
+}
+.invest-list .con2 p {
+    font-size: 12px;
+    padding-left: 2px;
+}
+.invest-list .tool .blue {
+    letter-spacing: 5px;
+    padding-left: 5px;
+    font-size: 18px;
+}
+.invest-list .dd3 {
+    width: 297px;
+    margin-top: 5px;
+    padding-left: 19px;
+    padding-right: 30px;
+    padding-top: 20px;
+    line-height: 35px;
+}
+h3 a.ab_r {
+    font: normal 14px/33px "微软雅黑";
+    right: 10px;
+    color: #999;
+}
+a {
+    color: #555;
+    cursor: pointer;
+    text-decoration: none;
+}
+.invest-list .dd3 .p1 {
+    height: 40px;
+}
+.invest-list .dd3 p {
+    position: relative;
+}
+.invest-list .dd3 .ab_r {
+    color: #2ea7e0;
+    right: 10px;
+    font-size: 18px;
+}
+.invest-list i, .invest-list em {
+    font-style: normal;
+}
+.ab_r {
+    top: 0;
+    right: 0;
+    position: absolute;
+}
+.bar, .bar i {
+    position: relative;
+    height: 8px;
+    line-height: 8px;
+    font-size: 0;
+    width: 168px;
+    background: #dcdcdc;
+}
+.bar i {
+    display: block;
+    background: #2ea7e0;
+}
+.bar em {
+    position: absolute;
+    top: -5px;
+    right: -60px;
+    width: 60px;
+    text-align: right;
+    font-size: 14px;
+    line-height: 20px;
+}
+.invest-list .dd4 {
+    width: 65px;
+    float:right;
+}
+.invest-list .dd4 a:hover{
+	color:#fff;
+	background-color: #80CAEC;
+}
+.invest-list .btn {
+    height: 120px;
+    font-size: 18px;
+    padding: 40px 6px 0 14px;
+    text-align: left;
+    white-space: normal;
+}
+.tips {
+    float: left;
+    display: inline-block;
+    width: 260px; 
+    height: 23px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 3px;
+}
+.tips i {
+    display: inline-block;
+    background: url(../img/sys.gif) no-repeat;
+    background-position: -168px -327px;
+    font-size: 23px;
+    font-weight: normal;
+    padding-left: 14px;
+    height: 23px;
+    line-height: 23px;
+    margin-left: 5px;
+    float: left;
+}
+.tips .he_tu {
+    height: 16px;
+    line-height: 17px;
+    border: 1px solid #036eb8;
+    padding: 0 5px;
+    color: #036eb8;
+    font-size: 12px;
+    background-image: none;
+    position: relative;
+    overflow: hidden;
+    margin-top: 4px;
+}
+h3, .hd {
+    position: relative;
+    height: 33px;
+    margin-bottom: 10px;
+}
+.invest-list dt h3 a {
+    float: left;
+    display: inline-block;
+    font-family: '微软雅黑';
+}
+.ul_h li, .dl_h dt, .dl_h dd {
+    float: left;
+    display: inline;
+    font-weight: normal;
+}
+.ul_h li, .ul_v li {
+    list-style: none outside none;
+    overflow: hidden;
+    position: relative;
+    display: block;
+    margin-left: 0;
+    zoom: 1;
+}
+.btn, .btns, .btn:focus, .btn:visited, .btn0, .btn0:focus, .btn0:visited, .btn2, .btn2:focus, .btn2:visited {
+    display: block;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #2ea7e0;
+    font-family:  "微软雅黑","heiti";
+    bblr: expression(this.onFocus=this.blur());
+    outline-style: none;
+    -webkit-appearance: none;
+}
+#touman_tu {
+    position: absolute;
+    top: 25px;
+    right: 144px;
+    display: block;
+    width: 180px;
+    height: 100px;
+}
+#touman_tu {
+    background: url("../img/tz_detail.gif") no-repeat 0 -970px;
+}
+.invest-list .btn2 {
+    background: #90d3ed;
+}
+/*Ͷ���б� end */
+.footer{
+	margin-top:0;
+}

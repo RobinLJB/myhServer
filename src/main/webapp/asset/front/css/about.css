@@ -1,0 +1,54 @@
+.wz{
+	padding-top: 100px;
+    background: #391d0a;
+    color: white;
+}
+.wz_1{
+	width: 1200px;
+	margin: 0 auto;
+	text-align: left;
+	 padding-bottom: 16px;
+    font-size: 16px;
+}
+.bjs{
+	background: #efefef;
+	height: 700px;
+	width: 100%;
+}
+.con{
+	width: 1200px;
+	margin: 0 auto;
+	    height: 100%;
+	    padding-top: 98px;
+}
+.lef_lb{
+	    float: left;
+    width: 18%;
+    
+    margin-right: 41px;
+    /* padding-right: 15px; */
+    background: white;
+}
+.rig_lb{
+	float:left;
+	width:72%;
+	background: white;
+	height: 486px;
+	    padding: 20px;
+}
+.tab-c{
+
+	    padding: 0 10px 6px 0px;
+    border-bottom: 1px solid #ECECEC;
+}
+.s{
+    height: 25px;
+    width: 134px;
+    padding-top: -6px;
+    font-size: 19px;
+    font-weight: 500;
+    padding-left: 9px;
+    border-left: 5px solid #F09E3C;
+    /* line-height: 27px; */
+    display: inline-flex;
+}

@@ -1,0 +1,17 @@
+/* �������� */
+a {    text-decoration: none;    color: black;}
+ul, li, dd, dl, dt, form, input, div, img, p, span {    margin: 0px;    padding: 0px;   list-style-type: none;}
+.wrap {    width: 100%;     padding-top: 35px;   background-color: #f3f3f3;    overflow: hidden;}
+.container {   padding:0;   margin:0 auto;    width: 1000px;}
+.list-left {   margin: 20px 2% 20px 0;   float: left;        width: 20%;    background-color: #fff;}
+.list-menu>li {   position: relative;   height:65px; line-height: 65px;   border-bottom: 1px solid #f2f2f2;   text-align: center;}
+.list-menu>li>a {    height: 100%;    width: 100%;    text-decoration: none;    line-height: 50px;   display: inline-block;    font-size: 15px;   color: #6c6c6c;}
+.arc {    display: none;    position: absolute;    right: -9px;    top: 0;    height: 100%;    width: 10px;    background: url(../img/ico-arc.png) center center no-repeat;}
+.bg-active {background-color: #ed7272;}
+.fc {color: #fff !important;}
+.container #page-content-wrapper {    float: left;    width: 74%;    background-color: #fff;    margin: 20px 0 20px 0;    }
+.media-list {    padding-left: 0;    list-style: none;}
+.media-body{    display: table-cell;    vertical-align: top;    overflow: hidden;    zoom: 1;}
+.article{margin: 15px;    text-align: initial;}
+.media-heading {    margin-bottom: 5px;    padding: 10px 0;}
+.s{border-bottom: 1px solid #F06A3D;}

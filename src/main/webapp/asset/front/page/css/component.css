@@ -1,0 +1,53 @@
+html, 
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+.hover-btn {
+  position: relative;
+  display: inline-block;
+}
+
+.hover-btn .hover-content {
+  position: absolute;
+  top: 105%;
+  display: block;
+}
+
+.hover-btn:hover .hover-content{
+  display: block;
+}
+
+.content .content-nav {
+  height: 52px;
+  line-height: 52px;
+  padding: 0 25px;
+  border-bottom: 1px solid #ededed;
+  background: #f6f8f9;
+}
+
+.content .content-nav .nav-wrap {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.content .content-nav .nav-wrap .nav-item {
+  display: inline-block;
+  padding: 0 5px;
+  margin-right: 80px;
+}
+
+.content-nav .nav-wrap .nav-item a {
+  height: 50px;
+  line-height: 50px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.content .content-nav .nav-wrap .nav-item.active {
+  border-bottom: 2px solid #f00;
+}

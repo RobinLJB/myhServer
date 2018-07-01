@@ -1,0 +1,33 @@
+.header {
+  height: 90px;
+  border-bottom: 1px solid #dd9795;
+}
+
+.header .brand-img {
+  display: inline-block;
+  height: 90px;
+}
+
+.header .brand-img img{
+  display: block;
+  margin: 14px 25px;
+}
+.header .nav {
+  float: right;
+  margin-right: 10px;
+}
+
+.header .nav .nav-wrap {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header .nav .nav-item {
+  display: inline-block;
+  line-height: 90px;
+  margin-left: 50px;
+  padding: 0 15px;
+  font-size: 16px;
+}
+

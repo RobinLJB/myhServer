@@ -1,0 +1,139 @@
+.menu{
+	background: #fff;
+}
+.menu-son{
+	background: #fff;
+}
+.menu-son a{
+	padding-left: 5px;
+	text-decoration: none;
+	color: #666;
+}
+
+.safe-level-icon{
+	margin:1px;
+	display: block;
+    float: left;
+	width:23px;
+	height:26px;
+}
+.user-name {
+    margin-bottom: 5px;
+    font-size: 22px;
+    text-align: center;
+}
+.user-safe {
+    height: 40px;
+    line-height: 40px;
+    width: 110px;
+    margin: 0 auto;
+}
+.safe-img{
+    background: url(../images/security-icons.png) 0 0 no-repeat;
+}
+/*主标题*/
+#hometitle{
+	display: block;
+	height: 40px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    line-height: 40px;
+	background-color:#80D2F1;
+	border-bottom: 1px solid #fff;
+}
+/*左侧菜单列表*/
+.menu-son{
+	padding-bottom: 10px;
+	cursor: pointer;
+    font-size: 14px;
+	list-style: none;
+}
+.menu-son li{
+	margin-top: 10px;
+	font-size: 14px;
+    text-align: center;
+    line-height: 25px;
+    color: #404040;
+    background: #fff;
+}
+.pointer{
+	cursor: pointer;
+}
+/*左侧菜单标题*/
+.menu h3{
+    font-size: 18px;
+    text-align: center;
+    line-height: 2.5;
+    background-color: #80D2F1;
+    color: #fff;
+    cursor: pointer;
+    border-bottom: 1px solid #fff;
+    height: 39px;
+	margin-top: 0;
+}
+
+/*左侧菜单背景icon
+.l-m-icon{
+	background: url(../images/l-menu.png) no-repeat left top;
+}
+*/
+.cash-survey{
+	background-position: 0 0;
+}
+
+.recharge,.enchashment,.repayment{
+	margin-left: -27px;
+}
+.address{
+    margin-left: 27px;
+    background-position: -1px -370px;
+}
+.concerent{
+    margin-left: 27px;
+}
+.cash-detail{
+	background-position: -1px -41px;
+}
+.frozen-detail{
+	background-position: -1px -82px;
+}
+.collect-payment,.mywallet{
+	background-position: -1px -126px;
+}
+.recharge{
+	background-position: -1px -167px;
+}
+.enchashment{
+	background-position: -1px -206px;
+}
+.user-update{
+	background-position: -1px -243px;
+}
+.safe-info{
+	background-position: -1px -285px;
+}
+.invite-friend,.binding-set{
+	background-position: -1px -325px;
+}
+
+/******公共类*******/
+.strong{
+	font-weight: bold;
+	color: #000;
+}
+.light{
+	color: #ccc;
+}
+.show{
+	display: block;
+}
+.hide{
+	display: none;
+}
+.menu .active{
+	border-left: 3px solid #EF2D2D;
+	color:#EF2D2D;
+}

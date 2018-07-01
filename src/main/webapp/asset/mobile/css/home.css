@@ -1,0 +1,42 @@
+		.mui-table-view .mui-media-object {
+    line-height: 20px;
+    max-width: 42px;
+    height: 23px;
+}
+.mui-media-body {
+    overflow: hidden;
+        font-size: 16px;
+    color: #383838;
+}
+.mui-table-view:before {
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 1px;
+    content: '';
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+    background-color: white;
+    top: -1px;
+}
+.mui-table-view-cell:after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 15px;
+    height: 1px;
+    content: '';
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+    background-color: #e0e0e0;
+}
+.mui-table-view-cell {
+    position: relative;
+    overflow: hidden;
+    padding: 12px 16px;
+    -webkit-touch-callout: none;
+}
+.mui-bar-nav~.mui-content {
+    padding-top: 49px;
+    padding-bottom: 74px;
+}

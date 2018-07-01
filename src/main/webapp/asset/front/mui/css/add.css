@@ -1,0 +1,31 @@
+a{color: #000;}
+html,body{height: 100% ;background-color: #F4F4F4;font-family: "Microsoft YaHei";font-size: 16px;}
+.top{background-color: #ffffff;}
+.top a{color: #AAAAAA;}
+.top .mui-title{font-size: 18px;}
+.mui-bar-nav{-webkit-box-shadow: none;box-shadow:none;}
+.mui-content {background-color: #F4F4F4;position: relative;overflow: hidden;
+height: 100%;}
+/*帮助中心样式开始*/
+.ioc{height: 8px;display: inline-block;width: 8px;background-color:#FFB91B;margin-right: 7px;border-radius: 50%;position: relative;top: -2px;}
+.mui-table-view:before,.mui-table-view:after,.mui-table-view-cell:after{height: 0;}
+.mui-table-view-cell.mui-collapse .mui-collapse-content{border-top:1px solid #F5F5F5;padding: 20px 15px;font-size: 14px;line-height: 1.6;}
+.mui-content>.mui-table-view:first-child{background-color: #F4F4F4;margin-top: 8px;}
+.mui-table-view-cell,.mui-table-view-cell.mui-collapse.mui-active{margin-top: 6px;background-color: #fff;}
+/*帮助中心样式结束*/
+
+/*关于我们样式开始 */
+.aboutus_tab{padding: 10px 10px 0;background-color: #ffffff;}
+.mui-content .aboutus_tab .mui-control-item{color: #989898;font-size: 16px;}
+.mui-content .aboutus_tab .mui-control-item.mui-active {color: #000;border-bottom: 2px solid #FF5633;}
+.item1-content{padding: 20px 15px 40px;font-size: 14px;line-height: 1.6;}
+#item2 .mui-table-view{background: none;margin-top: 20px;}
+.mui-control-content{position: static;}
+#zq{top: 0;bottom: 0;right: 0;left: 0;
+position: absolute;margin-top: 200%;
+background-color: red;transition: all 5s;}
+#item2 img{height: 30px;
+position: static;
+vertical-align: middle;
+margin-right: 10px;}
+/*关于我们样式结束 */

@@ -1,0 +1,35 @@
+*{font-family: Microsoft YaHei;}
+body{background-color: white;}
+.headline-color{background-color: #fff;box-shadow: none;border-bottom: 1px solid #e0dbdb;}
+.headline{font-size: 18px;}
+.main{background-color: white;padding-top: 44px;padding-bottom: 58px;width: auto;}
+.menu>a{padding-top: 8px;}
+.mui-table-view:before{background: none;}
+.mui-ios .mui-table-view-cell{padding: 0;background-color: #fbfbfb;margin-top: 10px;border-top: 1px solid #eee;}
+.mui-segmented-control .mui-control-item.mui-active{color: #fff;background-color: #FC5144;}
+.mui-segmented-control .mui-control-item{background-color: #F4F4F4;line-height: 45px;font-size: 16px;color: #000;border-color: #FC5144;}
+.mui-segmented-control{border: none;border-radius: 5px;}
+.icon-home{background: url(../img/11.png) center  no-repeat; background-size: 100%;}
+.icon-invest{background: url(../img/02.png) center  no-repeat; background-size: 100%;}
+.icon-notice{background: url(../img/33.png) center  no-repeat; background-size: 100%;}
+.icon-sns{background: url(../img/44.png) center  no-repeat; background-size: 100%;}
+.mui-bar  .incest-title{color: white;}
+.incest-title a{color: white;}
+.indicatorContainer{padding: 0;margin-top: 10px;}
+.invest-title{font-size: 18px;color: #000000;margin: 0;padding: 10px;border-bottom: 1px solid #eee;}
+.invest-title span{position: relative;top: -1px;font-size: 12px;padding: 1px 5px;border-radius: 3px;border: 1px solid;}
+ .mui-media:after{left: 0;}
+.incest-list{margin-top:16px;text-align: center;}
+.annualRate{font-size: 28px;}
+.incest-list .mui-col-xs-5{color:#FD4B05;}
+.invest-money{font-size: 20px;color: #000000;}
+.l-loan>div{width: 50%;float: left;text-align: center;font-size: 14px;color: #8f8f94;padding: 15px 0;border-left: 1px solid #eee;}
+.annualrate{font-size: 22px;color: #FC5144;padding-bottom: 5px;}
+.l-loan>div.nll{border:none;}
+.amount{font-size: 22px;color: #000;padding-bottom: 5px;}
+.l-loan{border-right: 1px solid #eee;}
+.r-loan{text-align: center;padding: 0 12px	}
+.r-loan .cycletype{padding-top: 20px;font-size: 18px;color: #000;}
+.r-loan a{color: #fff;font-size: 13px;width: 100%;display: inline-block;line-height: 25px;height: 25px;border-radius: 5px;}
+#demo1{padding: 12px 0;}
+#demo1 p{height: 7px;border-radius: 10px;}

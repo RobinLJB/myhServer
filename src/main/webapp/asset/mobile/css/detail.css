@@ -1,0 +1,38 @@
+*{font-family: Microsoft YaHei;}
+body{background-color: #F7F7F8;}
+.headline-color{background-color: #fff;}
+.mui-bar  .incest-title,.incest-title a{color: white;}
+.main{background-color: #F7F7F8;padding-top: 44px;padding-bottom: 58px;width: auto;}
+.loan-title{margin: 10px 0;font-size: 18px;}
+.loan-title span{font-size: 13px;padding: 2px 7px;border-radius: 3px;margin-right: 8px;}
+.loan-title span.gy{color: #F3625E;border: 1px solid #F3625E;}
+.loan-title span.qt{color: #3776DD;border: 1px solid #3776DD;}
+.menu .mui-numbox{height: 50px;border: none;width: 70%;}
+.menu .btn-invest{border: 1px solid #F25752;background-color: #F25752;height: 50px;top: 0;width: 30%;border-radius: 0;font-size: 17px;margin: 0 !important;}
+.mui-numbox .mui-btn{width: 60px;font-size: 2em;    background-color: #fff;}
+.main-detail{background-color: #FFFFFF;padding: 5px 10px;}
+.main-one{font-size: 13px;color: #8f8f94;}
+.main-one h2{color: #F25752;display: initial;font-weight: 400;font-size: 28px;}
+.title{font-size: 15px;}
+.mui-progressbar{background: #EEEEEE;}
+.main-one .mui-col-sm-8{text-align: right;padding-top: 8px;padding-left: 8px;}
+.annual-name{margin: 0;}
+#demo1 h5{color: #F25752;}
+.mui-progressbar span{background: #F25752;}
+#demo1 p{height:10px;border-radius: 10px;    margin: 0;}
+#demo1 div{text-align: right;font-size: 12px;color: #8f8f94;padding: 3px 0 5px;}
+.main-two{font-size: 15px;padding: 15px 0  25px; text-align: center;border-bottom: 1px dashed #DCDCDC;}
+.deadline{border-left: 1px solid #EEEEEE;border-right: 1px solid #EEEEEE;}
+.main-three{text-align: left;padding: 15px 0 5px;}
+.remainTimeOne{color: #F25752;}
+.first-line{margin-bottom: 8px;}
+.first-line h5{line-height: 1.1;font-size: 12px;background: url(../img/abc.png) 0 center no-repeat;padding-left: 17px;background-size: contain;}
+.tasks,.mui-table-view-cell p{margin-bottom: 3px;}
+.mui-tasks p>span{font-size: 18px;}
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active{border-bottom: 3px solid #F25752;color: #000000;padding-top: 5px;}
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item{font-size: 14px;padding: 0 8px;border-bottom: 1px solid #EEEEEE;;}
+.mui-table-view-cell{padding: 11px 5px;}
+.your-deposits{text-align: center;}
+.your-deposits div{margin-bottom: 5px;}
+.your-deposits .mui-row-title{font-size: 15px;background-color: #FCFDFE;padding: 5px 0;margin-bottom: 8px;}
+.mui-row-content span{font-size: 14px;color: #8f8f94;}

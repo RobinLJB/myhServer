@@ -1,0 +1,28 @@
+*{font-family: Microsoft YaHei;}
+body{background-color: #F7F7F8;}
+.headline-color{background-color: #fff;box-shadow: none}
+.headline{font-size: 18px;}
+.main{background-color: #F7F7F8;padding-top: 44px;margin-top: 10px;width: auto;}
+.menu>a{padding-top: 8px;}
+.icon-home{background: url(../img/11.png) center  no-repeat; background-size: 100%;}
+.icon-invest{background: url(../img/22.png) center  no-repeat; background-size: 100%;}
+.icon-notice{background: url(../img/03.png) center  no-repeat; background-size: 100%;}
+.icon-sns{background: url(../img/44.png) center  no-repeat; background-size: 100%;}
+.mui-bar  .incest-title{color: white;}
+.incest-title a{color: white;}
+.mui-table-view:before{height: 0}
+.mui-table-view-cell:after{left: 0;background-color: #eee;}
+.mui-table-view:after{background-color: #eee;}
+.mui-table-view-cell p{font-size: 12px;padding-top: 5px;}
+.mui-table-view .mui-media-object{max-width: 33%;padding-right: 10px;width: 33%;height: 100%;}
+.mui-table-view .mui-media-body{font-size: 16px;width: 67%;float: left;height: 100%;}
+.mui-media>a{height: 90px}
+.mui-media p{    font-size: 12px;
+    padding-top: 8px;
+    height: 25px;}
+.mui-media h5{font-size: 16px;
+    color: #000;
+    margin: 0;
+    white-space: pre-wrap;
+    line-height: 1.4;
+    overflow: hidden;}

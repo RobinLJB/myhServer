@@ -1,0 +1,12 @@
+/*左侧菜单*/
+#page-sidebar-menu{
+	margin-right:20px;
+	float:left;
+	width:150px;
+	background-color: #fff;
+	text-align: center;
+} 
+/*右边主体*/
+#page-content-wrapper{
+	overflow:hidden; 
+}

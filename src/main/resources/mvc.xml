@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-4.0.xsd
+						http://www.springframework.org/schema/mvc
+						http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-4.0.xsd" >
+	<!--自动注解 -->
+	<context:component-scan base-package="com.spark.p2p.controller" />
+	<bean id="customObjectMapper" class="com.spark.p2p.core.DateMapper"></bean>
+	<mvc:annotation-driven>
+    	<mvc:message-converters>
+    		<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" >
+    			<property name="objectMapper" ref="customObjectMapper"></property>
+    		</bean>
+    	</mvc:message-converters>
+    </mvc:annotation-driven>
+
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="order" value="0" />
+		<property name="favorPathExtension" value="true" />
+		<property name="favorParameter" value="false" />
+		<property name="ignoreAcceptHeader" value="true" />
+		<property name="defaultContentType" value="text/html" />
+		<property name="mediaTypes">
+			<map>
+				<entry key="html" value="text/html" />
+				<entry key="json" value="application/json" />
+				<entry key="xls" value="application/octet-stream" />
+			</map>
+		</property>
+		<property name="viewResolvers">
+			<list>
+				<!-- 配置freemarker作为视图层 -->
+				<bean id="freeMarkerViewResolver"
+				class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+					<property name="cache" value="false" />
+					<property name="order" value="0" />
+					<property name="prefix" value="" />
+					<property name="suffix" value=".ftl" />
+		            <property name="contentType" value="text/html;charset=UTF-8" />
+		            <!-- 此变量值为pageContext.request, 页面使用方法：rc.contextPath-->
+		            <property name="requestContextAttribute" value="rc" />
+					<property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+				</bean>
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<bean class="com.spark.p2p.core.view.ExcelView" />
+				<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+					<property name="objectMapper" ref="customObjectMapper"></property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<!--上传配置 -->
+	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+		<property name="maxUploadSize" value="10485760" />  
+	</bean>  -->
+	
+	<bean id="multipartResolver" class="com.spark.p2p.util.MyMultipartResolver">
+		<!-- url中带有example的http请求就不会被multipartResolver先解析-->
+		<property name="excludeUrls" value="app/upload/file.do,app/uc/aliyun/faceRec.do"/>
+        <property name="maxUploadSize" value="10485760" />
+     </bean>
+	<!-- freemarker视图配置 -->
+	<bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">  
+        <property name="templateLoaderPath" value="WEB-INF/view/" />  
+        <property name="defaultEncoding" value="UTF-8" />
+		<property name="freemarkerVariables">
+			<map>
+				<entry key="block" value-ref="blockDirective" />
+				<entry key="override" value-ref="overrideDirective" />
+				<entry key="layout" value-ref="layoutDirective" />
+				<entry key="token" value-ref="tokenDirective" />
+				<entry key="pagination" value-ref="pageDirective" />
+				<entry key="mask" value-ref="maskDirective" />
+				<entry key="select">
+					<bean class="com.spark.p2p.freemarker.directive.SelectDirective" />
+				</entry>
+				<entry key="option">
+					<bean class="com.spark.p2p.freemarker.directive.OptionDirective" />
+				</entry>
+				<entry key="shiro">
+					<bean class="com.spark.p2p.freemarker.directive.shiro.ShiroTags" />
+				</entry>
+			</map>
+		</property>
+    </bean>
+    <bean id="blockDirective" class="com.spark.p2p.freemarker.directive.BlockDirective" />
+    <bean id="overrideDirective" class="com.spark.p2p.freemarker.directive.OverrideDirective" />
+    <bean id="layoutDirective" class="com.spark.p2p.freemarker.directive.LayoutDirective" />
+    <bean id="tokenDirective" class="com.spark.p2p.freemarker.directive.FormTokenDirective" />
+    <bean id="pageDirective" class="com.spark.p2p.freemarker.directive.PaginationDirective" />
+    <bean id="maskDirective" class="com.spark.p2p.freemarker.directive.MaskDirective" />
+	
+	<!--Excel视图 -->
+	<bean id="excelView" class="com.spark.p2p.core.view.ExcelView"></bean>
+    <mvc:interceptors>
+	    <mvc:interceptor>
+	        <mvc:mapping path="/mobile/**" />
+	        <bean class="com.spark.p2p.interceptor.MemberInterceptor">
+				<property name="excludedUrls">
+					<list>
+						<value>/mobile/login.html</value>
+						<value>/mobile/login.do</value>
+						<value>/mobile/sendPhoneCode2.do</value>
+						<value>/mobile/downloadApp.do</value>
+						<value>/mobile/tongdun/notify.do</value>
+						<value>/mobile/borrow/attestation.html</value>
+					</list>
+				</property>
+	        </bean>
+	    </mvc:interceptor>
+	    <mvc:interceptor>
+	        <mvc:mapping path="/ucenter/safety/**" />
+	        <bean class="com.spark.p2p.interceptor.SafetyAuthInterceptor">
+				<property name="excludedUrls">
+					<list>
+						<value>/ucenter/safety/getEmailCode.do</value>
+						<value>/ucenter/safety/index.html</value>
+						<value>/ucenter/safety/realname.html</value>
+						<value>/ucenter/safety/realname.do</value>
+						<value>/ucenter/safety/auth.html</value>
+						<value>/ucenter/safety/auth.do</value>
+						<value>/ucenter/safety/mbcode.do</value>
+						<value>/ucenter/safety/sendCode.do</value>
+						<value>/ucenter/safety/passwd.html</value>
+						<value>/ucenter/safety/passwd.do</value>
+						<value>/ucenter/safety/passwd/update.do</value>
+					</list>
+				</property>
+				<property name="authUrl"  value="/ucenter/safety/auth.html"></property>
+	        </bean>
+	    </mvc:interceptor>
+	     <!-- APP INTERCEPTOR -->
+	    <mvc:interceptor>
+	    	<mvc:mapping path="/app/uc/**"/>
+	    	<bean class="com.spark.p2p.interceptor.AppInterceptor">
+	    		<property name="excludedUrls">
+					<list>
+						<value>/app/uc/login.do</value>
+						<value>/app/uc/loginV2.do</value>
+						<value>/app/uc/loginWithGesture.do</value>
+						<value>/app/uc/register.do</value>
+						<value>/app/uc/mobileCode.do</value>
+						<value>/app/uc/findPwd.do</value>
+						<value>/app/uc/reset/pwd.do</value>
+						<value>/app/uc/captcha.do</value>
+						<!-- 以下为调试使用 -->
+						<!-- <value>/app/uc/borrow/checkBorrowAuditStatus.do</value> -->
+						<!-- <value>/app/uc/authSerialNumberAndIMEI.do</value> -->
+						<!-- <value>/app/uc/identityAuth.do</value> -->
+					</list>
+				</property>
+	    	</bean>
+	    </mvc:interceptor>
+    </mvc:interceptors>
+	<import resource="classpath:/config/jobs.xml" />
+</beans>

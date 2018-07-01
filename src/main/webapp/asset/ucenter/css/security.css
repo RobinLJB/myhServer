@@ -1,0 +1,5 @@
+.nav-tabs .active,
+.tab-content .active {
+     border-left: none; 
+     color: #EF2D2D; 
+}

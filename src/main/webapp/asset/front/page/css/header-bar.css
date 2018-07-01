@@ -1,0 +1,152 @@
+.header-bar {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 25px;
+  border-bottom: 1px solid #eaeaea;
+  background: #fbfbfb;
+  color: #8c8c8c;
+}
+
+.header-bar .brand {
+  float: left;
+}
+
+.header-bar .brand .phone {
+  color: #4c4c4c;
+  font-weight: bold;
+  margin: 0 14px;
+}
+
+.header-bar .brand .hover-btn {
+  padding: 5px 0;
+  height: 40px;
+  line-height: 40px;
+  margin-right: 14px;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+.header-bar .nav {
+  float: right;
+}
+
+.header-bar .nav .nav-wrap{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.header-bar .nav .nav-wrap .nav-item{
+  display: inline-block;
+  height: 14px;
+  line-height: 14px;
+  padding: 0 14px;
+  border-right: 1px solid #c5c5c5;
+}
+
+.brand .weibo-icon {
+  display: inline-block;
+}
+
+.hover-btn a {
+  height: 30px;
+  line-height: 30px;
+}
+
+.weibo-icon .icon {
+  display: block;
+  width: 30px;
+  height: 30px;
+  transition: all .3s;
+  background: url('http://www.lianyingdai.com/Style/Index/images/xin.png') no-repeat top center;
+}
+
+.weibo-icon:hover .icon {
+  background-position-y: -30px;
+}
+.qj{
+	  height: 100%;
+	  width: 100%;
+	  background: #ECECEC;
+}
+.qj1{
+	 margin: 0 auto;
+width:1000px;
+}
+.qj1 ul li{
+      background: white;
+    height: 290px;
+    margin-bottom: 34px;
+	
+}
+.leftgd{
+	    float: left;
+    width: 50%;
+}
+.gdlogo{
+	background: #c3c2c1;
+    height: 160px;
+    width: 160px;
+    margin-left: 34px;
+    margin-top: 18px;
+    overflow: hidden;
+    /* padding-left: 15px; */
+    border-radius: 79px;
+}
+.rightgd {
+    padding-top: 25px;
+    float: left;
+    width: 49%;
+    position: relative;
+    padding-left: 28px;
+    height: 100%;
+}
+.hzjg{
+	       background: #ff6666;
+    padding: 6px 21px 5px 20px;
+    color: white;
+    font-size: 15px;
+    margin-right: 23px;
+    border-radius: 6px;
+    font-family: "微软雅黑";
+}
+.titlejg{
+	color: black;
+	font-size: 25px;
+	font-weight: 500;
+	font-family: "微软雅黑";
+}
+.js{
+	padding-top: 14px;
+    font-size: 16px;
+}
+.jd_y{
+	float: left;
+    width: 10%;
+    height: 30px;
+    color: black;
+}
+.js_x{
+	    float: right;
+    width: 86%;
+    padding-right: 15px;
+}
+.yatxan{
+	    text-align: center;
+    color: white;
+    line-height: 36px;
+    font-size: 17px;
+    background: #ffad66;
+    height: 40px;
+    margin-left: 85px;
+    border-radius: 6px;
+    /* padding-left: 38px; */
+    width: 463px;
+}
+.zy{
+    margin-top: 6px;
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+}
+

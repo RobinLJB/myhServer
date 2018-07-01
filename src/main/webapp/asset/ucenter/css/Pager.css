@@ -1,0 +1,17 @@
+﻿/*	分页 */
+.paging-left { color: #888; }
+.paging-left p { height: 30px; line-height: 30px }
+.paging a { height: 26px; line-height: 26px; margin-right:12px; border: 1px solid #d5d5d5; display: inline-block; padding: 0 10px; color:#9d9d9d; background:#fff;}
+.paging a.pgCurrent,
+.paging a:hover { display: inline-block;  background: #ff7779; border: 1px solid #ff7779; color: #fff; text-decoration: none; border-radius: 2px; }
+.paging a.pgEmpty{ color:#aaa; background:#fff; border:1px solid #CACACA;}
+.paging span { color: #666; margin: 0 5px }
+.paging a i { width: 12px; height: 10px; overflow: hidden; }
+.paging a i.previous { background-position: -22px -39px; margin-top: 9px; float: left }
+.paging a:hover i.previous { background-position: -60px -39px; }
+.paging a i.next { background-position: 0px -39px; margin-top: 9px; float: right }
+.paging a:hover i.next { background-position: -38px -39px; }
+.paging .paging-jump { border: 1px solid; border-color: #999 #D0D0D0 #D0D0D0 #999; height: 28px; display: inline-block; background: #F8F8F8; vertical-align: top; overflow: hidden; }
+.paging .paging-jump .input-text { border: none; padding: 0 2px 0 2px; text-align: center; padding: 0 3px; width: 25px; height: 27px; line-height: 27px; background: none; font-size: 12px; }
+.paging .paging-jump .paging-jump-button { text-indent: -9999px; border: none; display: inline-block; vertical-align: top; width: 20px; height: 28px; border-left: 1px solid #ddd; background: #EFEFEF url(img/paging-jump.png) no-repeat 50% 50%; cursor: pointer; }
+input.input-text { height: 30px; line-height: 30px; padding: 0 5px; border: 1px solid; border-color: #999 #D0D0D0 #D0D0D0 #999; color: #666; }

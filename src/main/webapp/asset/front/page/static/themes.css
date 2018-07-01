@@ -1,0 +1,373 @@
+a{text-decoration:none;}
+.rel{position:relative;}
+.abs{position:absolute;}
+.bg2{background:#f1f1f1;}
+.mt5{margin-top:5px;}
+.mt10{margin-top:10px;}
+.text-center{text-align:center;}
+.text-left{text-align:left !important;}
+.text-right{text-align:right;}
+.ad-contairn-box{width:910px; margin:20px auto; color:#fff;}
+.summary-title{font-size:40px; text-align:center; margin-top:30px;}
+.summary-contairn{text-align:center; line-height:2; margin-top:30px;}
+.ad-btn-box{text-align:center; margin:50px 0px 0px;}
+.ad-btn{border:1px solid #fff; padding:9px 35px; font-size:14px; border-radius:5px; display:inline-block; color:#fff;}
+.ad-btn1{border:1px solid #3f3f3f; color:#4f4f4f;}
+.ad-btn2{background:#ff7372; border:none;}
+.ad-btn3{background:#e87536; border:none;}
+.ad-btn4{background:#f5c82a; border:none;}
+.summary-inf{margin-top:35px;}
+.summary-inf .tag{padding:2px 5px; background:#fbd884; color:#0fc1a1; margin-right:10px; }
+.summary-inf .tag1{background:#70ff91;}
+.summary-inf .raise{margin-left:50px;}
+#pp-nav span, .pp-slidesNav span{border:none; background:#2e8597;}
+#pp-nav li .active span,.pp-slidesNav .active span{background:#a4e9f8;}
+.header-matter{position:absolute; top:0px; left:0px; right:0px; z-index:999;}
+.funds-types{ _padding-top:250px;}
+/*--鍔ㄧ敾1--*/
+.section{ color:#515151;}
+.icon-box,.icon-box2,.icon-box3,.icon-box4,.icon-box5,.icon-box6{ -webkit-transform:scale(0.9); -moz-transform:scale(0.9); -ms-transform:scale(0.9); transform:scale(0.9);}
+.section h3{font-style:normal; font-weight:500; }
+.section .summary-contairn{font-size:16px; width:720px; margin:30px auto 0px;}
+.index-pt{-webkit-animation: .2s pageone; animation: .2s pageone;}
+.icon-box{width:421px; height:369px; margin:0px auto; }
+.icon-box-bg{background:url(../../invest/images/safeguard.png) center no-repeat; width:421px; height:369px;}
+.section1 .safeguard{width:193px; height:195px; position:absolute; top:50%; left:50%; background:url(../../invest/images/guarantee.png) no-repeat; margin:-96px 0px 0px -97px; z-index:10;}
+.section1 .borneo{position:absolute;}
+.section1 .borneol1{width:73px; height:80px; background:url(../../invest/images/borneol1.png) no-repeat; top:53px; left:-347px;}
+.section1 .borneol2{width:50px; height:51px; background:url(../../invest/images/borneol2.png) no-repeat; top:190px; left:-144px;}
+.section1 .borneol3{width:74px; height:96px; background:url(../../invest/images/borneol3.png) no-repeat; top:225px; left:515px;}
+.section1 .borneol4{width:144px; height:110px; background:url(../../invest/images/borneol4.png) no-repeat; top:165px; left:588px;}
+.section1 .summary-title{color:#c2f5f8;}
+.section2 .summary-title{color:#575757;}
+.section4 .summary-title{color:#575757;}
+.section6 .summary-title{color:#575757;}
+
+.section2 .summary-contairn{color:#9e9d9b;}
+.section4 .summary-contairn{color:#7c7c7c;}
+.section5 .summary-contairn{color:#ceefff;}
+.section6 .summary-contairn{color:#a1a1a1;}
+.index-pt .summary-title,.index-pt .summary-title1{-webkit-animation: slideInLeft .8s; animation: slideInLeft .8s;}
+.index-pt .summary-contairn,.index-pt .funds-txt1,.index-pt .funds-txt2{-webkit-animation:slideInLeft 1s; animation:slideInLeft 1s;}
+.index-pt.section1 .icon-box-bg{-webkit-animation:2s rotateIn; animation:2s rotateIn;}
+.index-pt.section1 .safeguard{-webkit-animation:1s zoomInDown; animation:1s zoomInDown;}
+.index-pt .borneol1{-webkit-animation:1.5s borneol; animation:1.5s borneol;}
+.index-pt .borneol2{-webkit-animation:1.5s borneo2 .2s both; animation:1.5s borneo2 .2s both;}
+.index-pt .borneol3{-webkit-animation:1.5s borneo3; animation:1.5s borneo3;}
+.index-pt .borneol4{-webkit-animation:2s borneo4 .2s both; animation:2s borneo4 .2s both;}
+.summary-title1{ font-size:36px; color:#484848;}
+.funds-txt1{color:#767676; font-size:24px; margin-top:30px;}
+.funds-txt1 em{color:#ff9147;}
+.funds-txt2{font-dize:18px; color:#b1b1b1; margin-top:20px; }
+.funds-ph{background:url(../../invest/images/funds-ph.png) no-repeat; width:349px; height:333px;  margin:50px auto 150px;}
+@media(max-height:780px){
+	.ad-contairn-box{transform:scale(.9);}
+}
+@media(max-height:700px){
+	.ad-contairn-box{transform:scale(.8);}
+}
+@media(max-height:600px){
+	.ad-contairn-box{transform:scale(.7);}
+}
+/*--鍔ㄧ敾2--*/
+.icon-box2{width:319px; height:331px; margin:0px auto;}
+.icon-box2-bg{ background:url(../../invest/images/log.png) no-repeat; z-index:10; position:absolute; top:0px; left:0px; width:100%; height:100%;}
+.section2 .link,.section2 .glisten-default,.section2 .circle-defaut,.section2 .money1,.section2 .money2,.section2 .money3{ position:absolute;}
+.section2 .link{z-index:1;}
+.section2 .link1{width:153px; height:38px; background:url(../../invest/images/link1.png) no-repeat; top:110px; left:-101px;}
+.section2 .link2{width:156px; height:47px; background:url(../../invest/images/link2.png) no-repeat; top:261px; left:-130px;}
+.section2 .link3{width:136px; height:54px; background:url(../../invest/images/link3.png) no-repeat; top:270px; left:295px;}
+.section2 .link4{width:151px; height:42px; background:url(../../invest/images/link4.png) no-repeat; top:100px; left:290px;}
+.glisten-default{width:29px; height:27px; background:url(../../invest/images/glisten.png) no-repeat; }
+.section2 .circle-defaut{color:#fff;  z-index:2;}
+.section2 .circle11{top:85px; left:-145px; background:#ff999a;}
+.section2 .circle21{top:275px; left:-172px; background:#c997ec;}
+.section2 .circle31{top:285px; left:430px; background:#9cebfc;}
+.section2 .circle41{top:80px; left:400px; background:#ffba14;}
+.section2 .money1{width:331px; height:56px; background:url(../../invest/images/money1.png) no-repeat; top:-50px; left:0px;}
+.section2 .money2{width:116px; height:80px; background:url(../../invest/images/money2.png) no-repeat;  top:-10px; left:350px;}
+.section2 .money3{width:90px; height:63px; background:url(./money3.png) no-repeat; top:-10px; left:100px; z-index:11;}
+.section6 .summary-contairn{color:#575757;}
+.section2 .circle-defaut18{top:-50px; left:150px; width:30px; height:30px;}
+.section2 .circle-defaut19{top:0px; left:-110px; width:30px; height:30px;}
+.section2 .circle-defaut20{top:-100px; left:85px; font-size:16px; }
+.section2 .circle1{width:30px; height:30px; top:-80px; left:-10px;}
+.index-pt.section2 .icon-box2-bg{-webkit-animation:1s scale; animation:1s scale;}
+.index-pt.section2 .money1,.index-pt.section2 .money2,.index-pt.section2 .circle-defaut{-webkit-animation:.5s fadeIn1 1s both; animation:.5s fadeIn1 1s both;}
+.index-pt.section2 .link1{-webkit-animation:1s fateWidth 1s both; animation:1s fateWidth 1s both;}
+.index-pt.section2 .circle11{-webkit-animation:.5s fadeIn1 1.5s both; animation:.5s fadeIn1 1.5s both;}
+.index-pt.section2 .link2{-webkit-animation:.5s fateWidth 1.5s both; animation:.5s fateWidth 1.5s both;}
+.index-pt.section2 .circle21{-webkit-animation:.5s fadeIn1 2s both; animation:.5s fadeIn1 2s both;}
+.index-pt.section2 .link3{-webkit-animation:.5s fateWidth 2s both; animation:.5s fateWidth 2s both;}
+.index-pt.section2 .circle31{-webkit-animation:.5s fadeIn1 2.5s both; animation:.5s fadeIn1 2.5s both;}
+.index-pt.section2 .link4{-webkit-animation:.5s fateWidth 3s both; animation:.5s fateWidth 3s both;}
+.index-pt.section2 .circle41{-webkit-animation:.5s fadeIn1 3s both; animation:.5s fadeIn1 3s both;}
+.index-pt.section2 .money3{-webkit-animation:4s magnify; animation:4s magnify;}
+/*--鍔ㄧ敾涓�--*/
+.circle-defaut,.circle-defaut1{border-radius:50%; text-align:center;}
+.circle-defaut{width:46px; height:46px; background:#a5eaf9;  color:#41caea; line-height:46px; }
+.circle-defaut1{width:35px; height:35px; background:#f59797; color:#fff; line-height:35px; text-align:center;}
+.circle-defaut2{background:#ffd29c;}
+
+.circle-defaut5{background:#62e6d8;}
+.circle-defaut6{border:1px solid #fff; background:none; color:#fff}
+.circle-defaut7{background:#73f4c1; color:#2ac786;}
+.circle-defaut8{background:#9aa8ef;}
+.circle-defaut9{background:#5db6de;}
+.circle-defaut10{background:#5db7da;}
+.circle-defaut11{background:#2caab9;}
+.circle-defaut12{background:#ff9764;}
+.circle-defaut13{background:#ffeb71;}
+.circle-defaut14{background:#18be7c;}
+.circle-default15{background:#ff8752;}
+.circle-default16{background:#60d6c1;}
+.circle-default17{background:#c6f2fb;}
+.circle-defaut18{background:#cde2f3;}
+.circle-defaut19{background:#9ddfd5;}
+.circle-defaut20{background:#ffe4c1;}
+.icon-box3{width:685px; height:280px; background:url(../../invest/images/data.png) no-repeat; margin:0px auto;}
+.pillar,.percent,data-circle{width:71px; position:absolute; }
+.pillar{bottom:38px;}
+.pillar1{height:28px; background:#fbd883; left:145px;}
+.pillar2{height:41px; background:#71ff92; left:274px;}
+.pillar3{height:151px; background:#8cfeff; left:426px;}
+.percent{text-align:center;}
+.percent1{bottom:78px; left:135px;}
+.percent2{bottom:90px; left:284px;}
+.percent3{bottom:205px; left:434px; height:54px; line-height:54px; font-size:16px; background:url(../../invest/images/data2.png) no-repeat; width:56px; color:#0ec1a1;}
+.section3 .circle21{position:absolute; left:118px; top:50px; width:20px; height:20px; opacity:0.5;}
+.section3 .circle11{position:absolute; left:218px; top:90px;}
+.section3 .circle31{position:absolute; left:318px; top:60px; color:#fff;}
+.section3 .man{width:161px; height:207px; background:url(../../invest/images/man.png) no-repeat; position:absolute; top:27px; left:540px;}
+
+.index-pt.section3 .pillar1{-webkit-animation: fateHeight1 1s; animation: fateHeight1 1s;}
+.index-pt.section3 .pillar2{-webkit-animation: fateHeight2 1s; animation: fateHeight2 1s;}
+.index-pt.section3 .pillar3{-webkit-animation: fateHeight3 1s; animation: fateHeight3 1s;}
+.index-pt.section3 .percent1,.index-pt.section3 .percent2{-webkit-animation:1s fadeIn1 1s both; animation:1s fadeIn1 1s both;}
+.index-pt.section3 .percent3{-webkit-animation:1s shake 1s both; animation:1s shake 1s both;}
+.index-pt.section3  .circle21,.index-pt.section3 .circle11,.index-pt.section3 .circle31{-webkit-animation:1s fadeIn1 1s both; animation:1s fadeIn1 1s both;}
+.index-pt.section3 .man{-webkit-animation:1s slideInRight 1s both; animation:1s slideInRight 1s both;}
+
+/*--鍔ㄧ敾鍥�--*/
+.icon-box4{width:472px; height:250px; margin:0px auto;}
+.section4 .desk{ background:url(../../invest/images/desk.png) no-repeat; width:100%; height:100%;   box-shadow: 0px 0px 10px #c5c4c4;}
+.section4 .man1{width:141px; height:231px;  background:url(../../invest/images/man1.png) no-repeat; position:absolute; left:50%;
+top:-70px; margin-left:-70px; }
+.section4 .man2{width:141px; height:231px;  background:url(../../invest/images/man2.png) no-repeat; position:absolute; left:50%;
+top:150px;margin-left:-70px; }
+.section4 .summary-title{margin-top:80px;}
+.section4 .circle-defaut{position:absolute;}
+.section4 .circle11,.section4 .circle15{background:#fee4c1; left:160px; top:-110px; width:48px; height:48px;}
+.section4 .circle12{background:#f9bdbd; left:230px; top:-140px; width:25px; height:25px;}
+.section4 .circle13{background:#f2d8ff; left:130px; top:-40px; width:25px; height:25px;}
+.section4 .circle14{background:#aad5f7; left:20px; top:-60px; width:20px; height:20px;}
+.section4 .circle15{left:280px; top:-90px; width:20px; height:20px;}
+
+.index-pt.section4 .man1{-webkit-animation:1s slideOutUp; animation:1s slideOutUp;}
+.index-pt.section4 .man2{-webkit-animation:1s slideOutUp1  .5s both; animation:1s slideOutUp1  .5s both;}
+.index-pt.section4 .circle-defaut{-webkit-animation:1s fadeIn1 2s both; animation:1s fadeIn1 2s both;}
+/*--rain--*/
+.rain{width:154px; background-image:url(../../invest/images/rain.png) ; background-repeat:no-repeat; z-index:10; position:absolute;}
+.rain1{height:100px; top:-20px; left:500px; }
+.rain2{height:100px; top:300px; left:-100px;}
+.rain3{height:50px; top:400px; left:60px;}
+.rain4{height:100px; top:700px; left:-130px; }
+.rain5{height:100px; top:600px; left:-200px;}
+.rain6{height:50px; top:700px; left:-400px;}
+.rain7{height:80px; top:20px; left:300px; }
+.rain8{height:100px; top:250px; left:400px;}
+.rain9{height:100px; top:-80px; left:300px; }
+.rain10{height:100px; top:90px; left:500px; }
+
+
+.index-pt.section4 .ring1{-webkit-animation:1s rotateIn  linear; animation:1s rotateIn  linear;}
+.index-pt.section4 .circle11,.index-pt.section4 .circle21,.index-pt.section4 .circle31,.index-pt.section4 .circle41{-webkit-animation:.5s fadeIn1 1.5s both; animation:.5s fadeIn1 1.5s both;}
+.index-pt.section4  .pact{-webkit-animation:1s rotateInUpLeft 2s both; animation:1s rotateInUpLeft 2s both;}
+.index-pt.section4 .rain{-webkit-animation:1s slideOutUp2; animation:1s slideOutUp2;}
+/*--鍔ㄧ敾浜�--*/
+.icon-box5{width:377px; height:375px; margin:0px auto;}
+.encircle{width:100%; height:100%; background:url(../../invest/images/quan.png) no-repeat;}
+.encircle-log{width:249px; height:249px; background:url(../../invest/images/log2.png) no-repeat; position:absolute; top:50%; left:50%; margin:-124px 0px 0px -124px;}
+.half{background:url(../../invest/images/manage.png) no-repeat; width:106px; height:110px; position:absolute; left:190px; top:80px;}
+.section5 .circle-defaut{position:absolute; width:35px; height:35px; line-height:35px; border:5px solid #0ec7ff;}
+.section5 .circle11{top:60px; left:20px; background:#feef88; color:#d2b928;}
+.section5 .circle21{bottom:-15px; left:180px; background:#89f3ff; color:#36d5ff;}
+.section5 .circle31{top:120px; left:340px; background:#ff9764; color:#fff;}
+
+
+
+
+.index-pt.section5 .encircle{-webkit-animation:1s rotateIn; animation:1s rotateIn;} 
+.index-pt.section5 .circle11{-webkit-animation:.5s slideOutUp 1s both; animation:.5s slideOutUp 1s both;}
+.index-pt.section5 .circle21{-webkit-animation:1s slideOutUp .5s both; animation:1s slideOutUp .5s both;}
+.index-pt.section5 .circle31{-webkit-animation:1s slideOutUp .5s both; animation:1s slideOutUp .5s both;}
+.index-pt.section5 .half{-webkit-animation:1s slideInRight 1s both; animation:1s slideInRight 1s both;}
+.index-pt.section5 .encircle-log{-webkit-animation:1s rotateInUpRight 1s both; animation:1s rotateInUpRight 1s both;}
+
+/*--鍔ㄧ敾6--*/
+.icon-box6{width:296px; height:181px; margin:0px auto;}
+.brain{width:100%; height:100%; background:url(../../invest/images/brain.png) no-repeat; position:absolute; top:0px; left:80px;}
+.section6 .man3{width:181px; height:228px; background:url(../../invest/images/man3.png) no-repeat; position:absolute; top:-46px; left:-100px;}
+.section6 .circle-defaut{position:absolute;}
+.section6 .circle-defaut15,.section6 .circle-defaut16,.section6 .circle-default17{width:40px; height:40px; line-height:40px;  z-index:1;}
+.section6 .circle-default15{top:-80px; left:-100px; color:#fff;}
+.section6 .circle-default16{ top:-70px; left:130px; }
+.section6 .circle-default17{top:-50px; left:283px;}
+.section6 .circle11{width:20px; height:20px;  top:-110px; left:20px;}
+
+
+
+.index-pt.section6 .brain{-webkit-animation:1s zoomOutUp; animation:1s zoomOutUp;}
+.index-pt.section6 .man3{-webkit-animation:1s slideInLeft 1s both; animation:1s slideInLeft 1s both;}
+.index-pt .circle-defaut{-webkit-animation:2s fadeIn1 2.2s both; animation:2s fadeIn1 2.2s both;}
+/*--index--*/
+.banner,.banner1,.banner2{width:100%;}
+.banner{height:264px; background:#39ceff url(../../invest/images/baner.jpg) no-repeat center center }
+
+
+
+.banner1{height:407px; background:#ff6855 url(../../invest/images/baner1.png) no-repeat center center;}
+.banner2{height:407px; background:#34c6e0 url(../../invest/images/baner2.png) no-repeat center center;}
+.container-main{width:980px; margin:0px auto; padding:80px 0px;}
+.container-main1{padding-bottom:30px;}
+.title-main{text-align:center;}
+.title-main h3{font-size:30px; margin-bottom:30px; color:#434343; font-weight:bold;}
+.title-main h3.title{ background:url(../../invest/images/title.png) no-repeat top center;  padding-top:84px;}
+.title-main p{line-height:22px; color:#8b8a8a; font-size:16px;}
+.title-main h3 .fbw { font-weight:bold; font-size:34px; color:#616161; }
+.title-main h3 .order{position:absolute; left:50%; font-size:38px; color:#fff;}
+.title-main h3.title .order{top:0px;  margin:5px 0px 0px -11px;}
+.title-main h3.title1{margin-bottom:20px;}
+.title-main .c7c7 { color:#616161}
+.title-main .ca8a { color:#a8a8a8}
+.title-main .tac { text-align:center; font-weight: bold; font-size:24px; color:#8a8a8a; margin-top:30px; }
+.title-main h3.title1 .order{background:url(../../invest/images/shortcut_07.png) no-repeat top center;  width:71px;
+height:79px; top:-120px; line-height:79px; text-align:center; margin-left:-35px;}
+.title-main h3.title2 .order{background:url(../../invest/images/shortcut_071.png) no-repeat top center;}
+.flow-icon{width:980px; height:381px; background:url(../../invest/images/bg1.png) no-repeat center; margin:60px 0 0px -5px; }
+.flow-map,.lists-item-main,.investment{margin-top:100px; }
+.flow-map li{float:left; position:relative; margin-right:80px; width:271px; text-align:center; }
+.last-items{margin-right:0px !important;}
+.flow-map li h3{margin:20px 0px 20px;   font-size:14px; font-weight:bold; }
+.flow-map li h3 strong{font-size:20px; color:#333; font-weight:bold;}
+.flow-map li p{color:#707070; font-size:16px;}
+.flow-map li .btn{margin-top:45px;}
+.circle1{width:134px; height:135px; display:inline-block; -webkit-transition:.5s background ease-in;}
+.flow-map-item1 .circle1{background:url(../../invest/images/icon11.png) center center no-repeat; }
+.flow-map-item1 .circle1.active{background:url(../../invest/images/icon1.png) center center no-repeat;}
+.flow-map-item2 .circle1{background:url(../../invest/images/icon21.png) center center no-repeat;}
+.flow-map-item2 .circle1.active{background:url(../../invest/images/icon2.png) center center no-repeat;}
+.flow-map-item3 .circle1{background:url(../../invest/images/icon31.png) center center no-repeat;}
+.flow-map-item3 .circle1.active{background:url(../../invest/images/icon3.png) center center no-repeat;}
+.matters{background:url(../../invest/images/icon5.png) center center no-repeat; height:513px; margin-top:100px;}
+/*--shortcut--*/
+
+.explain-ph-box{margin:70px 0px 40px; height:376px;}
+.explain-ph-box1{height:230px;}
+.explain-ph-box2{height:330px;}
+.explain-ph-box3{height:455px;}
+.explain-ph-box4{height:320px;}
+.explain-ph-box5{height:296px; margin-top:60px;}
+.explain-ph-box6{height:300px; margin-top:60px;}
+.explain-ph-box7{height:412px; margin-top:60px;}
+.explain-ph-box8{height:320px; margin-top:60px;}
+.explain-ph-box9{height:280px; margin-top:60px;}
+.explain-ph-box10{height:300px; margin-top:60px;}
+
+.explain-ph, .explain-ph001, .explain-ph002, .explain-ph003,.explain-p1,.explain-p2,.explain-p3,.explain-p4 {position:absolute; top:12px; -webkit-transition:background 1s; bottom:0px; cursor:pointer;}
+.explain-ph{width:525px; }
+.explain-ph001{width:477px; }
+.explain-ph002{width:457px; }
+.explain-ph003{width:570px; }
+.explain-ph004{width:475px; }
+.explain-ph005{width:448px; }
+.explain-ph006{width:472px; }
+.explain-ph007{width:457px; }
+
+
+.js_tupnav { margin:0 0 0 -180px; box-shadow: 0px 3px 10px 0px #dedede }
+.js_tupnav img { width:700px;  }
+.js_tupnav1 { margin:0 0 0 -80px; box-shadow: 0px 3px 10px 0px #dedede; position:absolute; z-index:9999; }
+.js_tupnav1 img { width:700px;  }
+.js_tupnav2 { margin:0 0 0 -180px; box-shadow: 0px 3px 10px 0px #dedede; position:absolute; z-index:9999; }
+.js_tupnav2 img { width:700px;  }
+.js_tupnav3 { margin:0 0 0 -80px; box-shadow: 0px 3px 10px 0px #dedede; position:absolute; z-index:9999; }
+.js_tupnav3 img { width:700px;  }
+
+.explain-text .fs18 { font-size:18px; }
+
+/*.explain-ph:hover{ -webkit-transform:scale(2);}
+*/.explain-ph1{background:#fff url(../../invest/images/prer01.png) no-repeat; left:0px;}
+.explain-ph2{background:#f3f3f3 url(../../invest/images/process2.png) no-repeat; left:560px;}
+.explain-ph3{background:#f3f3f3 url(../../invest/images/process3.png) no-repeat; left:0px;}
+.explain-ph4{background:#f3f3f3 url(../../invest/images/process4.png) no-repeat; left:560px;}
+.explain-ph5{background:#f3f3f3 url(../../invest/images/process5.png) no-repeat; }
+.explain-ph6{background:#f3f3f3 url(../../invest/images/process6.png) no-repeat; left:560px;}
+.explain-ph7{background:#f3f3f3 url(../../invest/images/prer02.png) no-repeat; left:500px;}
+.explain-ph8{background:#f3f3f3 url(../../invest/images/prer03.png) no-repeat; }
+.explain-ph9{background:#f3f3f3 url(../../invest/images/prer04.png) no-repeat; left:500px;}
+
+.explain-p1{background:#f3f3f3 url(../../invest/images/prer05.png) no-repeat; left:0px;}
+.explain-p2{background:#f3f3f3 url(../../invest/images/prer06.png) no-repeat; left:500px;}
+.explain-p3{background:#f3f3f3 url(../../invest/images/prer07.png) no-repeat; left:0px;}
+.explain-p4{background:#f3f3f3 url(../../invest/images/prer08.png) no-repeat; left:500px;}
+
+
+
+
+.explain-text{width:405px; display:inline-block; margin-top:45px;}
+.explain-distance-right{margin:45px 0 0 580px; display:inline-block;}
+.explain-text-right .explain-label,.explain-text-left .explain-label{margin-top:12px; }
+.explain-text-right p,.explain-text-left p{margin-top:25px; line-height:25px; font-size:14px; color:#7d7d7d;} 
+.explain-label{display:inline-block; padding:5px 10px 5px 38px; background:#ff9c41; color:#fff; border-radius:3px; font-size:18px;}
+
+.explain-label em{display:inline-block; width:38px; height:38px; text-align:center; line-height:34px; border-radius:50%; background:#fff; color:#ff9b3f; position:absolute; left:-15px; top:-1px;  font-weight:bold; font-size:26px; font-style:italic;}
+.explain-label1{background:#48c0de;}
+.explain-label1 em{color:#48c0de;}
+
+.pay-nav{line-height:40px; border-bottom:1px solid #c9c9c9; text-align:center; margin-top:20px;}
+.pay-nav a{padding:2px 10px; margin:0px 20px -1px 0px; display:inline-block; color:#7d7d7d; font-size:14px;}
+.pay-nav a.active{color:#ff9b43; border-bottom:1px solid #ff9b43;}
+/*--骞荤伅鐗�--*/
+.slides-box{margin-top:175px;}
+.slidesjs-container { box-shadow: 0px 5px 7px 0px #e8e8e8 }
+.slides-box .slidesjs-pagination{ position:absolute; top:-90px;}
+.slides-box .slidesjs-navigation{ position:absolute; top:50%; z-index:10; width:47px; height:71px; display:block; margin-top:-35px; color:#f1f1f1; text-indent:-3000px;}
+.slides-box .slidesjs-previous{left:-50px; background:url(../../invest/images/left.png) no-repeat;}
+.slides-box .slidesjs-next{right:-50px; background:url(../../invest/images/right.png) no-repeat;}
+.slides-box .slidesjs-pagination-item ,.slides-box .slidesjs-pagination-item a{display:inline-block;}
+.slides-box .slidesjs-pagination-item{*float:left;}
+.slides-box .slidesjs-pagination-item a{color:#e04d57; font-size:16px;}
+.slides-box .slidesjs-pagination-item a.active,.slides-box .slidesjs-pagination-item a:hover{color:#fff; }
+.slides-box .slidesjs-pagination-item  a{width:216px; line-height:46px; height:46px; text-align:center; margin-right:38px;}
+.slides-box .slidesjs-pagination-item0 a{ background:url(../../invest/images/nav11.png) no-repeat;}
+.slides-box .slidesjs-pagination-item1 a,.slides-box .slidesjs-pagination-item2 a{ background:url(../../invest/images/nav21.png) no-repeat;}
+.slides-box .slidesjs-pagination-item3 a { background:url(../../invest/images/nav31.png) no-repeat;}
+.slides-box .slidesjs-pagination-item0 a.active,.slides-box .slidesjs-pagination-item0 a:hover{ background:url(../../invest/images/nav1.png) no-repeat;}
+.slides-box .slidesjs-pagination-item1 a.active,.slides-box .slidesjs-pagination-item1 a:hover,.slides-box .slidesjs-pagination-item2 a.active,.slides-box .slidesjs-pagination-item2 a:hover{ background:url(../../invest/images/nav2.png) no-repeat;}
+.slides-box .slidesjs-pagination-item3 a.active,.slides-box .slidesjs-pagination-item3 a:hover{ background:url(../../invest/images/nav3.png) no-repeat;}
+.slides-box .slidesjs-pagination-item3 a{margin-right:0px;}
+/*--蹇嵎鏀粯--*/
+.short-btn-box{margin:70px 0px;}
+/*--circle--*/
+.circle{width:36px; height:36px; border-radius:50%; border:1px solid #d2d2d2; box-shadow:0px 0px 5px #d2d2d2; background:url(../../invest/images/arrow-down.png) no-repeat center;}
+.radius{padding:2px 3px; border-radius:2px; font-size:12px; color:#fff;}
+/*--btn--*/
+.btn{border-radius:3px; color:#fff; padding:7px 30px; display:inline-block; text-align:center;}
+.btn1{padding:7px auto;}
+.btn2{background:#52974c;}
+.btn1,.btn3{border:1px solid #ff4345; border-radius:3px; color:#ff4345; }
+.btn1,.btn3.active{background:#ff4345; color:#fff;}
+.btn4{padding:10px 50px; color:#fff; font-size:20px; background:#ff9c41; border-radius:5px; border-bottom:1px solid #de7a24; border-right:1px solid #3de7a24;}
+/*--san--*/
+.san{width:0px; height:0px; overflow:hidden;}
+.san1{border-width:0px 4px 6px; border-style:solid;  border-color:transparent transparent #f54534;}/*--绾㈣壊--*/
+.san2,.san3{border-width:6px 4px 0px; border-style:solid;}
+.san2{border-color:#fff transparent transparent;}/*--涓� 鐧借壊--*/
+.san3{border-color:#9a9a9a transparent transparent;}/*--涓� 鐏拌壊--*/
+.san5,.san51{border-width:4px 6px 4px 0px; border-style:solid;}/*--宸� 绾㈣壊--*/
+.san5{border-color:transparent #ff7575 transparent transparent;}
+.san51{border-color:transparent #7daecc transparent transparent;}
+.footer-nav1{margin-top:15px; font-size: 12px;}
+.footer-nav1 label{margin-right:12px;}
+.footer-nav1 a{color:#767778; margin-right:12px; font-size: 12px;}

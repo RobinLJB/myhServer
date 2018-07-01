@@ -1,0 +1,600 @@
+
+/*  ��Ա���� */
+.wrap{	height:100%;	width:100%;	 background: #F7F5F6;	overflow: hidden;	font-family: proxima-nova,"Hiragino Sans GB","Microsoft YaHei","Wenquanyi Micro Hei","WenQuanYi Micro Hei Mono","WenQuanYi Zen Hei","WenQuanYi Zen Hei","Apple LiGothic Medium",SimHei,"ST Heiti","WenQuanYi Zen Hei Sharp";}
+.wrap .container{  margin-top: 45px;  width: 1200px;    margin: 0 auto;      overflow: hidden;  
+  height: auto;    padding:0;    color: #666;      background: white;}
+.container #page-sidebar-menu{width:18%;margin-right: 0;}
+.container #page-content-wrapper{float: left;width: 77%;}
+.footer {    margin-top: 0;}
+.header{	margin-bottom: 0;}
+.info_icon a {    display: block;    width: 23px;    height: 16px;    background: url(../img/info_icon.png) no-repeat;} 
+#hometitle{display: block;    height: 40px;    cursor: pointer;   text-align: center;    font-size: 18px;    color: #fff;    text-decoration: none;    line-height: 40px;    background-color: #D22E2F;}
+.menu-son a{	padding-left: 5px;	text-decoration: none;	color: #666;}
+.menu-son{	padding-bottom: 0;	cursor: pointer;    font-size: 14px;	list-style: none;	background: #f7f6f2;}
+.menu-son li {
+	position: relative;
+    background-color: #fff;
+    font-size: 14px;
+    text-align: center;
+    text-align: left;
+    padding-left: 84px;
+    line-height: 45px;
+    font-size: 15px;
+    color: #404040;
+    
+}
+.menu-son li.selected a {
+    color: #7d7474;
+}
+.menu-border{	border-bottom: #ffffff solid 1px;    border-top: #dddbd4 solid 1px;}
+.pointer{	cursor: pointer;}
+.menu-son ul{display:none;}
+.menu h3{color: #686464;font-size: 18px;  
+   line-height: 45px; width: 215px;display: inline-block;background: #f5f5f5;height: 45px;border-radius: 3px;}
+.menu h3.action{border-left: 2px solid #F05F2A;}
+.menu h3:HOVER{ color: #ccc;}
+.menu-son a:HOVER{font-weight: bold;}
+.menu .active{	border-left: 3px solid #fd852f;}
+.menu li>a.active {color: #D22E2F;border: none}
+.zijin-right{	display: table-cell; padding-right: 15px; width: 45%;    height: 70px;    vertical-align: middle;}
+.zijin-right1{
+	width:100%;
+    padding-top: 24px;
+    float: left;
+    height: 115px;
+   }
+    .ancz{
+    height: 43px;
+    width: 147px;
+    text-align: center;
+    border-radius: 8px;
+    display: inline-block;
+    line-height: 42px;
+    color: white;
+    background: #fd852f;
+    }
+    .antx{
+   padding-left: 54px;
+   margin-right: 0px;
+    height: 43px;
+    width: 147px;
+
+    border-radius: 8px;
+    margin-right: 11px;
+    display: -webkit-inline-box;
+    background: #64b2e9;
+    line-height: 42px;
+    color: white;
+    text-align: center;
+    }
+.uses{font-size: 15px;    margin-left: 10px;}
+.bluet{color: #007AFF;font-size: 15px;}
+.redt{color: red;font-size: 15px;}
+.zijin-right-content{     height: 100%;  	float: left;    width: 65%;}
+.zijin-right-content p{font-size: 16px;color: #909090;}
+.box{float:left;width:100%;margin: 5px;}
+.HOME{    width: 100%;    height: 300px;       border-top: 1px dashed #ccc;    border-bottom: 1px dashed #ccc;        padding: 0 10px 0 25px;}
+.zhuye-title{	padding-left:30px;    font-size:16px;    height:40px;    line-height:40px;  
+  border-top:1px solid #D3D3D3;	border-bottom:1px solid #D3D3D3;}
+.pic{    width: 100px;    height: 100px;    margin: 20px;	float:left;    overflow: hidden;
+    border-radius: 53px;}
+.zijin-ico{	margin-top:10px;display: table;}
+.zijin-ico span{margin-left:10px;}
+.zijin-title-left{ width: 100%;float: left; overflow: hidden;  border-right: 1px solid #ECECEC;}
+.zijin-title-left .userName{    margin-left: 10px;font-size: 21px;}
+.zijin-title-right{ width: 37%;display: table;}
+.myintegral,.signin{ display: table-cell;vertical-align: middle;}
+.myintegral{text-align: center;   padding: 16px 12px;border-right: 1px solid #ECECEC;}
+.signin a{padding: 8px 20px;color: #FF7800;border: 1px solid #FF7800;border-radius: 5px;}
+.mymoney{	width: 100%;	color:#000;	height: 50px}
+.ASSET{    margin: 8% 0 5% 0;}
+.ASSET span{font-size: 30px;color: #ff4900;}
+.ico-realname{background-image:url(../img/ico-realname-2.png);display: inline-block;width:25px;height:26px}
+.ico-realname-null{background-image:url(../img/ico-realname-1.png);display: inline-block;width:25px;height:26px}
+.ico-phone{background-image:url(../img/ico-phone-2.png);display: inline-block;width:25px;height:26px}
+.ico-phone-null{background-image:url(../img/ico-phone-1.png);display: inline-block;width:25px;height:26px}
+.ico-email{background-image:url(../img/ico-email-2.png);display: inline-block;width:25px;height:26px}
+.ico-email-null{background-image:url(../img/ico-email-1.png);display: inline-block;width:25px;height:26px}
+.ico-vip{background-image:url(../img/ico-vip-2.png);display: inline-block;width:25px;height:26px}
+.ico-vip-null{background-image:url(../img/ico-vip-1.png);display: inline-block;width:25px;height:26px}
+.ico-kefu{background-image:url(../img/img-kefu.png);    display: inline-block;width:83px;height:21px}
+.char{	height: 324px;	margin-left: -21px;	clear:both;}
+.line,.bar{	width: 930px;	height: 324px;}
+.box-main{	position:relative;}
+.mymoney .avalible{	padding:0;    border:none}
+.mymoney .avalible h2{text-align:left}
+.count {float: left;width: 25%;border-left: 1px dotted #ccc;padding-left: 20px;}
+#pieChart{	 height: 100%;    width: 35%;    float: right;}
+.l-avalible{    float: left;}
+.l-avalible>h2{	font-size: 16px;    margin-bottom: 5px;    color: #251b17;}
+.money{	font-size:25px;    color: #fd852f;        font-weight: bold;    display: inline-block;}
+
+.table-tongji{	width:100%;	text-align:center;	border-collapse:inherit;	border: 1px solid #ddd;	margin-bottom:40px;}
+.table-tongji td {
+    border: 1px solid #e4e4e4;
+    height: 58px;
+    line-height: 30px;
+}
+.table-title td{background-color:#f1f1f3}
+#mytabs li{	padding-left:0;}
+.frezz {    margin-top: 6%;}
+.frezz a{    width: 155px;   background: #fff;    font-size: 18px;    line-height: 50px;    color: #5CB4FF;    text-align: center;    display: inline-block;    border: 1px solid #5CB4FF;    border-radius: 25px;}
+.recharge:hover,.withdraw:hover{ background: #5cb85c;border-color: #5cb85c;color: #fff }
+.navli {    height: 40px;font-size: 20px;margin: 20px 0 10px 0;}
+#investment{    padding: 0 10px 0 25px;    border-bottom: 1px dashed #ccc;}
+/*  ��Ա���� */
+
+
+/* �ҵ��ʽ� */
+
+.r_main {    width: 100%;    float: left;    border-top: 0;    border-right: 0;}
+.tabtil {    height: 38px;    background-color: white;    border-bottom: 1px solid rgb(231, 231, 231);}
+.tabtil ul .on {    line-height: 38px;    color: #000;   }	
+.tabtil ul li a{color: #000;}
+.tabtil ul li {    font-family: Microsoft YaHei; font-size: 12px;    line-height: 38px;    color: #333;    float: left;    padding: 0 20px;    cursor: pointer;}
+.tabtil ul .on a{ color: #F05F2A;}	
+.box .boxmain2 {    padding-top: 20px;    padding-right: 10px;    padding-bottom: 25px;    padding-left: 10px;    position: relative;}
+ .box .boxmain2 .biaoge {   margin-top: 20px;}
+.box .boxmain2 .biaoge table {    line-height: 28px;}
+ .box .boxmain2 .biaoge table tr th {    background-color: #f9f9f9;    border: 1px solid #ddd;    font-weight: normal;  text-align: center;}
+.box .boxmain2 .biaoge table tr td {   border: 1px solid #ddd;}
+.box .otherh2x {    font-size: 12px;    color: #333;   padding-left: 15px;text-align: left;}
+.box .boxmain2 .srh {  line-height: 32px;  margin-bottom: 12px;}
+.box .boxmain2 .input-sm {    height: 30px;   padding: 5px 10px;   font-size: 12px;   line-height: 1.5;   border-radius: 3px;}
+.box .boxmain2 .tips {    line-height: 24px;    background: #fffcf7;    padding-top: 5px;    padding-right: 20px;    padding-bottom: 5px;    padding-left: 20px;    margin-bottom: 15px;}
+.box .boxmain2 .biaoge2 {    margin-top: 15px;    margin-bottom: 15px;   padding-right: 20px;   padding-left: 20px;}
+.control-label a{    color: black;    font-weight: bold;    font-size: 12px;}
+.col-md-4    .form-control {     margin-top: 0;  display: block;    width: 100%;    height:40px;    padding: 6px 12px;    font-size: 14px;    line-height: 1.42857143;    color: #555;    background-color: #fff;    background-image: none;    border: 1px solid #ccc;    border-radius: 4px;    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
+.current {    border: 3px solid #6A8FC4;    border-bottom: 0 none;    font-size: 14px;    font-weight: 700;    height: 40px;    line-height: 38px;    text-align: center;    width: 115px;}
+.current span {    position: absolute;    display: block;    height: 40px;    width: 109px;    color:black;    background: #fff;}
+.cashier-box {    border: 3px solid #6A8FC4;    padding: 20px;    background: #FAFAFA;}
+.personagebank {    margin: 15px;}
+.enterprisebank {    border-top: 1px dashed #ccc;}
+.typebanktitle {    margin: 10px 0;    font-weight: bold;    clear: both; color: black;}
+.typebanktitle span {    color: #F06A3D;}
+.personagebank li {   display: inline-block;   margin: 5px;}
+.personagebank label {    border: 1px solid #ccc;    width: 137px;    position: relative;}
+.personagebank img {    margin-left: 3px;  width: 120px;    height: 35px;}
+#submit {       margin: 23px 250px;    margin-left: 8%;    border-radius: 0;    display: block;    font-size: 17px;    background-color: #2579D1;    width: 153px;    border-color: #2579D1;    height: 42px;}
+.enterprise{    display: inline-block;	    font-weight: 500;    background: #D5EDF7;    position: absolute;    color: black;    font-size: 12px;    height: 100%;}
+.personagebank .conceal, .personagebank .conceal1 {    display: none;}
+.else, .else1 {    font-size: 15px;    color: #34689D;    width: 82px;    margin-left: 20px;    position: relative;}
+.else span, .else1 span {    border-left: 6px solid transparent;    border-right: 6px solid transparent;    border-top: 8px solid #34689D;    position: absolute;    bottom: 7px;    right: 0;}
+.biaoge2 label {     font-weight: 700;}
+.btn-success {   color: #fff;    background-color: #5cb85c;    border-color: #4cae4c;}
+/* �ҵ��ʽ� */
+.form-group .control-label{width:150px!important;   padding: 0;    color: #666;    font-size: 14px;}
+.form-control-static{    margin: 0;padding: 0;height: 40px;	line-height: 40px;}
+#verify #phone{    margin: 0;height: 40px;padding: 0 10px;}
+.btn-primary {
+    margin: 23px 250px;
+    margin-left: 8%;
+    border-radius: 0;
+    display: block;
+    font-size: 17px;
+    background-color: #5898FC;
+    width: 153px;
+    border-color: #5898FC;
+    height: 42px;
+}
+
+/* �ҵ��˻� */
+.tbatil ul li {    height: 100px;    width: 100%;    border-bottom: 1px dashed #DDDDDD;    padding-top: 25px;    margin-left: 19px;}
+.tbatil ul li .mingzi {    font-size: 14px;    font-weight: bold;}
+.tbatil ul li .set_rightb {    width: 100%;    float: right;    line-height: 35px;    margin-top: 3px;    font-size: 12px;}
+.tbatil ul li .setright {    height: 30px;    width: 190px;    float: right;    margin-top: 5px;}
+.r_main .tbatil  ul li .textsuccess {    color: #090 !important;    font-size: 14px;}
+.r_main .tbatil ul li .textfailed {    font-size: 14px;    color: #F90 !important;}
+.tbatil ul li .setright a {    font-size: 14px;    color: blue;}
+/* �ҵ��˻� */
+
+/* �ҵ�Ͷ�� */
+.box .boxmain2 .biaoge2 table {   line-height: 32px;}
+.inp100x {    height: 20px;    width: 100px;    border: 1px solid #ccc;   line-height: 20px;}
+
+
+/*���п���*/
+.shortcut-card{    border: 1px solid #009ad6;position: relative;border-radius: 2px; height: 42px;overflow:hidden;}
+.shortcut-card .card-info{position:absolute;right:10px;top:50%;margin-top:-9px;font-size:12px;color:#222}
+.shortcut-card .icon-shortcut{width:26px;height:26px;background:url(../img/rechargeIcon.png) no-repeat left -64px;display:block;position:absolute;left:130px;top:50%;margin-top:-13px}
+.shortcut-card.noinfo .icon-shortcut{right:12px;left:auto}
+.shortcut-card.disable:before{position:absolute;top:0;left:0;z-index:3;width:100%;height:100%;background-color:#000;content:' ';filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=10);opacity:0.1;*zoom:1}
+.banklist-ul{*overflow:hidden}
+.banklist-ul .banklist-li{float:left;margin:0 5px}
+.banklist-ul .banklist-li:hover{cursor:pointer}
+.banklist-ul .banklist-li:hover .hd{border-color:#009ad6}
+.banklist-ul .banklist-li .hd{position:relative;width:169px;height:42px;border:1px solid #eaeaea;display:block;overflow:hidden;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px}
+.banklist-ul .banklist-li .hd .banklogo{margin-left:16px}
+.banklist-ul .banklist-li .bd{padding:8px 0 18px 0;line-height:1;color:#a1a1a1;text-align:center;font-size:12px}
+.banklist-ul .banklist-li .icon-gg-s{position:absolute;top:1px;right:1px;display:none}
+.banklist-ul .banklist-li.selected .hd{background-color:#fff;border-color:#009ad6;-moz-box-shadow:rgba(0,154,214,0.5) 0 0 3px;-webkit-box-shadow:rgba(0,154,214,0.5) 0 0 3px;box-shadow:rgba(0,154,214,0.5) 0 0 3px}
+.banklist-ul .banklist-li.selected .bd{color:#222}
+.banklist-ul .banklist-li.selected .icon-gg-s{display:block}
+.banklist-ul .banklist-li.disable .icon-gg-s{display:none !important}
+.banklist-ul .banklist-li.disable .hd{border-color:#ddd !important;*border-color:red !important;-moz-box-shadow:transparent 0 0 0;-webkit-box-shadow:transparent 0 0 0;box-shadow:transparent 0 0 0}
+.banklist-ul .banklist-li.disable .hd:before{position:absolute;top:0;left:0;z-index:3;width:100%;height:100%;background-color:#000;content:' ';filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=10);opacity:0.1;*zoom:1}
+.banklist-ul .banklist-li.disable .bd{color:red !important}
+.dialog-main{position:absolute;left:50%;top:50%;z-index:999;padding-bottom:48px;background:#fff;border:1px solid #e7e7e7\9;width:500px;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;-moz-box-shadow:rgba(0,0,0,0.35) 0 0 8px;-webkit-box-shadow:rgba(0,0,0,0.35) 0 0 8px;box-shadow:rgba(0,0,0,0.35) 0 0 8px;overflow:hidden}
+.dialog-main .close{position:absolute;right:10px;top:9px;width:24px;height:24px;overflow:hidden;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;-moz-transition:all 0.4s ease;-o-transition:all 0.4s ease;-webkit-transition:all 0.4s ease;transition:all 0.4s ease}
+.dialog-main .dialog-bd{padding:36px 20px;position:relative;z-index:1;color:#666;font-size:14px}
+.dialog-main .dialog-bt{position:absolute;bottom:0;left:0;width:100%;height:42px;background-color:#f5f5f5;border-top:1px solid #eaeaea;text-align:right}
+.dialog-main .dialog-bt a,.dialog-main .dialog-bt .list-dots .current a:hover,.list-dots .current .dialog-main .dialog-bt a:hover{margin:5px 10px 0 0;width:70px;height:30px;font-size:12px;display:inline-block;vertical-align:middle;*vertical-align:auto;*zoom:1;*display:inline}
+.dialog-main .dialog-bt .checkarea{position:absolute;top:10px;left:20px}
+.dialog-main .checkarea{height:18px;line-height:18px;display:block;font-size:12px}
+.dialog-main .checkarea input[type="checkbox"]{margin-right:4px;vertical-align:middle}
+.dialog-main .checkarea label{display:inline-block;vertical-align:middle;*vertical-align:auto;*zoom:1;*display:inline;vertical-align:middle}
+.dialog-main .dialog-tip{position:absolute;top:43px;left:0;z-index:2;width:100%;height:28px;line-height:28px;background-color:#fffbe5;color:#fc8026;text-align:center;font-size:12px}
+.dialog-main .suggest{width:85%}
+.dialog-main.simple{padding-bottom:0 !important}
+.dialog-main.simple .dialog-bd{padding:20px 20px}
+.dialog-hd{position:relative;z-index:3;padding:0 19px;height:42px;line-height:42px;background-color:#fff;border-bottom:1px solid #e7ecee;color:#222;font-size:14px}
+.dialog-hd h2{font-size:16px;    line-height: 40px;}
+.dialog-hd .line{position:absolute;top:1px;left:1px;width:3px;height:40px;background-color:#009ad6;display:block;overflow:hidden}
+.banklogo-bjnsyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 0 no-repeat;display:block;overflow:hidden}
+.banklogo-hsyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -42px no-repeat;display:block;overflow:hidden}
+.banklogo-cft{height:42px;width:130px;background:url(../img/banklogo.png) 0 -84px no-repeat;display:block;overflow:hidden}
+.banklogo-jtyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -126px no-repeat;display:block;overflow:hidden}
+.banklogo-wqb{height:42px;width:130px;background:url(../img/banklogo.png) 0 -168px no-repeat;display:block;overflow:hidden}
+.banklogo-zfb{height:42px;width:130px;background:url(../img/banklogo.png) 0 -210px no-repeat;display:block;overflow:hidden}
+.banklogo-zxzf{height:42px;width:130px;background:url(../img/banklogo.png) 0 -252px no-repeat;display:block;overflow:hidden}
+.banklogo-cqsxyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -294px no-repeat;display:block;overflow:hidden}
+.banklogo-zjczsyyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -336px no-repeat;display:block;overflow:hidden}
+.banklogo-zesyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -378px no-repeat;display:block;overflow:hidden}
+.banklogo-csyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -420px no-repeat;display:block;overflow:hidden}
+.banklogo-wzyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -462px no-repeat;display:block;overflow:hidden}
+.banklogo-szncsyyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -504px no-repeat;display:block;overflow:hidden}
+.banklogo-shnsyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -546px no-repeat;display:block;overflow:hidden}
+.banklogo-shyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -588px no-repeat;display:block;overflow:hidden}
+.banklogo-nbyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -630px no-repeat;display:block;overflow:hidden}
+.banklogo-njyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -672px no-repeat;display:block;overflow:hidden}
+.banklogo-jcyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -714px no-repeat;display:block;overflow:hidden}
+.banklogo-hzyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -756px no-repeat;display:block;overflow:hidden}
+.banklogo-zgnyyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -798px no-repeat;display:block;overflow:hidden}
+.banklogo-hkyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -840px no-repeat;display:block;overflow:hidden}
+.banklogo-gzyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -882px no-repeat;display:block;overflow:hidden}
+.banklogo-bjnsh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -924px no-repeat;display:block;overflow:hidden}
+.banklogo-bhyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -966px no-repeat;display:block;overflow:hidden}
+.banklogo-ncxys{height:42px;width:130px;background:url(../img/banklogo.png) 0 -1008px no-repeat;display:block;overflow:hidden}
+.banklogo-bjyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -1050px no-repeat;display:block;overflow:hidden}
+.banklogo-hxyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -1092px no-repeat;display:block;overflow:hidden}
+.banklogo-zgyzcxyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -1134px no-repeat;display:block;overflow:hidden}
+.banklogo-payh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -1176px no-repeat;display:block;overflow:hidden}
+.banklogo-pfyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -1218px no-repeat;display:block;overflow:hidden}
+.banklogo-zgmsyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -1260px no-repeat;display:block;overflow:hidden}
+.banklogo-zggdyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -1302px no-repeat;display:block;overflow:hidden}
+.banklogo-gfyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -1344px no-repeat;display:block;overflow:hidden}
+.banklogo-xyyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -1386px no-repeat;display:block;overflow:hidden}
+.banklogo-zxyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -1428px no-repeat;display:block;overflow:hidden}
+.banklogo-zsyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -1470px no-repeat;display:block;overflow:hidden}
+.banklogo-zgjsyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -1512px no-repeat;display:block;overflow:hidden}
+.banklogo-zgyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -1554px no-repeat;display:block;overflow:hidden}
+.banklogo-zggsyh{height:42px;width:130px;background:url(../img/banklogo.png) 0 -1596px no-repeat;display:block;overflow:hidden}
+
+.btn-default{background-color: #5898FC;width: 115px;height: 40px;line-height: 40px;color: #fff;}
+.col-sm-offset-2 #btn_update{float: left;display: inline-block;margin: 0;}
+.col-sm-offset-2 #submit{float: right;display: inline-block;margin: 0;}
+.r_main .rech-opts2{padding: 25px 0 45px 0;}
+.boxmain2 .rech-opts {
+    padding-left: 240px;
+}
+.nom-items {
+    padding-bottom: 0 !important;
+}
+.rech-items {
+    padding-bottom: 16px;
+    position: relative;
+	    clear: both;
+    font-size: 14px;
+}
+.nom-items {
+    padding-bottom: 0 !important;
+}
+.rech-items h3 {
+       width: 200px!important;
+    color: #666;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    font-size: 14px;
+    text-align: right;
+}
+.rech-items .rech-row {
+    min-height: 42px;
+    float: left;
+    _height: 42px;
+    line-height: 42px;
+}
+
+.fcorange {
+    color: #fc8026 !important;
+	margin-right: 5px !important;
+	  font-size: 18px !important;
+}
+.rechV2-style li {
+    float: left;
+    margin-right: 15px;
+    _display: inline;
+    _zoom: 1;
+    text-align: center;
+}
+.rech-items .rechV2-style .rechV2-a {
+    border: 1px solid #009ad6;
+    -moz-box-shadow: 0 0 2px rgba(0,102,153,0.4);
+    -webkit-box-shadow: 0 0 2px rgba(0,102,153,0.4);
+    box-shadow: 0 0 2px rgba(0,102,153,0.4);
+    color: #666;
+}
+.rechV2-style .rechV2-a {
+    border-radius: 2px;
+    width: 130px;
+    height: 42px;
+    border: 1px solid #b8b8b8;
+    font-size: 0;
+    position: relative;
+    display: block;
+    background-color: #fff;
+    overflow: hidden;
+}
+.rechV2-style .selected .icon-rech.icon-kjzf {
+    background-position: left 0;
+}
+.rechV2-style .icon-rech.icon-kjzf {
+    background-position: left -16px;
+}
+.rechV2-style .icon-rech {
+    margin: 13px auto 5px;
+    width: 92px;
+    height: 15px;
+    display: block;
+    background: url(../../front/images/rechargeIcon.png) no-repeat;
+}
+
+.rechV2-style .selected .icon-gg-s {
+    display: block;
+}
+.rechV2-style .icon-gg-s {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    display: none;
+}
+.icon-gg-s {
+    height: 14px;
+    width: 14px!important;
+    background-position:-140px -200px;
+}
+.icon-gg-s{
+    background-image: url("../../front/images/icon.png?v20160418");
+    background-repeat: no-repeat;
+    display: block;
+    overflow: hidden;
+}
+.rechV2-style .icon-rech.icon-wsyh {
+    background-position: left -32px;
+}
+.limit-w {
+    width: 233px;
+        margin-bottom: 10px !important;
+}
+.page-tooltips {
+    position: relative;
+}
+.page-tooltips .inner {
+    position: relative;
+    padding: 1px 27px;
+    background-color: #fffbe5;
+    border: 1px solid #f7dcb1;
+}
+.page-tooltips .icon {
+    position: absolute;
+    top: 4px;
+    left: 6px;
+}
+.icon-info-s {
+    height: 16px;
+    width: 16px;
+    background-position: -215px -180px;
+        background-image: url("../img/icon.png?v20160418");
+    background-repeat: no-repeat;
+    display: block;
+    overflow: hidden;
+}
+.page-tooltips span {
+    color: #f09e3c;
+    font-size: 12px;
+}
+.limit-w .add-crad {
+    height: 42px;
+    line-height: 42px;
+}
+
+.add-crad {
+    position: relative;
+    width: 231px;
+    height: 137px;
+    line-height: 137px;
+    background-color: #fff;
+    border: 1px dashed #b8b8b8;
+    color: #b8b8b8;
+    display: block;
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+.add-crad .icon-cross-w {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.add-crad .icon-cross-w em {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    width: 2px;
+    height: 12px;
+    background-color: #b8b8b8;
+    display: block;
+    overflow: hidden;
+}
+.add-crad .icon-cross-w b {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 12px;
+    height: 2px;
+    background-color: #b8b8b8;
+    display: block;
+    overflow: hidden;
+}
+.add-crad span {
+    vertical-align: middle;
+}
+.rechV2-style {
+    _height: 44px;
+    _zoom: 1;
+    overflow: hidden;
+}
+.rech-prompt {
+    padding: 0 20px 25px;
+    line-height: 24px;
+    color: #666;
+    font-size: 12px;
+        margin-top: 50px;
+}
+.ci-cont-hd {
+    margin-bottom: 25px;
+    height: 36px;
+    line-height: 36px;
+    border-bottom: 1px solid #eaeaea;
+    color: #222;
+    font-size: 16px;
+}
+.form-group .link{    display: inline-block;margin-top: 12px;color: #009ad6;}
+.table-bordered th{    border: 1px solid #ddd;
+    color: #222;
+    padding: 8px 25px;
+    background-color: #f5f5f5;
+    font-size: 12px;
+    text-align: center;}
+	.table-bordered td{     text-align: center;
+    font-size: 12px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    color: #222;
+    padding: 7px 25px;}
+	.pay-monetary{ position: relative;float:left;}
+	.pay-monetary .i-text {
+       display: inline-block;
+    vertical-align: middle;
+    padding: 0 8px;
+    width: 270px;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid #b8b8b8;
+    color: #222;
+    line-height: 40px\9;
+    font-size: 12px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+	.pay-monetary .symbol{    position: absolute;
+    top: 12px;
+    right: 7px;
+    z-index: 2;
+    color: #a1a1a1;
+    font-size: 12px;
+    overflow: hidden;}
+.pay-monetary.symbol {
+    position: absolute;
+    top: 12px;
+    right: 7px;
+    z-index: 2;
+    color: #a1a1a1;
+    font-size: 12px;
+    overflow: hidden;
+}
+.form-group .col-sm-4 #submit{background-color: #009ad6;
+    width: 233px	;    border-radius: 2px;    color: #fff;
+    font-size: 16px;
+    border-color: #009ad6;}
+.ci-title {
+    padding-bottom: 1px;
+    background-color: #fff;
+    border-bottom: 1px solid #eaeaea;
+}
+.ci-title .ci-title-inner {
+    padding-left: 20px;
+    position: relative;
+    height: 53px;
+    line-height: 53px;
+    font-size: 18px;
+}
+.ci-title .ci-title-inner h2 {
+    float: left;
+    padding-right: 8px;
+    font-size: 18px;
+	    height: 53px;
+    line-height: 53px;
+}
+.ci-title .ci-title-inner .line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 54px;
+    background-color: #fd852f;
+    display: block;
+    overflow: hidden;
+}
+.adds-bankcard li {
+    position: relative;
+    float: left;
+    padding: 0 16px 16px 0;
+}
+.rech-items .rech-row .hot {
+    color: #009ad6;
+    font-size: 18px;
+}
+.rech-items .sum-input2 .i-text{    width: 203px;
+    display: inline-block;
+    vertical-align: middle;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid #b8b8b8;
+    font-size: 12px;
+    color: #222;
+    border-radius: 2px;
+    padding: 0 22px;}
+.symbol-modelWithdraw .symbol {
+    position: absolute;
+    top: 7px;
+    left: 204px;
+    z-index: 2;
+    color: #a1a1a1;
+    font-size: 18px;
+    overflow: hidden;
+}
+.rech-submit .btn-1{    background-color: #009ad6;
+    width: 130px;
+    height: 42px;
+    line-height: 42px;
+    border: none;
+	    margin-left: 22%;
+    padding: 0;
+	    border-radius: 3px;
+		text-align: center;
+    color: #fff;
+    display: block;
+    cursor: pointer;
+    font-size: 16px;}
