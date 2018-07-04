@@ -5,8 +5,13 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.web.context.ContextLoader;
 public class ApplicationUtil {
+	
+	public static final Log log = LogFactory.getLog(ApplicationUtil.class);
 	/**
 	 * 获取全局变量
 	 * @param attrName 变量名称
@@ -39,7 +44,7 @@ public class ApplicationUtil {
 			date2 = formart.parse(t2);
 			return date1.compareTo(date2) >= 0;
 		} catch (ParseException e) {
-			System.out.println("date init fail!");
+			log.info("date init fail!");
 			e.printStackTrace();
 			return false;
 		}
@@ -53,7 +58,7 @@ public class ApplicationUtil {
 			date2 = formart.parse(t2);
 			return date1.compareTo(date2) <= 0;
 		} catch (ParseException e) {
-			System.out.println("date init fail!");
+			log.info("date init fail!");
 			e.printStackTrace();
 			return false;
 		}

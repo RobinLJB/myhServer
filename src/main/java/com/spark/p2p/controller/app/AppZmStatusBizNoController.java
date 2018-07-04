@@ -4,6 +4,8 @@ import java.net.URLDecoder;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +31,9 @@ import freemarker.cache.MruCacheStorage;
 @Controller
 @RequestMapping("/app/uc/zmxy")
 public class AppZmStatusBizNoController extends AppBaseController {
+	
+	public static final Log log = LogFactory.getLog(AppZmStatusBizNoController.class);
+	
 	static DefaultZhimaClient client = new DefaultZhimaClient(ZmxyAppConfig.gatewayUrl, ZmxyAppConfig.appId,
 			ZmxyAppConfig.privateKey, ZmxyAppConfig.zhimaPublicKey);
 	@Autowired
@@ -44,50 +49,49 @@ public class AppZmStatusBizNoController extends AppBaseController {
 		try {
 			request.setCharacterEncoding("utf-8");
 			// String urlParamsAndSigns = request("urlPams");// 从ios端获得的认证返回结果，
-			// System.out.println(urlParamsAndSigns);
+			// log.info(urlParamsAndSigns);
 			// String urlParamsAndSigns1 = urlParamsAndSigns.replaceAll("%25","%");
 			String urlParamsAndSigns = request("urlPams").replaceAll("%25", "%");// 从ios端获得的认证返回结果，
-			System.out.println(urlParamsAndSigns);
-			System.out.println("----------------------");
+			log.info(urlParamsAndSigns);
+			log.info("----------------------");
 			String signature = request("signature");
-			System.out.println(signature);
+			log.info(signature);
 			String[] ParamsAndSignsDelHead = urlParamsAndSigns.split("\\?");// 先通过？去掉app的头端信息，只剩下params和signs
 			String[] ParamsAndSignInclEqual = ParamsAndSignsDelHead[1].split("&");// 通过&分开params=...和signs=.....
 			String[] urlParams = ParamsAndSignInclEqual[0].split("=");// 通过=分开params
 																		// 和他的具体值
 			String params = urlParams[1];
-			System.out.println(params);
+			log.info(params);
 			String[] urlSigns = ParamsAndSignInclEqual[1].split("=");// 通过=分开signs
 																		// 和他的具体值
 			String sign = urlSigns[1];
-			System.out.println(sign);
+			log.info(sign);
 			// 判断串中是否有%，有则需要decode
 			if (params.indexOf("%") != -1) {
 				params = URLDecoder.decode(params, "utf-8");
-				System.out.println(params);
+				log.info(params);
 			}
 			if (sign.indexOf("%") != -1) {
 				sign = URLDecoder.decode(sign, "utf-8");
 			}
 			try {
 				String result = client.decryptAndVerifySign(params, sign);
-				System.out.println(result);// 返回的认证结果值
+				log.info(result);// 返回的认证结果值
 											// passed=true&biz_no=ZM201708083000000929200543596168
 				String[] array = result.split("&");
 				String status = array[0];// 认证状态值 形如passed=true
 				String[] statusValue = status.split("=");
 				String statusValueR = statusValue[1];// 获得认证结果，结果只能是true或者false
-				System.out.println(statusValueR);
+				log.info(statusValueR);
 
 				String bizNo = array[1];// 流水号：biz_no=ZM201708083000000929200543596168
 				String[] bizNoValue = bizNo.split("=");
 				String BizNo = bizNoValue[1];// 获得biz_no具体值
-				System.out.println(BizNo);
+				log.info(BizNo);
 
 				if ("true".equals(statusValueR)) {
 					int faceStatus = 1;// 人脸认证状态为1
 					long ret = memberService.updateZmFaceStatus(faceStatus, BizNo, id);
-					System.out.println();
 					return success("认证成功");
 				} else {
 					return error("认证失败");

@@ -79,7 +79,7 @@ public class AppInterceptor implements HandlerInterceptor {
 			ajaxReturn(response,4103,"token expired,please login");
 			return false;
 		}*/
-		System.out.println(tokenObj);
+		log.info(tokenObj);
 		request.setAttribute("token", tokenObj);
 		return true;
 	}

@@ -67,7 +67,7 @@ public class POIUtil {
                             cells[cellNum] = getCellValue(cell);
                         }
                         list.add(cells);
-                        System.out.println(list);
+                        logger.info(list);
                     }
                 }
                // workbook.close();

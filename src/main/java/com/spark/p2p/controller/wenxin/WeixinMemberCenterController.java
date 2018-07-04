@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +33,8 @@ import com.sparkframework.lang.Convert;
 @Controller
 @RequestMapping("/mobile/ucenter")
 public class WeixinMemberCenterController extends WeixinBaseController{
+	
+	public static final Log log = LogFactory.getLog(WeixinMemberCenterController.class); 
 	
 	@Autowired
 	private BorrowService borrowService;
@@ -215,7 +219,7 @@ public class WeixinMemberCenterController extends WeixinBaseController{
 	*/
 	@RequestMapping(value = "savePeopleImg", method = RequestMethod.POST)
 	public @ResponseBody MessageResult savePeopleImg() throws Exception {
-		System.out.println("-----------------------------保存图片");
+		log.info("-----------------------------保存图片");
 		Member member = getUser();
 		if(member==null){
 			return error("token失效");
@@ -226,7 +230,7 @@ public class WeixinMemberCenterController extends WeixinBaseController{
 			return error("请选择图片");
 		}
 		long ret=memberService.updateMemberImg(member.getId(),imgpath);
-		System.out.println("-----------------------------保存图片-----------成功");
+		log.info("-----------------------------保存图片-----------成功");
 		if(ret>0){
 			return success("保存成功");
 		}else{

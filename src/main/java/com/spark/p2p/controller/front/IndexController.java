@@ -7,6 +7,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +31,9 @@ import com.sparkframework.sql.model.Model;
 
 @Controller
 public class IndexController extends FrontController {
+	
+	public static final Log log = LogFactory.getLog(IndexController.class);
+	
     @Autowired
     private CMSService cmsService;
     @Autowired
@@ -51,7 +56,7 @@ public class IndexController extends FrontController {
      */
     @RequestMapping({"/index"})
     public String index() throws Exception {
-        //System.out.println( this.memberService.findMemberIdentyByMid(651).getCardImgurl() ) ;
+        //log.info( this.memberService.findMemberIdentyByMid(651).getCardImgurl() ) ;
         //new BorrowDailyCheck().statisticTask();
         //this.borrowService.repayBorrowSuccess("56220170824145143063", "");
 
@@ -62,7 +67,7 @@ public class IndexController extends FrontController {
     public String get1() throws Exception {
         String token = request("token");
         MessageResult res = authService.roundRobin(token, 1);
-        System.out.println(res);
+        log.info(res);
         return view("index");
     }
 
@@ -71,7 +76,7 @@ public class IndexController extends FrontController {
         String token = request("token");
         String code = request("code");
         String json = authService.sendLimuMobileCode(token, code);
-        System.out.println(json);
+        log.info(json);
         return view("index");
     }
 
@@ -260,7 +265,7 @@ public class IndexController extends FrontController {
     /*下载页面*/
     @RequestMapping(value = "myhdownload", method = RequestMethod.GET)
     public String kssdre(HttpServletRequest request) throws Exception {
-        System.out.println("测试");
+        log.info("测试");
         String reruestType = request("reruestType");
         String requestCode = request("requestCode");
         String phone=request("phone");

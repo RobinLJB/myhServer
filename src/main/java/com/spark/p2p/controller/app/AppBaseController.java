@@ -14,6 +14,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
@@ -37,13 +39,15 @@ import com.sparkframework.sql.model.Model;
  */ 
 public class AppBaseController extends BaseController{
 	
+	public static final Log log = LogFactory.getLog(AppBaseController.class);
+	
 	public TokenObject getTokenObject(){
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-		System.out.println("token=" + AppSessionUtil.getToken(request("token")));
+		log.info("token=" + AppSessionUtil.getToken(request("token")));
 		String token = request("token");
 		//return (TokenObject)((Object)token);
 		Object obj = request.getAttribute("token");
-		System.out.println("obj"+obj);
+		log.info("obj"+obj);
 		return (TokenObject)request.getAttribute("token");
 	}
 	
@@ -101,7 +105,7 @@ public class AppBaseController extends BaseController{
 			            bos.flush();
 			        }
 			        bos.close();
-			        System.out.println(bos.toString());
+			        log.info(bos.toString());
 			        Map<String,String> map=new HashMap<String,String>();
 					InputSource in = new InputSource(new StringReader(bos.toString()));
 					in.setEncoding("UTF-8");

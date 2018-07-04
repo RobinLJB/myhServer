@@ -68,7 +68,7 @@ ServletContextListener,ServletRequestListener {
 		//短信配置
 		Map<String,String> smsMap = service.queryGroupItem("SMS");
 		AppSetting.SMS_GATEWAY = smsMap.get("SMS_GATEWAY");
-		System.out.println(AppSetting.SMS_GATEWAY+"oooooooooooooo");
+		log.info(AppSetting.SMS_GATEWAY+"oooooooooooooo");
 		AppSetting.SMS_USERNAME = smsMap.get("SMS_USERNAME");
 		AppSetting.SMS_PASSWD = smsMap.get("SMS_PASSWORD");
 		AppSetting.SMS_SIGN = smsMap.get("SMS_SIGN");

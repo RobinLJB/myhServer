@@ -10,6 +10,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,6 +50,8 @@ import com.sparkframework.sql.model.Model;
 @RequestMapping("/mobile/borrow")
 public class WeixinBorrowController extends WeixinBaseController {
 
+	
+	public static final Log log = LogFactory.getLog(WeixinBorrowController.class);
 	@Autowired
 	private MemberService memberService;
 	@Autowired
@@ -73,9 +77,9 @@ public class WeixinBorrowController extends WeixinBaseController {
 	 */
 	@RequestMapping(value = "attestation", method = RequestMethod.GET)
 	public String attestation(HttpServletRequest request) throws Exception {
-		System.out.println("attestion----------------------");
+		log.info("attestion----------------------");
 		String mid = request("mid");// 回调地址返回的参数
-		System.out.println("attestion----------------------mid" + mid);
+		log.info("attestion----------------------mid" + mid);
 		Member member = getUser();
 		
 		Map<String, String> checkMap = memberService.checkIdentityStatus(member.getId());
@@ -204,7 +208,7 @@ public class WeixinBorrowController extends WeixinBaseController {
 		String m_token = request("m_token");
 		Member member = this.getUser();
 		MessageResult mr = limuAuthService.roundRobin(m_token, member.getId());
-		System.out.println(mr);
+		log.info(mr);
 		
 		return mr;
 	}
@@ -215,7 +219,7 @@ public class WeixinBorrowController extends WeixinBaseController {
 		String m_token = request("m_token");
 		String code = request("mobileCode");
 		String json = limuAuthService.sendLimuMobileCode(m_token, code);
-		System.out.println(json);
+		log.info(json);
 		
 		return success("已发送");
 	}*/
@@ -254,7 +258,7 @@ public class WeixinBorrowController extends WeixinBaseController {
 	 * 
 	 * TianjiSample tianjiSample=new TianjiSample(); String
 	 * result=tianjiSample.tianjiPzczzxhoneLogin(realname,cardno); JSONObject js=new
-	 * JSONObject(result.toString()); System.out.println(js.toString()); int
+	 * JSONObject(result.toString()); log.info(js.toString()); int
 	 * error=js.getInt("error"); if(error==200){ JSONArray
 	 * jsarr=js.getJSONArray("tianji_api_rong360_idindentify_response"); JSONObject
 	 * jsarrJSa=(JSONObject) jsarr.get(0); String
@@ -315,7 +319,7 @@ public class WeixinBorrowController extends WeixinBaseController {
 
 		LundriodSample lundriodSample = new LundriodSample();
 		String result = lundriodSample.lundriodIdentity(realname, cardno);
-		System.out.println(result);
+		log.info(result);
 
 		JSONObject obj = new JSONObject(result);
 		// 获取调用身份验证之后的返回code值
@@ -430,7 +434,7 @@ public class WeixinBorrowController extends WeixinBaseController {
 				request.setAttribute("idcardstatus", 0);
 			}
 
-			System.out.println("notRepayBorrowMap = " + notRepayBorrowMap);
+			log.info("notRepayBorrowMap = " + notRepayBorrowMap);
 			if (notRepayBorrowMap != null) { 
 				int borrowStatus = Integer.valueOf(notRepayBorrowMap.get("borrowStatus"));
 				request.setAttribute("borrowId", notRepayBorrowMap.get("id"));
@@ -758,7 +762,7 @@ public class WeixinBorrowController extends WeixinBaseController {
 		map.put("total", "" + (otherFee + xinFee + shouFee + serviceFee + amount));
 		mr.setCode(0);
 		mr.setData(map);
-		System.out.println("calculateFee| map = " + map);
+		log.info("calculateFee| map = " + map);
 		return mr;
 	}
 
@@ -832,7 +836,7 @@ public class WeixinBorrowController extends WeixinBaseController {
 //	@RequestMapping(value = "borrowStatus")
 //	public String auditList() throws Exception {
 //
-//		System.out.println("------------------------enter auto  request ");
+//		log.info("------------------------enter auto  request ");
 //		Member member = getUser(); 
 //		long borrowIds = Convert.strToLong(request("borrowId"), 0);
 //		Map<String, String> statusMap = borrowService.findBorrowById(borrowIds);
@@ -1013,7 +1017,7 @@ public class WeixinBorrowController extends WeixinBaseController {
 		// 加签名
         String sign = LLPayUtil.addSign(JSON.parseObject(json.toString()), payConfig.TRADER_PRI_KEY,payConfig.MD5_KEY);
         json.put("sign", sign);
-        System.out.println(json.toString());
+        log.info(json.toString());
         Map<String,String> map = new HashMap<String,String>();
         map.put("req_data", json.toString());
         response.setCharacterEncoding("UTF-8");
@@ -1315,12 +1319,12 @@ public class WeixinBorrowController extends WeixinBaseController {
 			return error("您还未认证银行卡");
 		}
 		String bankCardNo = bankCardMap.get("cardNo");*/
-		System.out.println("memberId = " + memberId);
+		log.info("memberId = " + memberId);
 		Map<String, String> borrowMap = borrowService.findBorrowByMemberAndStatus8_9(memberId ); 
 		if(borrowMap == null){
 			return error("您没有待还款的借款");
 		}
-		System.out.println(borrowMap);
+		log.info(borrowMap);
 		// 正常还款或者逾期还款
 		int status = Integer.valueOf(borrowMap.get("borrowStatus"));
 		long bid = Long.valueOf(borrowMap.get("id")); 
@@ -1370,7 +1374,7 @@ public class WeixinBorrowController extends WeixinBaseController {
 		Member member = getUser();
 		
 		long memberId = member.getId();
-		System.out.println("memberId = " + memberId);
+		log.info("memberId = " + memberId);
 		// 获取扣款的银行卡，扣款金额
 		/*Map<String, String> bankCardMap = this.memberService.findBankCard(memberId);*/
 		/*if(bankCardMap == null){

@@ -3,7 +3,12 @@ package com.spark.p2p.util;
 import java.io.*;
 import java.lang.IllegalArgumentException;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 public class NumberUtil {
+	
+	public static final Log log = LogFactory.getLog(NumberUtil.class);
 	/**
 	 * 把金额阿拉伯数字转换为汉字表示，小数点后四舍五入保留两位
 	 * 还有一种方法可以在转换的过程中不考虑连续0的情况，然后对最终的结果进行一次遍历合并连续的零
@@ -118,28 +123,28 @@ public class NumberUtil {
 
 	public static void main(String args[]) {
 		double num = 0;
-		System.out.println("请输入金额数字,-1退出");
+		log.info("请输入金额数字,-1退出");
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			num = Double.parseDouble(br.readLine());
 		} catch (IOException e) {
-			System.out.println(e.toString());
+			log.info(e.toString());
 		}
 		while (num != -1) {
-			System.out.println(num + toChinese(num));
+			log.info(num + toChinese(num));
 			try {
 				BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 				num = Double.parseDouble(br.readLine());
 			} catch (IOException e) {
-				System.out.println(e.toString());
+				log.info(e.toString());
 			}
 		}
-		System.out.println("其他测试：");
-		System.out.println("100120: " + toChinese(100120));
-		System.out.println("25000000000005.999: " + toChinese(25000000000005.999));
-		System.out.println("45689263.626: " + toChinese(45689263.626));
-		System.out.println("0.69457: " + toChinese(0.69457));
-		System.out.println("253.0: " + toChinese(253.0));
-		System.out.println("0: " + toChinese(0));
+		log.info("其他测试：");
+		log.info("100120: " + toChinese(100120));
+		log.info("25000000000005.999: " + toChinese(25000000000005.999));
+		log.info("45689263.626: " + toChinese(45689263.626));
+		log.info("0.69457: " + toChinese(0.69457));
+		log.info("253.0: " + toChinese(253.0));
+		log.info("0: " + toChinese(0));
 	}
 }

@@ -18,6 +18,8 @@ import java.util.TimerTask;
 import java.util.zip.GZIPInputStream;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.http.impl.cookie.PublicSuffixDomainFilter;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -38,6 +40,9 @@ import com.sparkframework.sql.model.Model;
 
 @Service
 public class DaiQianShenHeService extends BaseService {
+	
+	public static final Log log = LogFactory.getLog(DaiQianShenHeService.class);
+	
 	@Autowired
 	private MemberService memberService;
 
@@ -68,7 +73,7 @@ public class DaiQianShenHeService extends BaseService {
 
 	// 调用同盾个人贷前审核服务的submit接口，获取审核报告编号
 	public MessageResult doSubmit(String name, String cardNumber,String mobile, long memberId) throws Exception {
-		System.out.println("#############审核服务的submit接口###############");
+		log.info("#############审核服务的submit接口###############");
 		// 接口body内容
 		body = "name=" + name + "&id_number=" + cardNumber + "mobile"+mobile;
 		String queryBeforeLoanParam=queryParam+"app_name"+"";//此处app_name还未给参数
@@ -86,7 +91,7 @@ public class DaiQianShenHeService extends BaseService {
 	
 	// 调用同盾个人贷前审核服务的query接口，获取报告结果
 		public MessageResult doQuery(String reportId, long memberId) throws Exception {
-			System.out.println("#############审核服务的query接口###############");
+			log.info("#############审核服务的query接口###############");
 			// 接口body内容
 			String BeforeLoanParam=queryParam+"app_name"+""+"report_id"+reportId;//此处app_name还未给参数
 			// 发送init阶段请求
@@ -129,25 +134,25 @@ public class DaiQianShenHeService extends BaseService {
 		// 获取返回code
 		code = JSON.parseObject(lastQueryResult).getInteger("code");
 		data = JSON.parseObject(JSON.parseObject(lastQueryResult).getString("data")).getString("task_data");
-		System.out.println("结果集" + data);
+		log.info("结果集" + data);
 		com.alibaba.fastjson.JSONObject object = JSON.parseObject(data);
 		com.alibaba.fastjson.JSONArray jsonArray = object.getJSONArray("call_info");
 
 		if (code == 0) {
 			Model m = new Model("mobile_talk_detail");
 			for (Object object2 : jsonArray) {
-				System.out.println(object2);
+				log.info(object2);
 				Map<String, Object> map = (Map) object2;
-				// System.out.println(map.get("total_call_count"));
-				// System.out.println(map.get("call_record"));
+				// log.info(map.get("total_call_count"));
+				// log.info(map.get("call_record"));
 				com.alibaba.fastjson.JSONArray jsonArray2 = (com.alibaba.fastjson.JSONArray) map.get("call_record");// 获取call_record通话详单里的数据
 				for (Object object3 : jsonArray2) {
-					// System.out.println(object3);
+					// log.info(object3);
 					Map<String, Object> map2 = (Map) object3;
-					// System.out.println(map2.get("call_cost"));
+					// log.info(map2.get("call_cost"));
 					m.set("member_id", memberId);
 					m.set("callAddress", map2.get("call_address"));
-					System.out.println(map2.get("call_address"));
+					log.info(map2.get("call_address"));
 					m.set("callDateTime", map2.get("call_start_time"));
 					m.set("callTimeLength", map2.get("call_time"));
 					m.set("callType", map2.get("call_type_name"));
@@ -155,7 +160,7 @@ public class DaiQianShenHeService extends BaseService {
 					m.set("createTime", curTime);
 					try {
 						long ret = m.insert();
-						System.out.println("插入数据");
+						log.info("插入数据");
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}

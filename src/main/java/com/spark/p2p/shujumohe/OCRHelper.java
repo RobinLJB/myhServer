@@ -1,5 +1,7 @@
 package com.spark.p2p.shujumohe;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -12,6 +14,9 @@ import java.util.List;
  * Created by yubo.xuan on 17/5/12.
  */
 public class OCRHelper {
+	
+	public static final Log log = LogFactory.getLog(OCRHelper.class);
+	
     private final String LANG_OPTION = "-l";
     // private final String EOL = System.getProperty("line.separator");
     /**
@@ -55,7 +60,7 @@ public class OCRHelper {
          * the exit value of the process. By convention, 0 indicates normal
          * termination.
          */
-        // System.out.println(cmd.toString());
+        // log.info(cmd.toString());
         int w = process.waitFor();
         if (w == 0)// 0代表正常退出
         {
@@ -98,27 +103,27 @@ public class OCRHelper {
         try {
             fos = new FileOutputStream(path);
         } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
+            log.info(e.getMessage());
         }
         try {
             output.writeTo(fos);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            log.info(e.getMessage());
         }
         try {
             output.flush();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            log.info(e.getMessage());
         }
         try {
             output.close();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            log.info(e.getMessage());
         }
         try {
             fos.close();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            log.info(e.getMessage());
         }
     }
 
@@ -135,7 +140,7 @@ public class OCRHelper {
         try {
             image = ImageIO.read(new File(path));
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            log.info(e.getMessage());
         }
         String captcha = JOptionPane.showInputDialog(new ImageIcon(image));
         return captcha;

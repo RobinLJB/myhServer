@@ -2,6 +2,8 @@ package com.spark.p2p.service.admin;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 
 import com.spark.p2p.entity.Apple;
@@ -9,6 +11,8 @@ import com.sparkframework.sql.model.Model;
 
 @Service
 public class ExcelService extends BaseService {
+	
+	public static final Log log = LogFactory.getLog(ExcelService.class);
 	
 	 public long saveBath(List<String[]> list) {
 		 Model m = new Model("apple_id_pass");
@@ -31,8 +35,8 @@ public class ExcelService extends BaseService {
 	            }*/
 	            //this.save(apple);
 	            try {
-	            	System.out.println(strings[0]);
-	            	System.out.println(strings[1]);
+	            	log.info(strings[0]);
+	            	log.info(strings[1]);
 	            	String appleId=strings[0]; 
 	            	String applePass=strings[1];
 	            	m.set("apple_pass", applePass);
@@ -46,7 +50,7 @@ public class ExcelService extends BaseService {
 	    			// TODO: handle exception
 	    		}
 
-	            System.out.println(apple.getAppleId());
+	            log.info(apple.getAppleId());
 	        }
 			return ret;
 	    }

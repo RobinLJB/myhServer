@@ -8,6 +8,9 @@ import com.spark.p2p.entity.Apple;
 import com.spark.p2p.entity.BorrowAmount;
 import com.spark.p2p.util.GeneratorUtil;
 import com.sun.org.apache.xpath.internal.operations.Mod;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,7 +27,8 @@ import com.sparkframework.sql.model.Model;
 @Service
 public class IphoneAuthService extends BaseService {
 
-
+	public static final Log log = LogFactory.getLog(IphoneAuthService.class);
+	
 	/**
 	 * 更新数据库中的苹果手机型号和内存信息
 	 * @param uid,imgpath
@@ -210,7 +214,7 @@ public class IphoneAuthService extends BaseService {
 	public List getBorrowMoneyDetail(List list) throws Exception {
 		List list1=new ArrayList<>();
 		for(int i=list.size()-1;i>=0;i--){
-			System.out.println(list.get(i));
+			log.info(list.get(i));
 			String amount=(int)list.get(i)+"";
 			list1.add(new Model("balance_service_paid").where("amount=?", amount).find(BorrowAmount.class));
 		}

@@ -255,7 +255,7 @@ public class AppBorrowController extends AppBaseController {
 		String trueStorage=request("storage");
 		//判断传入的手机型号是不是符合要求
 		Boolean flag=Arrays.asList(AppSetting.ALLOW_IPHONE_LIST).contains(type);
-		System.out.println(flag);
+		log.info(flag);
 		if(!flag){
 			return MessageResult.error(500,"目前仅支持iphone6及以上机型");
 		}
@@ -280,12 +280,12 @@ public class AppBorrowController extends AppBaseController {
 				list.add(allowAmountList[i]);
 			}
 		}
-		System.out.println(list);
+		log.info(list);
 
 		//通过金额去查询可借金额和利息和到账金额
 		List borrowAmountList=iphoneAuthService.getBorrowMoneyDetail(list);
 
-		System.out.println(borrowAmountList);
+		log.info(borrowAmountList);
 		return success(borrowAmountList);
 	}
 
@@ -830,7 +830,7 @@ public class AppBorrowController extends AppBaseController {
 			source.append(str).append("|");
 		}
 		String bigstr = source.substring(0,source.length()-1);
-		System.out.println(bigstr);
+		log.info(bigstr);
 		String signature = DigestUtils.shaHex(DigestUtils.shaHex(bigstr)+"|"+"iyqw910fydjn3is3w2k8b22ej5dohacg");
 		
 		String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
@@ -876,7 +876,7 @@ public class AppBorrowController extends AppBaseController {
 			source.append(str).append("|");
 		}
 		String bigstr = source.substring(0,source.length()-1);
-		System.out.println(bigstr);
+		log.info(bigstr);
 		String signature = DigestUtils.shaHex(DigestUtils.shaHex(bigstr)+"|"+"iyqw910fydjn3is3w2k8b22ej5dohacg");
 		
 		String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"

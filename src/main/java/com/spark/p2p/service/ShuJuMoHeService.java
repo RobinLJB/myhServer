@@ -19,6 +19,8 @@ import java.util.zip.GZIPInputStream;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.Validate;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.http.impl.cookie.PublicSuffixDomainFilter;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -44,6 +46,9 @@ import freemarker.cache.MruCacheStorage;
 
 @Service
 public class ShuJuMoHeService extends BaseService {
+	
+	public static final Log log = LogFactory.getLog(ShuJuMoHeService.class);
+	
 	@Autowired
 	private MemberService memberService;
 
@@ -95,7 +100,7 @@ public class ShuJuMoHeService extends BaseService {
 
 	// 首次将手机号和服务密码提交
 	public MessageResult doAuth(String taskId, String accountPwd, long memberId) throws Exception {
-		System.out.println("#############手机登录首次输入参数###############");
+		log.info("#############手机登录首次输入参数###############");
 		// 接口body内容
 		body = accountPwd + "&task_id=" + taskId + "&task_stage=" + stage + "&request_type=submit";
 		// 发送init阶段请求
@@ -123,9 +128,9 @@ public class ShuJuMoHeService extends BaseService {
 
 		code = JSON.parseObject(queryResult).getInteger("code");
 		String data = JSON.parseObject(queryResult).getString("data");
-		System.out.println(data);
+		log.info(data);
 		if (!ValidateUtil.isnull(data)) {
-			System.out.println(JSON.parseObject(data).get("next_stage"));
+			log.info(JSON.parseObject(data).get("next_stage"));
 			taskStage = (String) JSON.parseObject(data).get("next_stage");
 		}
 		String message = JSON.parseObject(queryResult).getString("message");
@@ -150,9 +155,9 @@ public class ShuJuMoHeService extends BaseService {
 			// 获取返回code
 			int code = JSON.parseObject(queryResult).getInteger("code");
 			String data = JSON.parseObject(queryResult).getString("data");
-			System.out.println(data);
+			log.info(data);
 			if (!ValidateUtil.isnull(data)) {
-				System.out.println(JSON.parseObject(data).get("next_stage"));
+				log.info(JSON.parseObject(data).get("next_stage"));
 				taskStage = (String) JSON.parseObject(data).get("next_stage");
 			}
 			String message = JSON.parseObject(queryResult).getString("message");
@@ -181,9 +186,9 @@ public class ShuJuMoHeService extends BaseService {
 			// 获取返回code
 			int code = JSON.parseObject(queryResult).getInteger("code");
 			String data = JSON.parseObject(queryResult).getString("data");
-			System.out.println(data);
+			log.info(data);
 			if (!ValidateUtil.isnull(data)) {
-				System.out.println(JSON.parseObject(data).get("next_stage"));
+				log.info(JSON.parseObject(data).get("next_stage"));
 				taskStage = (String) JSON.parseObject(data).get("next_stage");
 			}
 			String message = JSON.parseObject(queryResult).getString("message");
@@ -237,29 +242,29 @@ public class ShuJuMoHeService extends BaseService {
 		 * headers, "task_id=" + taskId); // 获取返回code code =
 		 * JSON.parseObject(lastQueryResult).getInteger("code"); data =
 		 * JSON.parseObject(JSON.parseObject(lastQueryResult).getString("data")).
-		 * getString("task_data"); System.out.println("结果集" + data);
+		 * getString("task_data"); log.info("结果集" + data);
 		 * com.alibaba.fastjson.JSONObject object = JSON.parseObject(data);
 		 * com.alibaba.fastjson.JSONArray jsonArray = object.getJSONArray("call_info");
 		 * 
 		 * if (code == 0) { Model m = new Model("mobile_talk_detail"); for (Object
-		 * object2 : jsonArray) { System.out.println(object2); Map<String, Object> map =
-		 * (Map) object2; // System.out.println(map.get("total_call_count")); //
-		 * System.out.println(map.get("call_record")); com.alibaba.fastjson.JSONArray
+		 * object2 : jsonArray) { log.info(object2); Map<String, Object> map =
+		 * (Map) object2; // log.info(map.get("total_call_count")); //
+		 * log.info(map.get("call_record")); com.alibaba.fastjson.JSONArray
 		 * jsonArray2 = (com.alibaba.fastjson.JSONArray) map.get("call_record");//
 		 * 获取call_record通话详单里的数据 for (Object object3 : jsonArray2) { //
-		 * System.out.println(object3); Map<String, Object> map2 = (Map) object3; //
-		 * System.out.println(map2.get("call_cost")); m.set("member_id", memberId);
+		 * log.info(object3); Map<String, Object> map2 = (Map) object3; //
+		 * log.info(map2.get("call_cost")); m.set("member_id", memberId);
 		 * m.set("callAddress", map2.get("call_address"));
-		 * System.out.println(map2.get("call_address")); m.set("callDateTime",
+		 * log.info(map2.get("call_address")); m.set("callDateTime",
 		 * map2.get("call_start_time")); m.set("callTimeLength", map2.get("call_time"));
 		 * m.set("callType", map2.get("call_type_name")); m.set("mobileNo",
 		 * map2.get("call_other_number")); m.set("createTime", curTime); try { long ret
-		 * = m.insert(); System.out.println("插入数据"); } catch (SQLException e) {
+		 * = m.insert(); log.info("插入数据"); } catch (SQLException e) {
 		 * e.printStackTrace(); } } // Map<K, V> map2=(Map)(map.get("call_record")); } }
 		 */
 		callReportReslut = HttpUtils.executeHttpPost(reportTaskaddr, queryParam, headers, "task_id=" + taskId);
 		int code1 = JSON.parseObject(callReportReslut).getInteger("code");
-		System.out.println("***********");
+		log.info("***********");
 		// data = JSON.parseObject(callReportReslut).getString("data");
 		if (code1 != 0 && code1 != 4001) {
 			return -1;
@@ -268,9 +273,9 @@ public class ShuJuMoHeService extends BaseService {
 			callReportReslut = HttpUtils.executeHttpPost(reportTaskaddr, queryParam, headers, "task_id=" + taskId);// 等待10s后重新查询
 			if (code1 == 0) {// 生成魔盒报告成功
 				String data = JSON.parseObject(callReportReslut).getString("data");
-				System.out.println(data);
+				log.info(data);
 				String callReport = gunzip(data);
-				System.out.println(callReport);
+				log.info(callReport);
 				try {
 					Model m = new Model("member");
 					callReport = FileUtil.filterEmoji(callReport);
@@ -284,9 +289,9 @@ public class ShuJuMoHeService extends BaseService {
 		} else if (code1 == 0) {
 			String data = JSON.parseObject(callReportReslut).getString("data");
 			data = JSON.parseObject(callReportReslut).getString("data");
-			System.out.println(data);
+			log.info(data);
 			String callReport = gunzip(data);
-			System.out.println(callReport);
+			log.info(callReport);
 			try {
 				Model m = new Model("member");
 				callReport = FileUtil.filterEmoji(callReport);
@@ -337,7 +342,7 @@ public class ShuJuMoHeService extends BaseService {
 				m.set("phone_status", 1);
 				m.set("phone_audit_time", curTime);
 				if (m.where("member_id=?", memberId).find() != null) {
-					System.out.println(memberId);
+					log.info(memberId);
 					m.where("member_id=?", memberId).update();
 				} else {
 					m.set("member_id", memberId);
@@ -357,7 +362,7 @@ public class ShuJuMoHeService extends BaseService {
 			try {
 				m.set("taskId", taskId);
 				if (m.where("id=?", memberId).find() != null) {
-					System.out.println(memberId);
+					log.info(memberId);
 					m.where("id=?", memberId).update();
 				} else {
 					m.set("id", memberId);

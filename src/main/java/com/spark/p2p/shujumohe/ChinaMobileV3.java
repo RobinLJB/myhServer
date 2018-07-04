@@ -1,5 +1,8 @@
 package com.spark.p2p.shujumohe;
 import com.alibaba.fastjson.JSON;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import javax.swing.*;
@@ -13,6 +16,8 @@ import java.util.Scanner;
  * Created by yubo.xuan on 17/5/12.
  */
 public class ChinaMobileV3 {
+	
+	public static final Log log = LogFactory.getLog(ChinaMobileV3.class);
 
     public static void chinaMobileV3(String city, String basicInfo, String accountPasswd) throws IOException {
         String queryParam = "?partner_code=&partner_key=";
@@ -45,14 +50,14 @@ public class ChinaMobileV3 {
         //查询任务结果
         String queryTaskaddr = url + "/task.unify.query/v3";
 
-        System.out.println("##############创建任务##############");
+        log.info("##############创建任务##############");
 
         //发送创建任务请求
         String queryResult = HttpUtils.executeHttpPost(createTaskAddr, queryParam, headers, basicInfo);
         //获取任务id
         taskId = JSON.parseObject(queryResult).getString("task_id");
 
-        System.out.println("#######################" + stage + "阶段#######################");
+        log.info("#######################" + stage + "阶段#######################");
         //接口body内容
         body = accountPasswd + "&task_id=" + taskId + "&task_stage=" + stage + "&request_type=submit";
         //发送init阶段请求
@@ -92,10 +97,10 @@ public class ChinaMobileV3 {
                     //获取下个阶段
                     stage = JSON.parseObject(queryResult).getJSONObject("data").getString("next_stage");
                     authCode = JSON.parseObject(queryResult).getJSONObject("data").getString("auth_code");
-                    System.out.println("#######################" + stage + "阶段#######################");
+                    log.info("#######################" + stage + "阶段#######################");
 
                     //获取图片验证码
-                    System.out.println("#######################请输入图片验证码#######################");
+                    log.info("#######################请输入图片验证码#######################");
                     body = "task_id=" + taskId + "&task_stage=" + stage + "&auth_code=" + OCRHelper.showPicture(path + taskId, authCode) + "&request_type=submit";
 
                     //发送请求
@@ -108,16 +113,16 @@ public class ChinaMobileV3 {
                 case 123://短信验证码和图片验证码
 
                     stage = JSON.parseObject(queryResult).getJSONObject("data").getString("next_stage");
-                    System.out.println("#######################" + stage + "阶段#######################");
+                    log.info("#######################" + stage + "阶段#######################");
                     authCode = JSON.parseObject(queryResult).getJSONObject("data").getString("auth_code");
                     for (int i = 1; i < 4; i++) {
-                        System.out.println(city + "\t" + mobile + "\t" + "开始第" + i + "次尝试获取短信验证码......");
+                        log.info(city + "\t" + mobile + "\t" + "开始第" + i + "次尝试获取短信验证码......");
                         Scanner scanner = new Scanner(System.in);
-                        System.out.println("请输入手机验证码，按回车继续");
+                        log.info("请输入手机验证码，按回车继续");
                         scanner = new Scanner(System.in);
                         smsCode = scanner.nextLine();
                         if (smsCode != null && smsCode.length() != 0 && !"".equals(smsCode)) {
-                            System.out.println(city + "\t" + mobile + "\t" + "第" + i + "次尝试获取短信验证码成功，您的短信验证码是##############：" + smsCode);
+                            log.info(city + "\t" + mobile + "\t" + "第" + i + "次尝试获取短信验证码成功，您的短信验证码是##############：" + smsCode);
                             String authCodeString = OCRHelper.showPicture(path + taskId, authCode);
                             body = "task_id=" + taskId + "&task_stage=" + stage + "&sms_code=" + smsCode + "&request_type=submit" + "&auth_code=" + authCodeString;
                             //发送请求
@@ -132,16 +137,16 @@ public class ChinaMobileV3 {
                 case 105://短信验证码
                     //获取下个阶段
                     stage = JSON.parseObject(queryResult).getJSONObject("data").getString("next_stage");
-                    System.out.println("#######################" + stage + "阶段#######################");
+                    log.info("#######################" + stage + "阶段#######################");
                     for (int i = 1; i < 4; i++) {
-                        System.out.println(city + "\t" + mobile + "\t" + "开始第" + i + "次尝试获取短信验证码......");
+                        log.info(city + "\t" + mobile + "\t" + "开始第" + i + "次尝试获取短信验证码......");
                         Scanner scanner = new Scanner(System.in);
-                        System.out.println("请输入手机验证码，按回车继续");
+                        log.info("请输入手机验证码，按回车继续");
                         scanner = new Scanner(System.in);
                         smsCode = scanner.nextLine();
                         if (smsCode != null && smsCode.length() != 0 && !"".equals(smsCode)) {
                             body = "task_id=" + taskId + "&task_stage=" + stage + "&sms_code=" + smsCode + "&request_type=submit";
-                            System.out.println(city + "\t" + mobile + "\t" + "第" + i + "次尝试获取短信验证码成功，您的短信验证码是##############：" + smsCode);
+                            log.info(city + "\t" + mobile + "\t" + "第" + i + "次尝试获取短信验证码成功，您的短信验证码是##############：" + smsCode);
                             //发送请求
                             queryResult = HttpUtils.executeHttpPost(crawlAddr, queryParam, headers, body);
                             smsCode = "";
@@ -157,10 +162,10 @@ public class ChinaMobileV3 {
             }
 
         }
-        System.out.println("任务id=" + taskId + "状态码为" + code + "；message:" + JSON.parseObject(queryResult).getString("message"));
+        log.info("任务id=" + taskId + "状态码为" + code + "；message:" + JSON.parseObject(queryResult).getString("message"));
         if (code == 0){
-            System.out.println("获取的数据如下：");
-            System.out.println(JSON.parseObject(JSON.parseObject(lastQueryResult).getString("data")).getString("task_data"));
+            log.info("获取的数据如下：");
+            log.info(JSON.parseObject(JSON.parseObject(lastQueryResult).getString("data")).getString("task_data"));
         }
     }
     //设置线程睡眠时间

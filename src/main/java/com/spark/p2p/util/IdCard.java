@@ -7,7 +7,13 @@ import java.util.Hashtable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 public class IdCard {
+	
+	public static final Log log = LogFactory.getLog(IdCard.class);
+	
 	private static Hashtable<String, String> areaCode;
 
 	static {
@@ -175,7 +181,7 @@ public class IdCard {
 	
 	public static String parseSex(String idCard){
 		int code = Integer.parseInt(idCard.substring(16,17));
-		System.out.println(code);
+		log.info(code);
 		return code%2 == 0?"女":"男";
 	}
 	
@@ -225,11 +231,11 @@ public class IdCard {
 		// String IDCardNum="210102198208264114";
 		String IDCardNum = "340121198906060416";
 		String id2 = "622201196610151220";
-		System.out.println(parseSex(id2));
-		System.out.println(parseBirthday(id2));
-		System.out.println(parseBirthday(IDCardNum));
-		System.out.println(parseProvince(id2));
-		System.out.println(parseProvince(IDCardNum));
-		// System.out.println(cc.isDate("1996-02-29"));
+		log.info(parseSex(id2));
+		log.info(parseBirthday(id2));
+		log.info(parseBirthday(IDCardNum));
+		log.info(parseProvince(id2));
+		log.info(parseProvince(IDCardNum));
+		// log.info(cc.isDate("1996-02-29"));
 	}
 }

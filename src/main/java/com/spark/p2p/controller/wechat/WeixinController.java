@@ -164,7 +164,7 @@ public class WeixinController extends WeixinControllerSupport {
         String signature = request.getParameter("signature");
         String timestamp = request.getParameter("timestamp");
         String nonce = request.getParameter("nonce");
-        System.out.println("signature:"+signature);
+        log.info("signature:"+signature);
         return SignUtil.checkSignature(getToken(), signature, timestamp, nonce);
     }
 	

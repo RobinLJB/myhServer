@@ -48,7 +48,7 @@ public class UploadController extends BaseController{
 	 */
 	@RequestMapping(value = "upload/image", method = RequestMethod.POST)
 	public void upload(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws IOException {
-		System.out.println("--------------------------上传图片");
+		log.info("--------------------------上传图片");
 		int type = Convert.strToInt(request.getParameter("type"), 0);
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -83,13 +83,13 @@ public class UploadController extends BaseController{
 			String relativePath =  PathFormat.parse(parseCatePath(saveImgPath,type),fileName) + suffix;
 			//磁盘绝对路径
 			String physicalPath = request.getSession().getServletContext().getRealPath("/") + relativePath;
-			System.out.println("--------------------------上传图片----地址"+physicalPath);
+			log.info("--------------------------上传图片----地址"+physicalPath);
 			BaseState storageState = (BaseState) StorageManager.saveFileByInputStream(is,physicalPath, maxAllowedImgSize);
 			is.close();
 			if (storageState.isSuccess()) {
 				String relativeUrl = "/" + relativePath;
 				String absPath = request.getContextPath() + relativeUrl;
-				System.out.println("--------------------------上传图片----地址absPath----"+absPath);
+				log.info("--------------------------上传图片----地址absPath----"+absPath);
 				response.setCharacterEncoding("UTF-8");
 				response.setContentType("text/html; charset=UTF-8");
 				out.write(success(relativeUrl, absPath).toString());

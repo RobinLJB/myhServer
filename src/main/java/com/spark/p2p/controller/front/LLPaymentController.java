@@ -79,7 +79,7 @@ public class LLPaymentController extends BaseController {
 			result = "绑定银行卡成功";
 		}
 		
-		System.out.println("result = " + result);
+		log.info("result = " + result);
 		request.setAttribute("status", Convert.strToInt(status, 0));
 		request.setAttribute("result", result);
 		//Object weixinBindBankCard = this.request.getSession().getAttribute("weixinBindBankCard");
@@ -93,7 +93,7 @@ public class LLPaymentController extends BaseController {
 	public NotifyResponseBean receiveNotify(@RequestBody String json) throws Exception {
 		BusinessNoticeBean businessNoticeBean = JSON.parseObject(json,BusinessNoticeBean.class);
 		log.info("notify request:" + businessNoticeBean.toString());
-		System.out.println("notify request:" + businessNoticeBean.toString());
+		log.info("notify request:" + businessNoticeBean.toString());
 		NotifyResponseBean responseBean = new NotifyResponseBean();
 		boolean signCheck = LLPayUtil.checkSign(json,config.YT_PUB_KEY,config.MD5_KEY);
 		if (!signCheck) {
@@ -107,8 +107,8 @@ public class LLPaymentController extends BaseController {
 		Date now = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String time = sdf.format(now);
-		System.out.println(businessNoticeBean);
-		System.out.println( "result_pay = " + businessNoticeBean.getResult_pay() + ", orderId = " + businessNoticeBean.getNo_order() );
+		//log.info(businessNoticeBean);
+		log.info( "result_pay = " + businessNoticeBean.getResult_pay() + ", orderId = " + businessNoticeBean.getNo_order() );
 
 		if (businessNoticeBean.getResult_pay().equals(PaymentStatusEnum.PAYMENT_SUCCESS.getValue())) {
 			// 商户更新订单为成功，处理自己的业务逻辑
@@ -145,7 +145,7 @@ public class LLPaymentController extends BaseController {
 		log.info(json);
 		BusinessNoticeBean businessNoticeBean = JSON.parseObject(json,BusinessNoticeBean.class);
 		log.info("repayment/notify request:" + businessNoticeBean.toString());
-		System.out.println("repayment/notify request:" + businessNoticeBean.toString());
+		log.info("repayment/notify request:" + businessNoticeBean.toString());
 		
 		NotifyResponseBean responseBean = new NotifyResponseBean();
 		boolean signCheck = LLPayUtil.checkSign(json,config.YT_PUB_KEY,config.MD5_KEY);
@@ -156,7 +156,7 @@ public class LLPaymentController extends BaseController {
 			responseBean.setRet_msg("未知异常");
 			return responseBean;
 		}
-		System.out.println("repaymentNotify | orderId = " + businessNoticeBean.getNo_order());
+		log.info("repaymentNotify | orderId = " + businessNoticeBean.getNo_order());
 		log.info("repaymentNotify | orderId = " + businessNoticeBean.getNo_order());
 		
 		Date now = new Date();
@@ -167,7 +167,7 @@ public class LLPaymentController extends BaseController {
 			String orderId =businessNoticeBean.getNo_order();
 			String  oidPayBill=businessNoticeBean.getOid_paybill();
 			
-			System.out.println("repayBorrowSuccess | orderId = " + orderId);
+			log.info("repayBorrowSuccess | orderId = " + orderId);
 			log.info("repayBorrowSuccess | orderId = " + orderId);
 			this.borrowService.repayBorrowSuccess(orderId, "127.0.0.1");
 			
@@ -176,7 +176,7 @@ public class LLPaymentController extends BaseController {
 			String orderId =businessNoticeBean.getNo_order();
 			String  oidPayBill=businessNoticeBean.getOid_paybill();
 			
-			System.out.println("repayBorrowFailed | orderId = " + orderId);
+			log.info("repayBorrowFailed | orderId = " + orderId);
 			log.info("repayBorrowFailed | orderId = " + orderId);
 			this.borrowService.repayBorrowFailed(orderId, "127.0.0.1");
 			
@@ -216,7 +216,7 @@ public class LLPaymentController extends BaseController {
 	@ResponseBody
 	public MessageResult testPay() throws Exception{
 		String orderId = GeneratorUtil.getOrderId("EX");
-		System.out.println(orderId);
+		log.info(orderId);
 		MessageResult mr = payService.submitPay(orderId, 0.1, "闫其政", "6228480052180065113", "中国银行");
 		return mr;
 	}

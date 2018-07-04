@@ -2,6 +2,8 @@ package com.spark.p2p.controller.front;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,9 @@ import com.spark.p2p.service.admin.SiteService;
 @Controller
 @RequestMapping("/page")
 public class SinglePageController extends FrontController {
+	
+	public static final Log log = LogFactory.getLog(SinglePageController.class);
+	
 	@Autowired 
 	private SiteService siteService;
 	@Autowired
@@ -40,7 +45,7 @@ public class SinglePageController extends FrontController {
 		AppRevision android = siteService.findLateastRevision(Const.PLATFORM_ANDROID);
 		request.setAttribute("android", android);
 		request.setAttribute("ios", ios);
-		System.out.println("app-download");
+		log.info("app-download");
 		return viewMobile("app-download");
 	}
 }

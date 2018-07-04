@@ -10,6 +10,8 @@ import com.spark.p2p.entity.AddressList;
 import com.spark.p2p.service.IphoneAuthService;
 import com.spark.p2p.util.*;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,8 +38,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller("memberAdminController")
 @RequestMapping("/admin")
-public class
-MemberAdminController extends BaseAdminController {
+public class MemberAdminController extends BaseAdminController {
+	
+	public static final Log log = LogFactory.getLog(MemberAdminController.class);
     @Autowired
     private MemberAdminService mbAdminService;
 
@@ -263,7 +266,7 @@ MemberAdminController extends BaseAdminController {
         }
 
         Map<String, String> auditMap = mbAdminService.findMemberAuditByMid(uid);
-        System.out.println("auditMap = " + auditMap);
+        log.info("auditMap = " + auditMap);
         List<Map<String, String>> commicateList = mbAdminService.queryMemberCommicateByMid(uid);
 
         request.setAttribute("basicMap", basicMap);
@@ -285,7 +288,7 @@ MemberAdminController extends BaseAdminController {
                 for (int i = 0; i < person.length(); i++) {
                     personList.add(person.get(i));
                 }
-                System.out.println(personList);
+                log.info(personList);
                 request.setAttribute("linkman", personList);
                 if (personList.size() != 0) {
                     linkmansize.put("linkmansize", personList.size() + "");

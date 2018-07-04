@@ -10,8 +10,13 @@ import com.gargoylesoftware.htmlunit.util.NameValuePair;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 public class JsonUtils {
 
+	public static final Log log = LogFactory.getLog(JsonUtils.class);
+	
     /**
      * json转化为bean
      *
@@ -87,10 +92,10 @@ public class JsonUtils {
             }
         }
         catch (JsonParseException ex){
-            System.out.println("格式不正确："+json);
+            log.info("格式不正确："+json);
         }
         catch (Exception ex){
-            System.out.println("toJsonNode：执行异常"+json);
+            log.info("toJsonNode：执行异常"+json);
         }
         return rootNode;
     }
@@ -114,7 +119,7 @@ public class JsonUtils {
             }
         }
         catch (Exception ex){
-            System.out.println("pageToJson：执行异常" + ex.toString());
+            log.info("pageToJson：执行异常" + ex.toString());
         }
 
         return jsonNode;
@@ -137,7 +142,7 @@ public class JsonUtils {
             }
         }
         catch (Exception ex){
-            System.out.println("获取value值异常: Key:" +key +"    json:"+ json);
+            log.info("获取value值异常: Key:" +key +"    json:"+ json);
         }
 
         return retValue;
@@ -165,7 +170,7 @@ public class JsonUtils {
             }
 
         }catch (Exception ex){
-            System.out.println("获取value值异常: Key:" +key);
+            log.info("获取value值异常: Key:" +key);
         }
 
         return retValue;

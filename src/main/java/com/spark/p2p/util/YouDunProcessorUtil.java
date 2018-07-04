@@ -22,6 +22,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -39,6 +41,8 @@ import org.apache.http.util.EntityUtils;
 * @date 2017-01-06
 */
 public class YouDunProcessorUtil extends BaseController{
+	
+	public static final Log log = LogFactory.getLog(YouDunProcessorUtil.class);
    /**
     * TODO 获取商户开户的pub_key
     */
@@ -65,7 +69,7 @@ public class YouDunProcessorUtil extends BaseController{
     */
    public static String getMD5Sign(String pub_key, String partner_order_id, String sign_time, String security_key) throws UnsupportedEncodingException {
        String signStr = String.format("pub_key=%s|partner_order_id=%s|sign_time=%s|security_key=%s", pub_key, partner_order_id, sign_time, security_key);
-       System.out.println("signField：" + signStr);
+       log.info("signField：" + signStr);
        return MD5Utils.MD5Encrpytion(signStr);
    }
 
@@ -79,9 +83,9 @@ public class YouDunProcessorUtil extends BaseController{
        String sign = reqObject.getString("sign");
        String sign_time = reqObject.getString("sign_time");
        String partner_order_id = reqObject.getString("partner_order_id");
-       System.out.println("sign：" + sign);
+       log.info("sign：" + sign);
        String signMD5 = getMD5Sign(PUB_KEY, partner_order_id, sign_time, SECURITY_KEY);
-       System.out.println("signMD5：" + signMD5);
+       log.info("signMD5：" + signMD5);
        if (!sign.equals(signMD5)) {
            System.err.println("异步通知签名错误");
            respJson.put("code", "0");
@@ -93,11 +97,11 @@ public class YouDunProcessorUtil extends BaseController{
            //TODO 异步执行商户自己的业务逻辑(以免阻塞返回导致通知多次)
            Thread asyncThread = new Thread("asyncDataHandlerThread") {
                public void run() {
-                   System.out.println("异步执行业务逻辑...");
+                   log.info("异步执行业务逻辑...");
                    try {
                        String id_name = reqObject.getString("id_name");
                        String id_number = reqObject.getString("id_number");
-                       System.out.println(id_name + "：" + id_number);
+                       log.info(id_name + "：" + id_number);
                    } catch (Exception e) {
                        e.printStackTrace();
                    }
@@ -105,7 +109,7 @@ public class YouDunProcessorUtil extends BaseController{
            };
            asyncThread.start();
        }
-       System.out.println("返回结果：" + respJson.toJSONString());
+       log.info("返回结果：" + respJson.toJSONString());
        //返回结果
        response.setCharacterEncoding(CHARSET_UTF_8);
        response.setContentType("application/json; charset=utf-8");
@@ -126,8 +130,8 @@ public class YouDunProcessorUtil extends BaseController{
        String bodyText = new String(baos.toByteArray(), CHARSET_UTF_8);
        JSONObject json = (JSONObject) JSONObject.parse(bodyText);
        if (IS_DEBUG) {
-           System.out.println("received notify message:");
-           System.out.println(JSON.toJSONString(json, true));
+           log.info("received notify message:");
+           log.info(JSON.toJSONString(json, true));
        }
        return json;
    }
@@ -136,15 +140,15 @@ public class YouDunProcessorUtil extends BaseController{
        JSONObject renJson = new JSONObject();
        String sign_time = DateUtil.YYYYMMDDHHMMSS.format(new Date());
        String sign = getMD5Sign(PUB_KEY, partner_order_id, sign_time, SECURITY_KEY);
-       System.out.println(sign);
+       log.info(sign);
        renJson.put("partner_order_id", partner_order_id);
        renJson.put("sign", sign);
        renJson.put("sign_time", sign_time);
 
-       System.out.println("查询接口参数：" + JSON.toJSONString(renJson, true));
+       log.info("查询接口参数：" + JSON.toJSONString(renJson, true));
 
        JSONObject order_query = doHttpRequest(Order_Query, renJson);
-       System.out.println("查询接口查询结果：" + JSON.toJSONString(order_query, true));
+       log.info("查询接口查询结果：" + JSON.toJSONString(order_query, true));
        return order_query;
    }
    /**
@@ -156,7 +160,7 @@ public class YouDunProcessorUtil extends BaseController{
        StringEntity entity = new StringEntity(reqJson.toJSONString(), CHARSET_UTF_8);
        entity.setContentEncoding(CHARSET_UTF_8);
        entity.setContentType("application/json");
-       System.out.println(url);
+       log.info(url);
        HttpPost httpPost = new HttpPost(url);
        httpPost.setEntity(entity);
 

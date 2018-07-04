@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +33,9 @@ import com.sparkframework.lang.Convert;
 
 @Controller
 public class HomeController extends UCenterController {
+	
+	public static final Log log = LogFactory.getLog(HomeController.class);
+	
 	@Autowired
 	private FinanceService financeService;
 	@Autowired
@@ -56,7 +61,7 @@ public class HomeController extends UCenterController {
 	// 美图秀秀上传头像
 	@RequestMapping(value = "updateHead", method = RequestMethod.GET)
 	public String updateHeadImg(HttpServletRequest request) throws Exception {
-		System.out.println(AppSetting.SITE_HOST);
+		log.info(AppSetting.SITE_HOST);
 		request.setAttribute("urlWeb", AppSetting.SITE_HOST);
 		return view("update-headImg-meitu");
 	}

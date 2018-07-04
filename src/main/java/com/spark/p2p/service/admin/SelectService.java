@@ -1,10 +1,14 @@
 package com.spark.p2p.service.admin;
 
+import static org.mockito.Matchers.anyLong;
+
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,6 +19,9 @@ import com.sparkframework.sql.model.Model;
 
 @Service
 public class SelectService extends BaseService {
+	
+	public static final Log log = LogFactory.getLog(SelectService.class);
+	
 	//取出数据
 	public Map<String,String> getSelectMap(String selectKey) throws Exception{
 		Map<String,String> ret = new Model("sys_select")
@@ -36,7 +43,7 @@ public class SelectService extends BaseService {
 	//保存数据
 	public int setSelectMap(String key,Map<String,String> cates) throws JSONException, SQLException {
 		JSONArray json = new JSONArray(cates);
-		System.out.println(json.get(0));
+		log.info(json.get(0));
 		Model m = new  Model("sys_select");
 		return (int) m.where(" `key` = ?",key).setField("options",json.get(0));
 	}

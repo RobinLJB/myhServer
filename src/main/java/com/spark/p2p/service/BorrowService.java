@@ -40,7 +40,7 @@ public class BorrowService extends BaseService {
         if (!flag) {
             return MessageResult.error(500, "暂不支持的手机型号");
         }
-        System.out.println(flag);
+        log.info(flag);
         //check(memberId);方法提取出来出现问题，11.14
         MessageResult mr = new MessageResult();
         Map<String, String> checkMap = memberService.checkIdentityStatus(memberId);
@@ -511,11 +511,11 @@ public class BorrowService extends BaseService {
 
     public double getRepaySum(long borrowId) throws Exception {
         Map<String, String> borrowMap = this.findBorrowById(borrowId);
-        System.out.println("getRepaySum|borrowMap = " + borrowMap);
+        log.info("getRepaySum|borrowMap = " + borrowMap);
         if (borrowMap == null) {
             return 0;
         }
-        System.out.println(borrowMap);
+        log.info(borrowMap);
         // 正常还款或者逾期还款
         long bid = Long.valueOf(borrowMap.get("id"));
 

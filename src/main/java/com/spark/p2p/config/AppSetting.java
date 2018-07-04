@@ -60,9 +60,14 @@ public class AppSetting {
 		        {"18609658355", "15156062323", "17602131013", "13027163405", "18375312099",
 				"18656003579", "13164606327","18655553618","13399558122"};
 
-	//阿里云的Access Key （LTAIWdbI3LdtOk2q是秒一花的）
+	//阿里云的Access Key （LTAIWdbI3LdtOk2q是秒易花的）
 	public static String ACCESS_KEY_ID = "LTAIWdbI3LdtOk2q";
 	public static String ACCESS_KEY_SECRET = "DsMR1173YgGwpbX4ugRCuamspFJeN4";
+	
+	//阿里云oss存储 endPoint
+	public static String ALIYUN_OSS_END_POINT = "oss-cn-beijing.aliyuncs.com";
+	public static String ALIYUN_BUCKET_NAME = "image-miaoyihua";
+	public static String ALIYUN_BUCKET_URL = "http://image-miaoyihua.oss.beijing.aliyuncs.com/";
 	
 	//同盾数据魔盒partner_code和partner_key(已更新成秒一花)
 	public static final String partner_code = "miaoyihua_mohe";

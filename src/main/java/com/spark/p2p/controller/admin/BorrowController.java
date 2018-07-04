@@ -225,7 +225,7 @@ public class BorrowController extends BaseAdminController {
         long roleid = admin.getRoleId();
         //Long satartTime=System.currentTimeMillis();
         DataTable result= dataTable((params) ->  borrowAdminService.queryForFristAudit(params, roleid));
-        //System.out.println("执行时间"+(System.currentTimeMillis()-satartTime)+"ms");
+        //log.info("执行时间"+(System.currentTimeMillis()-satartTime)+"ms");
         return result;
     }
 
@@ -976,7 +976,7 @@ public class BorrowController extends BaseAdminController {
             try {
                 mr = this.llPayService.submitPay(orderNO, realAmount, realName, cardNo, ""); //调用练练支付打款
             } catch (Exception e) {
-                System.out.println("llPayService.submitPay exception ");
+                log.info("llPayService.submitPay exception ");
                 e.printStackTrace();
                 //如果发生异常，不能判定是成功或失败，默认复审通过。然后通过回调函数来确认支付结果。
                 //此时mr=null
@@ -987,7 +987,7 @@ public class BorrowController extends BaseAdminController {
                 //////还款计划
                 MessageResult mr0 = this.llPayService.authApply(mid, agreeNo, repaymentNo, plans);
                 if (mr0.getCode() != 0) {
-                    System.out.println("authApply error, plans = " + plans);
+                    log.info("authApply error, plans = " + plans);
                     DB.rollback();
                     return mr0;
                 }

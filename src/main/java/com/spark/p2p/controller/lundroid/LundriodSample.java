@@ -2,6 +2,9 @@ package com.spark.p2p.controller.lundroid;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 
@@ -14,6 +17,9 @@ import com.spark.p2p.config.AppSetting;
  * @throws Exception
  */
 public class LundriodSample {
+	
+	public static final Log log = LogFactory.getLog(LundriodSample.class);
+	
 	public  String lundriodIdentity(String realname , String cardno) throws Exception {
 		
 		String host = "http://idcard.market.alicloudapi.com";
@@ -31,7 +37,7 @@ public class LundriodSample {
 		return str;*/
 		try {
 			HttpResponse response = HttpUtils.doGet(host, path, method, headers, querys);
-			System.out.println(response.toString());
+			log.info(response.toString());
 			String str= EntityUtils.toString(response.getEntity());
 			// 获取response的body
 			 return str;

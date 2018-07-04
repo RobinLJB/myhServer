@@ -2,6 +2,9 @@ package com.spark.p2p.util;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.spark.p2p.core.RequestHolder;
 import com.sparkframework.security.Encrypt;
 
@@ -11,6 +14,9 @@ import com.sparkframework.security.Encrypt;
  *
  */
 public class FormUtil {
+	
+	public static final Log log = LogFactory.getLog(FormUtil.class);
+	
 	public static final String TOKEN_NAME_PRIFIX = "FORM_TOKEN_";
 	
 	/**
@@ -22,7 +28,7 @@ public class FormUtil {
 		HttpServletRequest request = RequestHolder.getRequest();
 		String token = String.valueOf(System.currentTimeMillis()) + String.valueOf(GeneratorUtil.getRandomNumber(1, 1000));
 		token = Encrypt.MD5(token).toUpperCase();
-		System.out.println("generate token:"+token);
+		log.info("generate token:"+token);
 		request.getSession().setAttribute(TOKEN_NAME_PRIFIX+formId, token);
 		return token;
 	}

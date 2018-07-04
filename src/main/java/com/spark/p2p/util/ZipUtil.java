@@ -12,6 +12,9 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 /**
  * 功能:zip压缩、解压 说明:本程序通过ZipOutputStream和ZipInputStream实现了zip压缩和解压功能.
  * 问题:由于java.util.zip包并不支持汉字,当zip文件中有名字为中文的文件时, 就会出现异常:"Exception  in thread "
@@ -29,6 +32,9 @@ import java.util.zip.ZipOutputStream;
  */
 
 public class ZipUtil {
+	
+	
+	public static final Log log = LogFactory.getLog(ZipUtil.class);
 	private ZipInputStream zipIn; // 解压Zip
 	private ZipOutputStream zipOut; // 压缩Zip
 	private ZipEntry zipEntry;
@@ -60,7 +66,7 @@ public class ZipUtil {
 		if (!file.exists()) {
 			file.mkdirs();
 		}
-		System.out.println("zipFile:" + zipFileName);
+		log.info("zipFile:" + zipFileName);
 		try {
 			this.zipOut = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(zipFileName)));
 			handleDir(zipDir, this.zipOut,dirName);
@@ -81,7 +87,7 @@ public class ZipUtil {
 			this.zipOut.closeEntry();
 		} else {// 如果目录不为空,则分别处理目录和文件
 			for (File fileName : files) {
-				System.out.println(fileName);
+				log.info(fileName);
 
 				if (fileName.isDirectory()) {
 					handleDir(fileName, this.zipOut,dirName);

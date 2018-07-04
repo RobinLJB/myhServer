@@ -370,7 +370,7 @@ public class BaseController {
 			bos.flush();
 		}
 		bos.close();
-		System.out.println(bos.toString());
+		log.info(bos.toString());
 
 		Map<String, String> map = new HashMap<String, String>();
 		InputSource in = new InputSource(new StringReader(bos.toString()));

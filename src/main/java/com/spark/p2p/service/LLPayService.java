@@ -9,6 +9,8 @@ import java.util.List;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +40,9 @@ import com.sparkframework.lang.Convert;
  */
 @Service
 public class LLPayService {
+	
+	public static final Log log = LogFactory.getLog(LLPayService.class);
+	
 	@Autowired
 	private MemberService memberService;
 	private PaymentConfig config = new PaymentConfig();
@@ -75,9 +80,9 @@ public class LLPayService {
 		bankCardAgreeBean.setNo_agree(agreeNo);
 		bankCardAgreeBean.setSign(genSign(JSON.parseObject(JSON.toJSONString(bankCardAgreeBean))));
 		String reqJson = JSON.toJSONString(bankCardAgreeBean);
-		System.out.println("请求报文:"+reqJson);
+		log.info("请求报文:"+reqJson);
 		String resJson = YTHttpHandler.getInstance().doRequestPostString(reqJson, config.APPLY_GATEWAY);
-		System.out.println("结果报文为:" + resJson);
+		log.info("结果报文为:" + resJson);
 		return parseResult(resJson);
 	}
 
@@ -105,12 +110,12 @@ public class LLPayService {
 		json.put("repayment_plan", "{\"repaymentPlan\":" + plans.toJSONString() + "}");
 		json.put("sms_param", "{\"contract_type\":\"测试\",\"contact_way\":\"" + config.contact_way + "\"}");
 		json.put("sign", genSign(json));
-		System.out.println(json.toJSONString());
-		System.out.println(json.toString());
+		log.info(json.toJSONString());
+		log.info(json.toString());
 
 		String resJson = YTHttpHandler.getInstance().doRequestPostString(json.toJSONString(),
 				config.PLAN_CHANGE_GATEWAY);
-		System.out.println(resJson);
+		log.info(resJson);
 		result = parseResult(resJson);
 		return result;
 	}
@@ -155,9 +160,9 @@ public class LLPayService {
 		bankCardPayBean.setNo_agree(agreeNo);
 		bankCardPayBean.setSign(genSign(JSON.parseObject(JSON.toJSONString(bankCardPayBean))));
 		String reqJson = JSON.toJSONString(bankCardPayBean);
-		System.out.println("请求报文为:" + reqJson);
+		log.info("请求报文为:" + reqJson);
 		String resJson = YTHttpHandler.getInstance().doRequestPostString(reqJson, config.REPAYMENT_GATEWAY);
-		System.out.println("结果报文为:" + resJson);
+		log.info("结果报文为:" + resJson);
 		return parseResult(resJson);
 	}
 
@@ -200,11 +205,11 @@ public class LLPayService {
 		json.put("pay_type", "D");
 		json.put("no_agree", agreeNo);
 		json.put("sign", genSign(json));
-		System.out.println(json.toJSONString());
-		System.out.println(json.toString());
+		log.info(json.toJSONString());
+		log.info(json.toString());
 
 		String resJson = YTHttpHandler.getInstance().doRequestPostString(json.toJSONString(), config.UNBIND_GATEWAY);
-		System.out.println(resJson);
+		log.info(resJson);
 		result = parseResult(resJson);
 		return result;
 	}
@@ -234,7 +239,7 @@ public class LLPayService {
 		json.put("flag_card", "0");
 		json.put("notify_url", config.PAY_NOTIFY_URL);
 		json.put("sign",LLPayUtil.addSign(JSON.parseObject(json.toString()), config.TRADER_PRI_KEY,config.MD5_KEY));
-		System.out.println(json.toString());
+		log.info(json.toString());
 		String encryptStr = LianLianPaySecurity.encrypt(json.toJSONString(), config.YT_PUB_KEY);
 		if (StringUtils.isEmpty(encryptStr)) {
 			return new MessageResult(500,"加密异常");
@@ -242,7 +247,7 @@ public class LLPayService {
 		JSONObject encJson = new JSONObject();
 		encJson.put("oid_partner", config.OID_PARTNER);
 		encJson.put("pay_load", encryptStr);
-		System.out.println(encJson);
+		log.info(encJson);
 		String resJson = YTHttpHandler.getInstance().doRequestPostString(encJson.toString(), config.PAY_GATEWAY);
 		result = parseResult(resJson);
 		return result;
@@ -267,11 +272,11 @@ public class LLPayService {
 		json.put("flag_card", "0");
 		json.put("info_order", "付款");
 		json.put("sign", SignUtil.genRSASign(json,config.TRADER_PRI_KEY));
-		System.out.println(json.toJSONString());
-		System.out.println(json.toString());
+		log.info(json.toJSONString());
+		log.info(json.toString());
 
 		String resJson = YTHttpHandler.getInstance().doRequestPostString(json.toJSONString(), config.CONFIRM_PAY_GATEWAY);
-		System.out.println(resJson);
+		log.info(resJson);
 		result = parseResult(resJson);
 		return result;
 	}
@@ -285,17 +290,17 @@ public class LLPayService {
 		json.put("api_version", config.VERSION);
 		json.put("no_order", orderNo);
 		json.put("sign", genSign(json));
-		System.out.println(json.toJSONString());
-		System.out.println(json.toString());
+		log.info(json.toJSONString());
+		log.info(json.toString());
 
 		String resJson = YTHttpHandler.getInstance().doRequestPostString(json.toJSONString(), config.QUERY_PAY_GATEWAY);
-		System.out.println(resJson);
+		log.info(resJson);
 		result = parseResult(resJson);
 		return result;
 	}
 	
 	private MessageResult parseResult(String resJson) {
-		System.out.println("result:"+resJson);
+		log.info("result:"+resJson);
 		JSONObject json = JSON.parseObject(resJson);
 		MessageResult result = new MessageResult();
 		if (json.getString("ret_code").equals("0000")) {
@@ -314,8 +319,8 @@ public class LLPayService {
 		String sign_type = reqObj.getString("sign_type");
 		// // 生成待签名串
 		String sign_src = genSignData(reqObj);
-		System.out.println("商户[" + reqObj.getString("oid_partner") + "]待签名原串" + sign_src);
-		System.out.println("商户[" + reqObj.getString("oid_partner") + "]签名串" + sign);
+		log.info("商户[" + reqObj.getString("oid_partner") + "]待签名原串" + sign_src);
+		log.info("商户[" + reqObj.getString("oid_partner") + "]签名串" + sign);
 
 		if ("MD5".equals(sign_type)) {
 			sign_src += "&key=" + config.MD5_KEY;

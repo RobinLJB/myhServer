@@ -1,6 +1,10 @@
 package com.spark.p2p.controller.zmxy;
 
 import java.net.URLDecoder;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.antgroup.zmxy.openplatform.api.DefaultZhimaClient;
 import com.antgroup.zmxy.openplatform.api.ZhimaApiException;
 import com.spark.p2p.config.ZmxyAppConfig;
@@ -9,6 +13,9 @@ import com.spark.p2p.controller.wenxin.WeixinBaseController;
 //解密验签
 
 public class ZmJieQian extends WeixinBaseController {
+	
+	public static final Log log = LogFactory.getLog(ZmJieQian.class);
+	
 	static DefaultZhimaClient client = new DefaultZhimaClient(ZmxyAppConfig.gatewayUrl, ZmxyAppConfig.appId,
 			ZmxyAppConfig.privateKey, ZmxyAppConfig.zhimaPublicKey);
 
@@ -27,7 +34,7 @@ public class ZmJieQian extends WeixinBaseController {
 		}
 		try {
 			String result = client.decryptAndVerifySign(params, sign);
-			System.out.println(result);
+			log.info(result);
 		} catch (ZhimaApiException e) {
 			e.printStackTrace();
 		}

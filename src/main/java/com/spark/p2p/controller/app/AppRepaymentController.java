@@ -56,12 +56,12 @@ public class AppRepaymentController extends AppBaseController {
 			return error("您还未认证银行卡");
 		}
 		String bankCardNo = bankCardMap.get("cardNo");*/
-		System.out.println("memberId = " + memberId);
+		log.info("memberId = " + memberId);
 		Map<String, String> borrowMap = borrowService.findBorrowByMemberAndStatus8_9(memberId ); 
 		if(borrowMap == null){
 			return error("您没有待还款的借款");
 		}
-		System.out.println(borrowMap);
+		log.info(borrowMap);
 		// 正常还款或者逾期还款
 		int status = Integer.valueOf(borrowMap.get("borrowStatus"));
 		long bid = Long.valueOf(borrowMap.get("id")); 
@@ -134,7 +134,7 @@ public class AppRepaymentController extends AppBaseController {
 
 		// 计算相关费用
 		//String dateBegins = this.borrowService.getNDaysBehindStr(borrowMap.get("appointmentTime"), borrowDays);
-		//System.out.println(dateBegins);
+		//log.info(dateBegins);
 		MessageResult mr = new MessageResult();
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("xinFee", df.format(xinFee));
@@ -164,7 +164,7 @@ public class AppRepaymentController extends AppBaseController {
 		Member member = getMember();
 
 		long memberId = member.getId();
-		System.out.println("memberId = " + memberId);
+		log.info("memberId = " + memberId);
 		// 获取扣款的银行卡，扣款金额
 		/*Map<String, String> bankCardMap = this.memberService.findBankCard(memberId);
 		if(bankCardMap == null){

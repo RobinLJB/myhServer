@@ -132,14 +132,14 @@ public class ExcelUtil {
                     if (StringUtils.isNotBlank(cardImgAUrl)) {
                        cell.setCellValue(AppSetting.HOST_IP+cardImgAUrl);
                     }
-                    //System.out.println(cardImgAUrl);
+                    //log.info(cardImgAUrl);
                 }
                 //身份证反面
                 else if (keys[j].equals("card_imgB")) {
                     String cardImgBUrl = list.get(i).get(keys[j]);
                     if (StringUtils.isNotBlank(cardImgBUrl)) {
                         cell.setCellValue(AppSetting.HOST_IP+cardImgBUrl);
-                    }//System.out.println(cardImgAUrl);
+                    }//log.info(cardImgAUrl);
                 }
                 //手持身份证
                 else if (keys[j].equals("handle_img")) {

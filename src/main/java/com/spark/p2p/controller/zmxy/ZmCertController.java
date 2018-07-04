@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +36,8 @@ import com.sparkframework.lang.Convert;
 @Controller
 public class ZmCertController extends WeixinBaseController {
 
+	public static final Log log = LogFactory.getLog(ZmCertController.class);
+	
 	DefaultZhimaClient client = new DefaultZhimaClient(ZmxyAppConfig.gatewayUrl, ZmxyAppConfig.appId,
 			ZmxyAppConfig.privateKey, ZmxyAppConfig.zhimaPublicKey);
 	@Autowired
@@ -52,10 +56,10 @@ public class ZmCertController extends WeixinBaseController {
 		// alipay://www.taobao.com 或者 alipays://www.taobao.com,分别对应http和https请求
 		// request.setReturnUrl("http://t.yibaoxd.com/mobile/zmxy/notifys.html");// 必要参数
 		request.setReturnUrl("http://localhost:8080/exinbao/mobile/borrow/attestation.html");// 此处回调地址还需要修改，必要参数
-		System.out.println(request);
+		log.info(request);
 		try {
 			String url = client.generatePageRedirectInvokeUrl(request);
-			System.out.println("generateCertifyUrl url:" + url);// 生成的 URL 必须包含回调地址
+			log.info("generateCertifyUrl url:" + url);// 生成的 URL 必须包含回调地址
 			session.setAttribute("code", 0);
         	return success("SUCCESS",url);
 			// return "redirect:/notifys.html";
@@ -72,9 +76,9 @@ public class ZmCertController extends WeixinBaseController {
 	 * ZhimaCustomerCertificationQueryRequest(); req.setChannel("apppc");
 	 * req.setPlatform("zmop"); req.setBizNo(BizNo);// 必要参数 try {
 	 * ZhimaCustomerCertificationQueryResponse response = client.execute(req);
-	 * System.out.println(response.isSuccess());
-	 * System.out.println(response.getErrorCode());
-	 * System.out.println(response.getErrorMessage()); } catch (ZhimaApiException e)
+	 * log.info(response.isSuccess());
+	 * log.info(response.getErrorCode());
+	 * log.info(response.getErrorMessage()); } catch (ZhimaApiException e)
 	 * { e.printStackTrace(); } }
 	 */
 	
@@ -85,7 +89,7 @@ public class ZmCertController extends WeixinBaseController {
 			member = memberService.findMember(member.getId());
 			String certName = member.getRealName();
 			String certNo = member.getIdentNo();
-			System.out.println(certNo);
+			log.info(certNo);
 
 			/*
 			 * long uid = member.getId(); String realName = member.getRealName(); String
@@ -106,14 +110,14 @@ public class ZmCertController extends WeixinBaseController {
 			// 必要参数
 			req.setMerchantConfig("{\"need_user_authorization\":\"false\"}");//
 			req.setExtBizParam("{}");// 必要参数
-			System.out.println(req);
+			log.info(req);
 			try {
 				ZhimaCustomerCertificationInitializeResponse response = (ZhimaCustomerCertificationInitializeResponse) client
 						.execute(req);
-				System.out.println(response.isSuccess());
-				System.out.println(response.getErrorCode());
-				System.out.println(response.getErrorMessage());
-				System.out.println(response.getBizNo());// 获取最为重要的biz_no
+				log.info(response.isSuccess());
+				log.info(response.getErrorCode());
+				log.info(response.getErrorMessage());
+				log.info(response.getBizNo());// 获取最为重要的biz_no
 				if (response.isSuccess()) {
 					session.setAttribute("flag", 1);
 					String BizNo = response.getBizNo();

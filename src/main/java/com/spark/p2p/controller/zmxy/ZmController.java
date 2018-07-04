@@ -10,6 +10,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +30,8 @@ import com.sparkframework.lang.Convert;
 
 @Controller
 public class ZmController extends BaseController {
+	
+	public static final Log log = LogFactory.getLog(ZmController.class);
 	
 	@Autowired
 	private MemberService memberService;
@@ -48,8 +52,8 @@ public class ZmController extends BaseController {
             Map<String,String> map = WebUtils.splitUrlQuery(result);
             String openid = map.get("open_id");
             long uid = Convert.strToLong(map.get("state").split("%")[0], 0);
-            System.out.println(map);
-            System.out.println(map.get("open_id"));
+            log.info(map);
+            log.info(map.get("open_id"));
             MessageResult mr = fetchZhimaCreditScore(openid);
             if(mr.getCode()==0){
             	
@@ -104,10 +108,10 @@ public class ZmController extends BaseController {
         DefaultZhimaClient client = new DefaultZhimaClient(ZmxyAppConfig.gatewayUrl, ZmxyAppConfig.appId, ZmxyAppConfig.privateKey, ZmxyAppConfig.zhimaPublicKey);
         try {
             ZhimaCreditScoreGetResponse response = client.execute(req);
-            System.out.println(response.isSuccess());
-            System.out.println(response.getErrorCode());
-            System.out.println(response.getErrorMessage());
-            System.out.println(response.getZmScore());
+            log.info(response.isSuccess());
+            log.info(response.getErrorCode());
+            log.info(response.getErrorMessage());
+            log.info(response.getZmScore());
             if(response.isSuccess()){
             	session.setAttribute("flag", 1);
             	String score = response.getZmScore();

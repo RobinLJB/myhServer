@@ -108,7 +108,7 @@ public class AppAuthController extends AppBaseController {
         // 加签名
         String sign = LLPayUtil.addSign(JSON.parseObject(json.toString()), config.TRADER_PRI_KEY, config.MD5_KEY);
         json.put("sign", sign);
-        System.out.println(json.toString());
+        log.info(json.toString());
         Map<String, String> map = new HashMap<String, String>();
         map.put("req_data", json.toString());
         response.setCharacterEncoding("UTF-8");
@@ -204,7 +204,7 @@ public class AppAuthController extends AppBaseController {
 
 
                 image_url_1 = curUrl + relativeUrl;
-                System.out.println(image_url_1);
+                log.info(image_url_1);
 
             } else {
                 return error(storageState.getInfo());
@@ -225,10 +225,10 @@ public class AppAuthController extends AppBaseController {
         // 发送POST请求示例
         String body = "{\"type\": \"0\", \"image_url_1\":\"" + image_url_1 + "\", \"image_url_2\":\"" + image_url_2 + "\"}";
         String result = AESDecode.sendPost(faceApi, body, AppSetting.ACCESS_KEY_ID, AppSetting.ACCESS_KEY_SECRET);
-        System.out.println("body = " + body + ", \n response body = " + result);
+        log.info("body = " + body + ", \n response body = " + result);
         JSONObject json = JSONObject.parseObject(result);
         if (json != null && json.getFloat("confidence") >= 50) {//相似度大于50，则识别通过
-            System.out.println("confidence=" + json.getFloat("confidence"));
+            log.info("confidence=" + json.getFloat("confidence"));
             this.memberService.updateZmFaceStatus(1, "", memberId);
             return success("识别通过");
         }
@@ -296,7 +296,7 @@ public class AppAuthController extends AppBaseController {
         String cardImgA = request("cardImgA");
         String cardImgB = request("cardImgB");
         String handleImg = request("handleImg");
-        System.out.println("realname=" + realname + ", cardno=" + cardno + ", cardImgA=" + cardImgA +
+        log.info("realname=" + realname + ", cardno=" + cardno + ", cardImgA=" + cardImgA +
                 ", cardImgB=" + cardImgB + ", handleImg=" + handleImg + ",qqMail" + qqMail + ",nowAddress" + nowAddress);
 
         if (ValidateUtil.isnull(cardno)) {
@@ -340,7 +340,7 @@ public class AppAuthController extends AppBaseController {
         LundriodSample lundriodSample = new LundriodSample();
         String result = lundriodSample.lundriodIdentity(realname, cardno);
         Map<String, String> map = new HashMap<>();
-        System.out.println(result);
+        log.info(result);
         if ("".equals(result)) {
             return error("平台实名认证余额不足，请帮忙联系客服");
         }
@@ -382,7 +382,7 @@ public class AppAuthController extends AppBaseController {
         String result;
         try {
             result = AESDecode.sendPost(faceApi, body, AppSetting.ACCESS_KEY_ID, AppSetting.ACCESS_KEY_SECRET);
-            System.out.println("body = " + body + ", \n response body = " + result + " \n -----result end----");
+            log.info("body = " + body + ", \n response body = " + result + " \n -----result end----");
             org.json.JSONObject json = new org.json.JSONObject(result);
             if (json.getInt("errno") == 0 && json.getInt("face_num") > 0) {
                 return true;

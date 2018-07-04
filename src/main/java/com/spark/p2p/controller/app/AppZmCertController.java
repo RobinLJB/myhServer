@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +38,9 @@ import com.sparkframework.lang.Convert;
 @Controller
 @RequestMapping(value = "/app/uc/zmxy")
 public class AppZmCertController extends AppBaseController {
+	
+	public static final Log log = LogFactory.getLog(AppZmCertController.class); 
+	
 	DefaultZhimaClient client = new DefaultZhimaClient(ZmxyAppConfig.gatewayUrl, ZmxyAppConfig.appId,
 			ZmxyAppConfig.privateKey, ZmxyAppConfig.zhimaPublicKey);
 	@Autowired
@@ -56,10 +61,10 @@ public class AppZmCertController extends AppBaseController {
 		// request.setReturnUrl("http://t.yibaoxd.com/mobile/zmxy/certify.html");// 必要参数
 		request.setReturnUrl("YiXin://");// app里的回调地址是写APP的scheme URL（客服）
 		
-		System.out.println(request);
+		log.info(request);
 		try {
 			String url = client.generatePageRedirectInvokeUrl(request);
-			//System.out.println("generateCertifyUrl url:" + url);// 生成的 URL 必须包含回调地址
+			//log.info("generateCertifyUrl url:" + url);// 生成的 URL 必须包含回调地址
 			// return url;
 			return new MessageResult(0, "SUCCESS", url);
 			// return "redirect:/notifys.html";
@@ -80,12 +85,12 @@ public class AppZmCertController extends AppBaseController {
 	 * req.setPlatform("zmop"); req.setBizNo(BizNo);// 必要参数 Map<String, String>
 	 * resultMap = new HashMap<String, String>(); try {
 	 * ZhimaCustomerCertificationQueryResponse response = client.execute(req);
-	 * System.out.println(response.isSuccess()); if (response.isSuccess()) {
+	 * log.info(response.isSuccess()); if (response.isSuccess()) {
 	 * mr.setCode(0); resultMap.put("success_msg", "认证成功"); } else { mr.setCode(1);
 	 * resultMap.put("error_message", "认证失败");
 	 * 
-	 * } System.out.println(response.getErrorCode());
-	 * System.out.println(response.getErrorMessage()); } catch (ZhimaApiException e)
+	 * } log.info(response.getErrorCode());
+	 * log.info(response.getErrorMessage()); } catch (ZhimaApiException e)
 	 * { e.printStackTrace(); } mr.setData(resultMap); return mr; }
 	 */
 
@@ -96,7 +101,7 @@ public class AppZmCertController extends AppBaseController {
 			member = memberService.findMember(member.getId());
 			String certName = member.getRealName();
 			String certNo = member.getIdentNo();
-			System.out.println(certNo);
+			log.info(certNo);
 			ZhimaCustomerCertificationInitializeRequest req = new ZhimaCustomerCertificationInitializeRequest();
 			req.setPlatform("zmop");
 			DateFormat YYYYMMDDMMHHSSSSS = new SimpleDateFormat("yyyyMMddHHmmssSSS");
@@ -111,14 +116,14 @@ public class AppZmCertController extends AppBaseController {
 			// 必要参数
 			req.setMerchantConfig("{\"need_user_authorization\":\"false\"}");//
 			req.setExtBizParam("{}");// 必要参数
-			System.out.println(req);
+			log.info(req);
 			try {
 				ZhimaCustomerCertificationInitializeResponse response = (ZhimaCustomerCertificationInitializeResponse) client
 						.execute(req);
-				System.out.println(response.isSuccess());
-				System.out.println(response.getErrorCode());
-				System.out.println(response.getErrorMessage());
-				System.out.println(response.getBizNo());// 获取最为重要的biz_no
+				log.info(response.isSuccess());
+				log.info(response.getErrorCode());
+				log.info(response.getErrorMessage());
+				log.info(response.getBizNo());// 获取最为重要的biz_no
 				if (response.isSuccess()) {
 					String BizNo = response.getBizNo();
 					return BizNo;
