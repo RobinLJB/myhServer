@@ -1,5 +1,7 @@
 package com.spark.p2p.util;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 import com.aliyun.oss.OSS;
@@ -24,11 +26,28 @@ public class AliyunOssUtil {
 	 * @param is
 	 * @return 返回文件上传结果
 	 */
-	public static void put(String key, InputStream is) {
+	public static boolean put(String key, InputStream is) {
 		OSS ossClient = new OSSClient(AppSetting.ALIYUN_OSS_END_POINT, AppSetting.ACCESS_KEY_ID,
 				AppSetting.ACCESS_KEY_SECRET);
 		PutObjectRequest putObjectRequest = new PutObjectRequest(AppSetting.ALIYUN_BUCKET_NAME, key, is);
 		ossClient.putObject(putObjectRequest);
+		return true;
+	}
+	
+	/**
+	 * 二进制上传
+	 * @param key
+	 * @param data
+	 * @return
+	 */
+	public static boolean put(String key, byte[] data) {
+		
+		OSS ossClient = new OSSClient(AppSetting.ALIYUN_OSS_END_POINT, AppSetting.ACCESS_KEY_ID,
+				AppSetting.ACCESS_KEY_SECRET);
+		ByteArrayInputStream is = new ByteArrayInputStream(data);
+		PutObjectRequest putObjectRequest = new PutObjectRequest(AppSetting.ALIYUN_BUCKET_NAME, key, is);
+		ossClient.putObject(putObjectRequest);
+		return true;
 	}
 
 	/**

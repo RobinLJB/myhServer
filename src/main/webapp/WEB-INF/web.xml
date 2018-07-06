@@ -74,6 +74,6 @@
     <location>/WEB-INF/view/error/index.jsp</location>
   </error-page>
   <welcome-file-list>
-    <welcome-file>index</welcome-file>
+    <welcome-file>admin/login.html</welcome-file>
   </welcome-file-list>
 </web-app>

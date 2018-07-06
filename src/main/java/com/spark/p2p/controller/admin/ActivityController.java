@@ -99,8 +99,8 @@ public class ActivityController extends BaseAdminController {
 	 * @throws Exception 
 	 */
 	@RequestMapping("group/subMember/{mid}")
-	public String jiLiangSubMemberBorrowDetail(HttpServletRequest request,@PathVariable long mid) throws Exception {
-		List<Map<String,String>> borrowList=borrowService.queryBorrowByMid(mid);
+	public String jiLiangSubMemberBorrowDetail(HttpServletRequest request,@PathVariable String mid) throws Exception {
+		List<Map<String,String>> borrowList=borrowService.queryBorrowByMid(Long.parseLong(mid));
 		request.setAttribute("borrowList", borrowList);
 		request.setAttribute("mid", mid);
 		return view("activity/borrow-index");
@@ -197,6 +197,9 @@ public class ActivityController extends BaseAdminController {
 	 */
 	@RequestMapping(value="group")
 	public String jiliangIndex(){
+		Admin admin=getAdmin();
+		long roleid=admin.getRoleId();
+		request.setAttribute("role", roleid);
 		return view("activity/jiliang-index");
 	}
 	
@@ -222,6 +225,9 @@ public class ActivityController extends BaseAdminController {
 	 */
 	@RequestMapping(value="jiliangDetail/{keys}")
 	public String jiliangDetailIndex(HttpServletRequest request,@PathVariable long keys){
+		Admin admin=getAdmin();
+		long roleid=admin.getRoleId();
+		request.setAttribute("role", roleid);
 		request.setAttribute("keys", keys);
 		return view("activity/jiliang-member-detail");
 	}

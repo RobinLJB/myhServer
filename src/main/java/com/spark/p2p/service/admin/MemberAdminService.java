@@ -48,6 +48,9 @@ public class MemberAdminService extends BaseService {
         map.put("username", "like");
         map.put("real_name", "like");
         map.put("mobilePhone", "like");
+        map.put("type", "like");
+        map.put("source", "like");
+        map.put("is_real_name", "like");
         map.put("member_status", "=");
 
         map.put("create_time", "between");
@@ -76,7 +79,7 @@ public class MemberAdminService extends BaseService {
      * 查询用户信息，导出excel
      */
     public List<Map<String, String>> queryAllMemberExcel(String condition) throws Exception {
-        return new Model("v_member_excel_detail").where(condition).order("create_time desc").select();
+		return new Model("v_member_excel_detail").where(condition).order("create_time desc").select();
     }
 
     /**

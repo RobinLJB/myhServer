@@ -36,19 +36,51 @@
             </div>  
 		</div>
 		<button type="button" class="btn btn-default">查找</button>
+		<div class="form-group">
+			<label for="control-label">手机号码</label>
+			<input type="text" data-toggle="table-search" data-column="2" class="form-control" placeholder="">
+		</div>
+		<div class="form-group">
+			<label for="control-label">手机类型</label>
+				<select class="form-control"   data-toggle="table-search" data-column="3" placeholder="">
+					<option  value="">全部</option>
+					<option  value="苹果">苹果</option>
+					<option  value="安卓">安卓</option>
+				</select>
+			 </label>
+		</div>
+		<div class="form-group">
+			<label for="control-label">用户类型</label>
+				<select class="form-control"   data-toggle="table-search" data-column="4" placeholder="">
+					<option  value="">全部</option>
+					<option  value="0">未申请</option>
+					<option  value="1">正常用户</option>
+					<option  value="2">争议用户</option>
+					<option  value="3">黑名单</option>
+				</select>
+			 </label>
+		</div>
+		<div class="form-group">
+			<label for="control-label">是否实名</label>
+				<select class="form-control"   data-toggle="table-search" data-column="5" placeholder="">
+					<option  value="">全部</option>
+					<option  value="未实名">未实名</option>
+					<option  value="已实名">已实名</option>
+				</select>
+			 </label>
+		</div>
 	</form>
 	<table id="memberTable" class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>邀请编号</th>
                 <th>用户姓名</th>
+                <th>手机号码</th>
+                <th>手机类型</th>
+                <th>用户类型</th>
+                <th>是否实名</th>
 				<th>借款次数</th>
 				<th>借款总额</th>
-				<th>还款总额</th>
-				<th>逾期总额</th>
-				<th>死账总额</th>
-				<th>邀请人数</th>
-				<th>佣金总额</th>
 				<th>邀请码</th>
 				<th>创建时间</th>
 				<th>借款详情</th>
@@ -69,23 +101,69 @@
 			"columns": [
 				{ "data": "rid" },
 				{ "data": "real_name" },
+				{ "data" : "mobilePhone"},
+				{ "data" : "type"},
+				{ "data" : "member_status"},
+				{ "data" : "is_real_name"},
 				{ "data": "successBorrowTimes" },
 				{ "data": "alreadyBorrowSum" },
-				{ "data": "alreadyRepaySum" },
-				{ "data": "overdueSum" },
-				{ "data": "dieSum" },
-				{ "data": "inviteSum" },
-				{ "data": "commisionSum" },
 				{ "data": "memberNo" },
 				{ "data": "create_time" }
 			],
 			"columnDefs":[
+			     {
+					"targets":[2],
+					"data":'mobilePhone',
+					"render":function(data,type,full){
+						if(data){
+							return  data.substring(0,3) + "***" + data.substring(7,11);
+						}else{
+							return data;
+						}
+					}
+				},
+				{
+					"targets":[3],
+					"data":'type',
+					"render":function(data,type,full){
+						console.log(data)
+					    if(data == 2) return  '<span class="label label-info">苹果</span>';
+						else if(data == 1) return  '<span class="label label-success">安卓</span>';
+						else return '<span class="label label-success">'+data+'</span>';
+					}
+				},
+				{
+					"targets":[4],
+					"data":'member_status',
+					"render":function(data,type,full){
+						console.log(data)
+					    if(data == 2) return  '<span class="label label-info">争议用户</span>';
+						else if(data == 3) return  '<span class="label label-danger">黑名单</span>';
+						else if(data == 1) return '<span class="label label-success">正常用户</span>';
+						else if(data == 0) return '<span class="label label-warning">未申请</span>';
+						else return <span class="label label-warning">未注册</span>
+						
+					}
+				},
+				{
+					"targets":[5],
+					"data":'is_real_name',
+					"render":function(data,type,full){
+						console.log(data)
+					    if(data == '已实名') return  '<span class="label label-info">已实名</span>';
+						else  return  '<span class="label label-danger">未实名</span>';
+					}
+				},
 				
 				{
-					"targets":[11],
+					"targets":[10],
 					"data":'mid',
 					"render":function(data,type,full){
-						return	'<a href="${context}/admin/extension/group/subMember/'+data+'.html">查看</a>';
+						if(${role}!=26){
+							return	'<a href="${context}/admin/extension/group/subMember/'+data+'.html">查看</a>';
+						}else{
+							return '';
+							}
 					}
 				}
 			],

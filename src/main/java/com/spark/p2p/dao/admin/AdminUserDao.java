@@ -21,7 +21,7 @@ public class AdminUserDao {
 	 * @throws Exception 
 	 */
 	public Admin login(String username,String password) throws Exception{
-		Model m = new Model("admin");
+		Model m = new Model("miaoyihua.admin");
 		Admin admin = null;
 		Map<String,String> map = m.where("username = ? and password = ?",username,password).find();
 		if(map != null){

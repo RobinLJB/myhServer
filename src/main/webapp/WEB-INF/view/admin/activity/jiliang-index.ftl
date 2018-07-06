@@ -21,7 +21,7 @@
     <h3 class="page-title">
     		计量用户
     </h3>
-
+	<#if (role !=26) >
     <form class="form-inline" role="form">
         <a href="${context}/admin/extension/create/group/-1.html" class="btn btn-success">添加计量用户</a>
         <div class="form-group">
@@ -30,6 +30,7 @@
         </div>
         <button type="button" class="btn btn-default">查找</button>
     </form>
+    </#if>
     <table id="memberTable" class="table table-striped table-bordered">
         <thead>
         <tr>
@@ -41,11 +42,6 @@
             <th>安卓端数量</th>
             <th>已借款人数</th>
             <th>放款总额</th>
-            <th>已还总额</th>
-            <th>逾期总额</th>
-            <th>死账总额</th>
-            <th>电话</th>
-            <th>QQ</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -69,20 +65,19 @@
                 {"data": "android_invite_sum"},
                 {"data": "successBorrowMemberSum"},
                 {"data": "successBorrowSum"},
-                {"data": "repaySum"},
-                {"data": "overdueSum"},
-                {"data": "dieSum"},
-                {"data": "phone"},
-                {"data": "qq"},
             ],
             "columnDefs": [
 
 
                 {
-                    "targets": [13],
+                    "targets": [8],
                     "data": 'id',
                     "render": function (data, type, full) {
+                       if (${role}!=26){
                         return '<div class="dropdown"><a href="#" class="nodeco" data-toggle="dropdown">操作&nbsp;<span class="caret"></span><ul class="dropdown-menu"><li class="active"><a  class="a" data-clipboard-text="' + full.url + '" >复制链接</a></li><li class="active"><a href="${context}/admin/extension/create/group/' + data + '.html">编辑</a></li><li><a  data-toggle="ajax-link" data-tip="删除后不能恢复，确定继续吗？" data-href="${context}/admin/extension/group/delete/' + data + '.do">删除</a></li><li><a href="${context}/admin/extension/jiliangDetail/' + data + '.html">计量明细</a></li></ul></a></div>';
+                   	   }else{
+                   		return '<div class="dropdown"><a href="#" class="nodeco" data-toggle="dropdown">操作&nbsp;<span class="caret"></span><ul class="dropdown-menu"><li class="active"><a  class="a" data-clipboard-text="' + full.url + '" >复制链接</a></li><li><a href="${context}/admin/extension/jiliangDetail/' + data + '.html">计量明细</a></li></ul></a></div>';
+                   	}
                     }
                 }
             ],

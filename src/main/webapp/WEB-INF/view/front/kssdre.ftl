@@ -284,17 +284,19 @@ form#formid {
                         params['type'] = type;
 
                         console.log(type)
+                        //发请求记录手机类型 没获取到数据也马上跳转到下载页
                         $.post("generalize/mobile/type.do", params, function (data) {
-                            if (data.code == '0') {
-                                var rerutype = "${reruestType!0}";
-                                var rerucode = "${requestCode!0}";
-
-                            } else {
-                                mui.alert(data.message);
-                            }
+                            //if (data.code == '0') {
+                                //var rerutype = "${reruestType!0}";
+                                //var rerucode = "${requestCode!0}";
+								
+                            //} else {
+                            //    mui.alert(data.message);
+                            //}
                         }, 'json');
-                   location.href = "/myhdownload.html?reruestType="+rerutype+"&requestCode="+rerucode+
-										"&phone="+phone;
+                   //location.href = "/myhdownload.html?reruestType="+rerutype+"&requestCode="+rerucode+
+										//"&phone="+phone;
+					 location.href = "https://iir.kim/myh";
 
 				} else {
 					mui.alert(data.message);

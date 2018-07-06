@@ -22,10 +22,10 @@
 							</div>
 							<div class="details">
 								<div class="number">
-									${memberMap.newMember!0}
+									 ${memberMap.newMemberIos!0}人/${memberMap.newMemberAndroid!0}人
 								</div>
 								<div class="desc">
-									新用户
+									苹果量/安卓量
 								</div>
 							</div>
 							<a class="more" href="javascript:volid(0);">

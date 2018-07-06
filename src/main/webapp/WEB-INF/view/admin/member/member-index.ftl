@@ -32,6 +32,10 @@
 			<input type="text" data-toggle="table-search" data-column="2" class="form-control" placeholder="">
 		</div>
 		<div class="form-group">
+			<label for="control-label">来源</label>
+			<input type="text" data-toggle="table-search" data-column="4" class="form-control" placeholder="">
+		</div>
+		<div class="form-group">
 			<div class="controls">
                 <div id="reportrange" class="pull-left dateRange" style="width:200px">
 					<input type="text" data-toggle="table-search"   id="searchDateRange" data-column="10" class="form-control" placeholder="点击选择日期" style="width: 100%;" readonly>
@@ -40,9 +44,27 @@
 		</div>
 		<button type="button" class="btn btn-default">查找</button>
         <button type="button" class="btn green btn-default btn-excel">导出</button>
+        <div class="form-group">
+	        <label for="control-label">手机类型</label>
+				<select class="form-control"   data-toggle="table-search" data-column="3" placeholder="">
+					<option  value="">全部</option>
+					<option  value="2">苹果</option>
+					<option  value="1">安卓</option>
+				</select>
+			 </label>
+		 </div>
+		 <div class="form-group">
+	        <label for="control-label">是否实名</label>
+				<select class="form-control"   data-toggle="table-search" data-column="9" placeholder="">
+					<option  value="">全部</option>
+					<option  value="已实名">是</option>
+					<option  value="未实名">否</option>
+				</select>
+			 </label>
+		 </div>
 	</form>
 	<ul class="nav nav-tabs"     style="margin-bottom: 0px;border-bottom: 0px solid #ddd;" >
-		<li id="a" ><a href="${context}/admin/member.html?status=0" aria-expanded="true">注册未申请</a></li>
+		<li id="a" ><a href="${context}/admin/member.html?status=0" aria-expanded="true">未申请</a></li>
 		<li id="b" ><a href="${context}/admin/member.html?status=1" aria-expanded="false">正常用户</a></li>
 		<li id="c" ><a href="${context}/admin/member.html?status=2" aria-expanded="false">争议用户</a></li>
 		<li id="d" ><a href="${context}/admin/member.html?status=3" aria-expanded="false">黑名单</a></li>
@@ -53,12 +75,13 @@
                 <th>会员编号</th>
                 <th>真实姓名</th>
                 <th>手机号</th>
-				<th>QQ</th>
+				<th>手机类型</th>
+				<th>来源</th>
 				<th>已放款</th>
 				<th>已还款</th>
 				<th>已逾期</th>
 				<th>死账</th>
-				<th>用户类型</th>
+				<th>是否实名</th>
 				<th>推荐人</th>
 				<th>注册时间</th>
 				<th>操作</th>
@@ -81,19 +104,30 @@
 				{ "data": "id" },
 				{ "data": "real_name" },
 				{ "data": "mobilePhone" },
-				{ "data": "qqno" },
+				{ "data": "type" },
+				{ "data": "source" },
 				{ "data": "alreadyBorrowSum" },
 				{ "data": "alreadyRepaySum" },
 				{ "data": "overdueSum" },
 				{ "data": "dieSum" },
-				{ "data": "member_status" },
+				{ "data": "is_real_name" },
 				{ "data": "refferreal_name" },
 				{ "data": "create_time" },
 			],
 			"columnDefs":[
-
+			
 			{
-					"targets":[8],
+					"targets":[3],
+					"data":'type',
+					"render":function(data,type,full){
+						console.log(data)
+					    if(data == 2) return  '<span class="label label-info">苹果</span>';
+						else if(data == 1) return  '<span class="label label-success">安卓</span>';
+						else return '<span class="label label-success">'+data+'</span>';
+					}
+				},
+			/*{
+					"targets":[9],
 					"data":'member_status',
 					"render":function(data,type,full){
 						console.log(data)
@@ -101,9 +135,18 @@
 						else if(data == 3) return  '<span class="label label-danger">黑名单</span>';
 						else return '<span class="label label-success">正常用户</span>';
 					}
-				},
+				},*/
 				{
 					"targets":[9],
+					"data":'is_real_name',
+					"render":function(data,type,full){
+						console.log(data)
+					    if(data == '已实名') return  '<span class="label label-info">已实名</span>';
+						else  return  '<span class="label label-danger">未实名</span>';
+					}
+				},
+				{
+					"targets":[10],
 					"data":'refferreal_name',
 					"render":function(data,type,full){
 						if(data == "" || data==null){
@@ -115,7 +158,7 @@
 				},
 
 				{
-					"targets":[11],
+					"targets":[12],
 					"data":'id',
 					"render":function(data,type,full){
 						if(data>0){return '<a class="btn btn-xs btn-default" href="${context}/admin/member/'+data+'.html">查看</a><a class="btn btn-xs btn-danger"  href="javascript:void(0);" onclick="delMember('+data+')">删除</a>';}
@@ -137,7 +180,7 @@
 			})
 			table.draw();
 		});$('.btn-excel').on('click', function() {
-            var url = "/admin/member/excel.do";
+            var url = "${context}/admin/member/excel.do";
             var params = "&searchDateRange=" + $("#searchDateRange").val();
             window.open(encodeURI(encodeURI(url+"?"+params)));
         });

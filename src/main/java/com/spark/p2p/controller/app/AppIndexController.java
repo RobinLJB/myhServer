@@ -39,6 +39,7 @@ import com.spark.p2p.service.StatisticsService;
 import com.spark.p2p.service.admin.CMSService;
 import com.spark.p2p.service.admin.SelectService;
 import com.spark.p2p.service.admin.SiteService;
+import com.spark.p2p.util.AliyunOssUtil;
 import com.spark.p2p.util.DateUtil;
 import com.spark.p2p.util.GeneratorUtil;
 import com.spark.p2p.util.MessageResult;
@@ -57,7 +58,7 @@ public class AppIndexController extends AppBaseController {
 
 	@Autowired
 	private IndexService indexService;
-	
+
 	@Autowired
 	private CMSService cmsService;
 	@Autowired
@@ -75,28 +76,27 @@ public class AppIndexController extends AppBaseController {
 	private String allowedAttachFormat = ".pdf,.apk,.doc,.docx,.xls,.xlsx,.jpg,.gif,.png,.zip";
 	private long maxAllowedImgSize = 1024 * 5000;
 	private long maxAllowedAttachSize = 20 * 1024 * 1000;
-	
-	
-	
+
 	@RequestMapping("index/banner")
 	public @ResponseBody MessageResult indexBanner() throws Exception {
 		/* 轮播图列表 */
 		String type = requestString("type");
-		if(StringUtils.isEmpty(type)){
-			type="WAP_BANNER";
+		if (StringUtils.isEmpty(type)) {
+			type = "WAP_BANNER";
 		}
-		return success(indexService.bannerlist(type,0));
+		return success(indexService.bannerlist(type, 0));
 	}
-	//app的轮播图
+
+	// app的轮播图
 	@RequestMapping("iphone/banner")
 	public @ResponseBody MessageResult bannerList() throws Exception {
-		Map<String,String> map=new HashMap<>();
-		map=indexService.bannerList();
-		List<String> list=new ArrayList();
+		Map<String, String> map = new HashMap<>();
+		map = indexService.bannerList();
+		List<String> list = new ArrayList();
 		list.add(map.get("path1"));
 		list.add(map.get("path2"));
 		list.add(map.get("path3"));
-		return  success(list);
+		return success(list);
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class AppIndexController extends AppBaseController {
 		PrintWriter out = response.getWriter();
 		if (!ServletFileUpload.isMultipartContent(request)) {
 			out.write(error(500, "表单格式不正确").toString());
-			return ;
+			return;
 		}
 		ServletFileUpload upload = new ServletFileUpload(new DiskFileItemFactory());
 		FileItemIterator iterator;
@@ -141,59 +141,61 @@ public class AppIndexController extends AppBaseController {
 			iterator = upload.getItemIterator(request);
 			while (iterator.hasNext()) {
 				fileStream = iterator.next();
-				if (!fileStream.isFormField())break;
+				if (!fileStream.isFormField())
+					break;
 				fileStream = null;
 			}
 			if (fileStream == null) {
 				out.write(error(500, "未找到上传数据").toString());
-				return ;
+				return;
 			}
 			String fileName = fileStream.getName();
 			// 获取文件后缀
 			String suffix = fileName.substring(fileName.lastIndexOf("."), fileName.length());
 			if (!allowedImgFormat.contains(suffix.trim().toLowerCase())) {
 				out.write(MessageResult.error(401, "不允许的图片格式，请上传" + allowedImgFormat + "格式！").toString());
-				return ;
+				return;
 			}
 			InputStream is = fileStream.openStream();
 			// 相对工程路径
-			String relativePath =  PathFormat.parse(parseCatePath(saveImgPath,type),fileName) + suffix;
-			//磁盘绝对路径
-			String physicalPath = request.getSession().getServletContext().getRealPath("/") + relativePath;
-			
-			BaseState storageState = (BaseState) StorageManager.saveFileByInputStream(is,physicalPath, maxAllowedImgSize);
+			String relativePath = PathFormat.parse(parseCatePath(saveImgPath, type), fileName) + suffix;
+			// 磁盘绝对路径
+			// String physicalPath =
+			// request.getSession().getServletContext().getRealPath("/") + relativePath;
+
+			AliyunOssUtil.put(relativePath, is);
+			// BaseState storageState = (BaseState)
+			// StorageManager.saveFileByInputStream(is,physicalPath, maxAllowedImgSize);
 			is.close();
-			if (storageState.isSuccess()) {
-				String relativeUrl = "/" + relativePath;
-				String absPath = request.getContextPath() + relativeUrl;
-				response.setCharacterEncoding("UTF-8");
-				response.setContentType("text/html; charset=UTF-8");
-				out.write(success(absPath,relativeUrl).toString());
-			}
-			else{
-				out.write(error(500,storageState.getInfo()).toString());
-			}
+			// if (storageState.isSuccess()) {
+			// String relativeUrl = "/" + relativePath;
+			// String absPath = request.getContextPath() + relativeUrl;
+			String absPath = AliyunOssUtil.downloadFile(relativePath);
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html; charset=UTF-8");
+			out.write(success(absPath, absPath).toString());
+			// }
+			// else{
+			// out.write(error(500,storageState.getInfo()).toString());
+			// }
 		} catch (Exception e) {
 			e.printStackTrace();
 			fileStream = null;
 		}
 	}
-	
-	private String parseCatePath(String origin,int type) {
+
+	private String parseCatePath(String origin, int type) {
 		String replacement = "default";
-		if (type == 1){
-			replacement =  "member";
-		}
-		else if (type == 2){
-			replacement =  "banner";
-		}
-		else if (type == 3){
-			replacement =  "cms";
-		}
-		else if(type == 4){
+		if (type == 1) {
+			replacement = "member";
+		} else if (type == 2) {
+			replacement = "banner";
+		} else if (type == 3) {
+			replacement = "cms";
+		} else if (type == 4) {
 			replacement = "company_info";
 		}
 		return origin.replaceFirst("\\{:cate\\}", replacement);
 	}
-	
+
 }

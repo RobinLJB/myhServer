@@ -133,6 +133,10 @@ public class CouponService extends BaseService {
         map.put("create_time", "between");
         map.put("id", "=");
         map.put("real_name", "like");
+        map.put("mobilePhone", "like");
+        map.put("type", "like");
+        map.put("member_status", "like");
+        map.put("is_real_name", "like");
     	 params.addColumn("id", jiliangID + "");
        
         String time = params.getSearchValue("create_time");

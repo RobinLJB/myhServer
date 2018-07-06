@@ -42,7 +42,7 @@
 	</a>
 </div>
 <div class="content">
-	<form class="login-form" action="signon.do" method="post">
+	<form class="login-form" action="${context}/admin/signon.do" method="post">
 		<h3 class="form-title">登录</h3>
 		<input type="hidden" name="sncode" value="11111" />
 		<div class="alert-container"></div>

@@ -582,24 +582,44 @@ public class AppMemberController extends AppBaseController {
 				com.alibaba.fastjson.JSONObject dataobj = obj.getJSONObject("data");
 				// 磁盘绝对路径 存储路径
 				String relativeUrl = getImgPath(dataobj.getString("id_number"));
-				String physicalPath = request.getSession().getServletContext().getRealPath("/") + relativeUrl;
+				// String physicalPath =
+				// request.getSession().getServletContext().getRealPath("/") + relativeUrl;
 				Identity inIdentity = new Identity();
 				inIdentity.setTrueAddress(trueAddress);
 
-				if (dataobj.containsKey("idcard_front_photo")
-						&& StorageManager.saveBinaryFile(Base64.decode(dataobj.getString("idcard_front_photo")),
-								physicalPath + "_ImgA.jpg").isSuccess()) {
-					inIdentity.setCardImgA(request.getContextPath() + "/" + relativeUrl + "_ImgA.jpg");
+				// if (dataobj.containsKey("idcard_front_photo")
+				// &&
+				// StorageManager.saveBinaryFile(Base64.decode(dataobj.getString("idcard_front_photo")),
+				// physicalPath + "_ImgA.jpg").isSuccess()) {
+				// inIdentity.setCardImgA(request.getContextPath() + "/" + relativeUrl +
+				// "_ImgA.jpg");
+				// }
+
+				if (dataobj.containsKey("idcard_front_photo") && AliyunOssUtil.put(relativeUrl + "_ImgA.jpg",
+						Base64.decode(dataobj.getString("idcard_front_photo")))) {
+					inIdentity.setCardImgA(AliyunOssUtil.downloadFile(relativeUrl + "_ImgA.jpg"));
 				}
-				if (dataobj.containsKey("idcard_back_photo")
-						&& StorageManager.saveBinaryFile(Base64.decode(dataobj.getString("idcard_back_photo")),
-								physicalPath + "_ImgB.jpg").isSuccess()) {
-					inIdentity.setCardImgB(request.getContextPath() + "/" + relativeUrl + "_ImgB.jpg");
+				// if (dataobj.containsKey("idcard_back_photo")
+				// &&
+				// StorageManager.saveBinaryFile(Base64.decode(dataobj.getString("idcard_back_photo")),
+				// physicalPath + "_ImgB.jpg").isSuccess()) {
+				// inIdentity.setCardImgB(request.getContextPath() + "/" + relativeUrl +
+				// "_ImgB.jpg");
+				// }
+				if (dataobj.containsKey("idcard_back_photo") && AliyunOssUtil.put(relativeUrl + "_ImgB.jpg",
+						Base64.decode(dataobj.getString("idcard_back_photo")))) {
+					inIdentity.setCardImgB(AliyunOssUtil.downloadFile(relativeUrl + "_ImgB.jpg"));
 				}
-				if (dataobj.containsKey("living_photo") && StorageManager
-						.saveBinaryFile(Base64.decode(dataobj.getString("living_photo")), physicalPath + "_ImgC.jpg")
-						.isSuccess()) {
-					inIdentity.setHandleImg(request.getContextPath() + "/" + relativeUrl + "_ImgC.jpg");
+				// if (dataobj.containsKey("living_photo") && StorageManager
+				// .saveBinaryFile(Base64.decode(dataobj.getString("living_photo")),
+				// physicalPath + "_ImgC.jpg")
+				// .isSuccess()) {
+				// inIdentity.setHandleImg(request.getContextPath() + "/" + relativeUrl +
+				// "_ImgC.jpg");
+				// }
+				if (dataobj.containsKey("living_photo") && AliyunOssUtil.put(relativeUrl + "_ImgC.jpg",
+						Base64.decode(dataobj.getString("idcard_back_photo")))) {
+					inIdentity.setHandleImg(AliyunOssUtil.downloadFile(relativeUrl + "_ImgC.jpg"));
 				}
 				inIdentity.setRealName(dataobj.containsKey("id_name") ? dataobj.getString("id_name") : "");
 				inIdentity.setCardNo(dataobj.containsKey("id_number") ? dataobj.getString("id_number") : "");

@@ -177,9 +177,9 @@ public class MemberAdminController extends BaseAdminController {
         condition.append(" 1=1");
         List<Map<String, String>> list = mbAdminService.queryAllMemberExcel(condition.toString());
         // 列名
-        String[] columnNames = {"用户编号", "真实姓名", "手机号","身份证号","注册日期","借款总额", "还款总额", "逾期金额", "坏账","正面照","反面照","手持照"};
+        String[] columnNames = {"用户编号", "真实姓名", "来源" ,"手机号","手机类型 1：安卓 2：手机" ,"身份证号","注册日期","借款总额", "还款总额", "逾期金额", "坏账","正面照","反面照","手持照"};
         // map中的key
-        String keys[] = {"id", "real_name", "mobilePhone", "ident_no","create_time","alreadyBorrowSum","alreadyRepaySum","overdueSum","dieSum","card_imgA", "card_imgB","handle_img"};
+        String keys[] = {"id", "real_name", "source" ,"mobilePhone", "type" , "ident_no","create_time","alreadyBorrowSum","alreadyRepaySum","overdueSum","dieSum","card_imgA", "card_imgB","handle_img"};
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         try {
             ExcelUtil.createMemberWorkBook(list, keys, columnNames).write(os);

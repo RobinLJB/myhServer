@@ -167,6 +167,7 @@ public class MemberService {
         Member upmember = null;
         Model m = new Model("member");
         if ("1".equals(reruestType)) {
+        	upmember = findMemberByRequestCode(requestCode);
             m.set("refferee", upmember.getId());
         } else if ("2".equals(reruestType)) {
             m.set("jiLiangNo", requestCode);

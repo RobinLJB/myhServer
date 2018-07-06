@@ -53,10 +53,10 @@ public class AdminUserService extends BaseService {
 	}
 	
 	public List<Map<String, String>> queryAdmin(int roleid) throws Exception {
-		return new Model("admin").where("roleId=? ",roleid).select();
+		return new Model("miaoyihua.admin").where("roleId=? ",roleid).select();
 	}
 	
 	public Map<String, String> findAdminById(int id) throws Exception {
-		return new Model("admin").where("id=?",id).find();
+		return new Model("miaoyihua.admin").where("id=?",id).find();
 	}
 }

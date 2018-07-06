@@ -26,6 +26,7 @@ import com.spark.p2p.entity.Admin;
 import com.spark.p2p.service.MemberService;
 import com.spark.p2p.service.admin.ExcelService;
 import com.spark.p2p.service.admin.IphoneAuthAdminService;
+import com.spark.p2p.util.AliyunOssUtil;
 import com.spark.p2p.util.DataTable;
 import com.spark.p2p.util.POIUtil;
 import org.springframework.web.multipart.MultipartResolver;
@@ -45,121 +46,125 @@ import javax.swing.*;
 public class AppleController extends BaseAdminController {
 
 	public static final Log log = LogFactory.getLog(AppleController.class);
-	
-    @Autowired
-    private IphoneAuthAdminService iphoneAuthAdiminService;
-    @Autowired
-    private ExcelService excelService;
 
-    private String allowedImgFormat = ".jpg,.gif,.png,.jpeg,.bmp";
-    private String saveImgPath = "data/upload/{:cate}/{yyyy}{mm}{dd}/{time}{rand:6}";
-    private long maxAllowedImgSize = 1024 * 5000;
+	@Autowired
+	private IphoneAuthAdminService iphoneAuthAdiminService;
+	@Autowired
+	private ExcelService excelService;
 
-    /**
-     * 全部的iphone账号信息
-     *
-     * @return
-     * @throws Exception
-     */
+	private String allowedImgFormat = ".jpg,.gif,.png,.jpeg,.bmp";
+	private String saveImgPath = "data/upload/{:cate}/{yyyy}{mm}{dd}/{time}{rand:6}";
+	private long maxAllowedImgSize = 1024 * 5000;
 
-    @RequestMapping(value = "show")
-    public String appleShowIndex() throws Exception {
-        return view("system/apple-index");
-    }
+	/**
+	 * 全部的iphone账号信息
+	 *
+	 * @return
+	 * @throws Exception
+	 */
 
-    //通过苹果id进行删除
-    @RequestMapping(value="delete/{id}")
-    public String delete(@PathVariable String id) throws SQLException {
-        long ret=iphoneAuthAdiminService.deleteInfoById(id);
-        if(ret<0){
-            DB.rollback();
-        }
-        return view("system/apple-index");
-    }
+	@RequestMapping(value = "show")
+	public String appleShowIndex() throws Exception {
+		return view("system/apple-index");
+	}
 
-    @RequestMapping(value = "list")
-    public DataTable forIphoneAuditList() {
-        Admin admin = getAdmin();
-        long roleid = admin.getRoleId();
-        return dataTable((params) -> iphoneAuthAdiminService.queryAppleList(params, roleid));
-    }
+	// 通过苹果id进行删除
+	@RequestMapping(value = "delete/{id}")
+	public String delete(@PathVariable String id) throws SQLException {
+		long ret = iphoneAuthAdiminService.deleteInfoById(id);
+		if (ret < 0) {
+			DB.rollback();
+		}
+		return view("system/apple-index");
+	}
 
-    //icloud图片二次上传
-    @RequestMapping(value = "icloudImg/upload")
-    @ResponseBody
-    public String icloudImgUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile myFile) throws Exception {
-        log.info("上传中");
-        String memberId = request("memberId");
-        String iphoneId = request("iphoneId");
-        String flag = "0";
-        log.info(myFile);
-        int type = 3;
-        String originalFilename = myFile.getOriginalFilename();
-        log.info(originalFilename);
-        //如果不行，换成这个String fileName = myFile.getName()+"."
-        String fileName = myFile.getName() + ".";
-        String name[] = originalFilename.split("\\.");
-        //文件后缀
-        String suffix = name[1];
-        if (!allowedImgFormat.contains(suffix.trim().toLowerCase())) {
-            return "-1";
-        }
-        InputStream is = myFile.getInputStream();
-        //相对工程路径
-        String relativePath = PathFormat.parse(parseCatePath(saveImgPath, type), fileName) + '.' + suffix;
-        //磁盘路径
-        String physicalPath = request.getSession().getServletContext().getRealPath("/") + relativePath;
-        BaseState storageState = (BaseState) StorageManager.saveFileByInputStream(is, physicalPath, maxAllowedImgSize);
-        is.close();
-        if (storageState.isSuccess()) {
-            String relativeUrl = "/" + relativePath;
-            String absPath = request.getContextPath() + relativeUrl;
-            response.setCharacterEncoding("UTF-8");
-            response.setContentType("text/html; charset=UTF-8");
-            //将图片地址传入到数据库中
-            long ret = iphoneAuthAdiminService.updateIcloudAdress(absPath, iphoneId);
-            if (ret > 0) {
+	@RequestMapping(value = "list")
+	public DataTable forIphoneAuditList() {
+		Admin admin = getAdmin();
+		long roleid = admin.getRoleId();
+		return dataTable((params) -> iphoneAuthAdiminService.queryAppleList(params, roleid));
+	}
 
-                return "0";
-            } else {
-                return "-1";
-            }
-        }
-        return "-1";
-    }
+	// icloud图片二次上传
+	@RequestMapping(value = "icloudImg/upload")
+	@ResponseBody
+	public String icloudImgUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile myFile)
+			throws Exception {
+		log.info("上传中");
+		String memberId = request("memberId");
+		String iphoneId = request("iphoneId");
+		String flag = "0";
+		log.info(myFile);
+		int type = 3;
+		String originalFilename = myFile.getOriginalFilename();
+		log.info(originalFilename);
+		// 如果不行，换成这个String fileName = myFile.getName()+"."
+		String fileName = myFile.getName() + ".";
+		String name[] = originalFilename.split("\\.");
+		// 文件后缀
+		String suffix = name[1];
+		if (!allowedImgFormat.contains(suffix.trim().toLowerCase())) {
+			return "-1";
+		}
+		InputStream is = myFile.getInputStream();
+		// 相对工程路径
+		String relativePath = PathFormat.parse(parseCatePath(saveImgPath, type), fileName) + '.' + suffix;
+		// //磁盘路径
+		// String physicalPath =
+		// request.getSession().getServletContext().getRealPath("/") + relativePath;
+		// BaseState storageState = (BaseState) StorageManager.saveFileByInputStream(is,
+		// physicalPath, maxAllowedImgSize);
+		AliyunOssUtil.put(relativePath, is);
+		is.close();
+		// if (storageState.isSuccess()) {
+//		String relativeUrl = "/" + relativePath;
+//		String absPath = request.getContextPath() + relativeUrl;
+		String absPath = AliyunOssUtil.downloadFile(relativePath);
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		// 将图片地址传入到数据库中
+		long ret = iphoneAuthAdiminService.updateIcloudAdress(absPath, iphoneId);
+		if (ret > 0) {
 
-    @RequestMapping(value = "banner")
-    public String bannerImg() {
-        return view("system/banner-index");
-    }
+			return "0";
+		} else {
+			return "-1";
+		}
+		// }
+		// return "-1";
+	}
 
-    @RequestMapping(value = "upload")
-    @ResponseBody
-    public String appleUpload(MultipartFile myFile) throws Exception {
-        log.info("上传中");
-        String flag = "0";
-        try {
-            //这里得到的是一个集合，里面的每一个元素是String[]数组
-            List<String[]> list = POIUtil.readExcel(myFile);
-            excelService.saveBath(list); //service实现方法
-        } catch (Exception e) {
-            flag = "1";
-        }
-        return flag;
-    }
+	@RequestMapping(value = "banner")
+	public String bannerImg() {
+		return view("system/banner-index");
+	}
 
+	@RequestMapping(value = "upload")
+	@ResponseBody
+	public String appleUpload(MultipartFile myFile) throws Exception {
+		log.info("上传中");
+		String flag = "0";
+		try {
+			// 这里得到的是一个集合，里面的每一个元素是String[]数组
+			List<String[]> list = POIUtil.readExcel(myFile);
+			excelService.saveBath(list); // service实现方法
+		} catch (Exception e) {
+			flag = "1";
+		}
+		return flag;
+	}
 
-    private String parseCatePath(String origin, int type) {
-        String replacement = "default";
-        if (type == 1) {
-            replacement = "member";
-        } else if (type == 2) {
-            replacement = "banner";
-        } else if (type == 3) {
-            replacement = "cms";
-        } else if (type == 4) {
-            replacement = "company_info";
-        }
-        return origin.replaceFirst("\\{:cate\\}", replacement);
-    }
+	private String parseCatePath(String origin, int type) {
+		String replacement = "default";
+		if (type == 1) {
+			replacement = "member";
+		} else if (type == 2) {
+			replacement = "banner";
+		} else if (type == 3) {
+			replacement = "cms";
+		} else if (type == 4) {
+			replacement = "company_info";
+		}
+		return origin.replaceFirst("\\{:cate\\}", replacement);
+	}
 }
