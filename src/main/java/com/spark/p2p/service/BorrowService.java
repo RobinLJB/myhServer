@@ -158,9 +158,9 @@ public class BorrowService extends BaseService {
             8：还款期间(确定已收到打款)，9：逾期中，10：还款完成，11：未还完，12:已取消，13:终审失败*/
             int borrowStatus = Integer.valueOf(notRepay.get("borrowStatus"));
             if ("1".equals(borrowStatus + "") || "2".equals(borrowStatus + "")) {
-                return MessageResult.error(-5, "您已有提交初审的订单，请等待审核");
+                return MessageResult.error(-5, "您已有提交的订单，请等待审核，5分钟内请注意接听客服电话！");
             } else if ("4".equals(borrowStatus + "") || "5".equals(borrowStatus + "")) {
-                return MessageResult.error(-6, "您已有通过初审的订单，请根据提示进行ID认证");
+                return MessageResult.error(-6, "您的订单已通过初审，请根据提示进行ID认证");
             } else {
                 return MessageResult.error(1, msgarr[borrowStatus]);
             }

@@ -67,7 +67,8 @@ public class AppSetting {
 	//阿里云oss存储 endPoint
 	public static String ALIYUN_OSS_END_POINT = "oss-cn-beijing.aliyuncs.com";
 	public static String ALIYUN_BUCKET_NAME = "image-miaoyihua";
-	public static String ALIYUN_BUCKET_URL = "https://image-miaoyihua.oss.beijing.aliyuncs.com/";
+	
+	public static String ALIYUN_BUCKET_URL = "https://image-miaoyihua.oss-cn-beijing.aliyuncs.com/";
 	
 	//同盾数据魔盒partner_code和partner_key(已更新成秒一花)
 	public static final String partner_code = "miaoyihua_mohe";

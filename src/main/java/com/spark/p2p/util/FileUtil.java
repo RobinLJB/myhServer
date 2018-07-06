@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.net.URLEncoder;
+import java.nio.ByteBuffer;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -64,20 +65,53 @@ public class FileUtil {
 
 		return sb.toString();
 	}
-	
-	public static String filterEmoji(String source) { 
-        if(source != null)
-        {
-            Pattern emoji = Pattern.compile ("[\ud83c\udc00-\ud83c\udfff]|[\ud83d\udc00-\ud83d\udfff]|[\u2600-\u27ff]",Pattern.UNICODE_CASE | Pattern . CASE_INSENSITIVE ) ;
-            Matcher emojiMatcher = emoji.matcher(source);
-            if ( emojiMatcher.find())
-            {
-                source = emojiMatcher.replaceAll("*");
-                return source ;
-            }
-        return source;
-       }
-       return source; 
-    }
-	
+
+	public static String filterEmoji(String source) {
+		if (source != null) {
+			Pattern emoji = Pattern.compile("[\ud83c\udc00-\ud83c\udfff]|[\ud83d\udc00-\ud83d\udfff]|[\u2600-\u27ff]",
+					Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE);
+			Matcher emojiMatcher = emoji.matcher(source);
+			if (emojiMatcher.find()) {
+				source = emojiMatcher.replaceAll("*");
+				return source;
+			}
+			return filterOffUtf8Mb4(source);
+		}
+		return "";
+	}
+
+	static public String filterOffUtf8Mb4(String text) {
+		try {
+			byte[] bytes;
+
+			bytes = text.getBytes("UTF-8");
+			ByteBuffer buffer = ByteBuffer.allocate(bytes.length);
+			int i = 0;
+			while (i < bytes.length) {
+				short b = bytes[i];
+				if (b > 0) {
+					buffer.put(bytes[i++]);
+					continue;
+				}
+				b += 256;
+				if ((b ^ 0xC0) >> 4 == 0) {
+					buffer.put(bytes, i, 2);
+					i += 2;
+				} else if ((b ^ 0xE0) >> 4 == 0) {
+					buffer.put(bytes, i, 3);
+					i += 3;
+				} else if ((b ^ 0xF0) >> 4 == 0) {
+					i += 4;
+				}
+			}
+			buffer.flip();
+			return new String(buffer.array(), "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return text;
+		}
+
+	}
+
 }

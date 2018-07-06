@@ -618,7 +618,7 @@ public class AppMemberController extends AppBaseController {
 				// "_ImgC.jpg");
 				// }
 				if (dataobj.containsKey("living_photo") && AliyunOssUtil.put(relativeUrl + "_ImgC.jpg",
-						Base64.decode(dataobj.getString("idcard_back_photo")))) {
+						Base64.decode(dataobj.getString("living_photo")))) {
 					inIdentity.setHandleImg(AliyunOssUtil.downloadFile(relativeUrl + "_ImgC.jpg"));
 				}
 				inIdentity.setRealName(dataobj.containsKey("id_name") ? dataobj.getString("id_name") : "");
