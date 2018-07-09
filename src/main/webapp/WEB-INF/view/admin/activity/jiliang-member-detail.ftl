@@ -31,7 +31,7 @@
 		<div class="form-group">
 			<div class="controls">  
                 <div id="reportrange" class="pull-left dateRange" style="width:200px">                       
-					<input type="text" data-toggle="table-search"   id="searchDateRange" data-column="10" class="form-control" placeholder="点击选择日期" style="width: 100%;" readonly>  
+					<input type="text" data-toggle="table-search"   id="searchDateRange" data-column="9" class="form-control" placeholder="点击选择日期" style="width: 100%;" readonly>  
                 </div>  
             </div>  
 		</div>
@@ -127,8 +127,8 @@
 					"data":'type',
 					"render":function(data,type,full){
 						console.log(data)
-					    if(data == 2) return  '<span class="label label-info">苹果</span>';
-						else if(data == 1) return  '<span class="label label-success">安卓</span>';
+					    if(data == '苹果') return  '<span class="label label-info">苹果</span>';
+						else if(data == '安卓') return  '<span class="label label-success">安卓</span>';
 						else return '<span class="label label-success">'+data+'</span>';
 					}
 				},
@@ -141,7 +141,7 @@
 						else if(data == 3) return  '<span class="label label-danger">黑名单</span>';
 						else if(data == 1) return '<span class="label label-success">正常用户</span>';
 						else if(data == 0) return '<span class="label label-warning">未申请</span>';
-						else return <span class="label label-warning">未注册</span>
+						else return '<span class="label label-warning">未注册</span>'
 						
 					}
 				},

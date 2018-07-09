@@ -73,6 +73,22 @@ public class AppIphoneAuthController extends AppBaseController {
         return error("数据异常");
 
     }
+    
+ // iphone帐号信息截图上传
+    @RequestMapping(value = "iphoneImg", method = RequestMethod.POST)
+    public @ResponseBody
+    MessageResult iphoneImg() throws Exception {
+        Member user = getMember();
+        long memberId = user.getId();
+        String imgpath = request("imgpath");
+        long ret = iphoneAuthService.updateIphoneImg(memberId, imgpath);
+        if (ret >= 0) {
+            return success("保存成功,请等待后台人员审核");
+        }
+        return error("数据异常");
+
+    }
+    
     // 获取苹果手机认证状态
     @RequestMapping(value = "authBySerialNumAndIMEI", method = RequestMethod.POST)
     public @ResponseBody

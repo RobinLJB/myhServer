@@ -38,11 +38,10 @@
 		<div class="form-group">
 			<div class="controls">
                 <div id="reportrange" class="pull-left dateRange" style="width:200px">
-					<input type="text" data-toggle="table-search"   id="searchDateRange" data-column="10" class="form-control" placeholder="点击选择日期" style="width: 100%;" readonly>
+					<input type="text" data-toggle="table-search"  id="searchDateRange" data-column="11" class="form-control" placeholder="点击选择日期" style="width: 100%;" readonly>
                 </div>
             </div>
 		</div>
-		<button type="button" class="btn btn-default">查找</button>
         <button type="button" class="btn green btn-default btn-excel">导出</button>
         <div class="form-group">
 	        <label for="control-label">手机类型</label>

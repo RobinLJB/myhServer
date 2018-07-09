@@ -121,9 +121,9 @@ public class StatisticsInvateAndSelfBorrow extends QuartzJobBean {
 				int invateDieSum=0;
 				List<Map<String,String>> relationList=DB.query("select * from member_ralation where jiLiangNo= \'"+key+"\'  order by id asc");
 				for(int j=0;j<relationList.size();j++){
-					if("1".equals(relationList.get(j).get("status"))){
-						activesum=activesum+1;
-					}
+//					if("1".equals(relationList.get(j).get("status"))){
+//						activesum=activesum+1;
+//					}
 					
 					int afterMid=Convert.strToInt(relationList.get(j).get("afterMemberId"), 0);
 					List<Map<String,String>> borrowList=DB.query("select * from borrow_main where  member_id="+afterMid+" order by id asc");
@@ -131,6 +131,7 @@ public class StatisticsInvateAndSelfBorrow extends QuartzJobBean {
 						int borrowStatus=Convert.strToInt(borrowList.get(k).get("borrowStatus"), 0);
 						int pressStatus=Convert.strToInt(borrowList.get(k).get("pressStatus"), 0);
 						if(borrowStatus>=8){
+							activesum=activesum+1;
 							invateLoadsum=invateLoadsum+Convert.strToInt(borrowList.get(k).get("benJin"), 0);
 						}
 						if(borrowStatus==9){

@@ -259,10 +259,13 @@
                         <ul id="loanImgs">
                          <#if iphoneMap.iphone_imgurl!=''>
                          <li><img src="${iphoneMap.iphone_imgurl!} "/></li>
-                         <#else>
-                         	<li>序列号：${iphoneMap.serialNum!}</li><br/>
-                       		<li>IMEI：${iphoneMap.imeiNum!}</li>
                          </#if>
+                          <#if (iphoneMap.serialNum)??>
+                         	<li>序列号：${iphoneMap.serialNum!}</li><br/>
+                         </#if>
+                         <#if (iphoneMap.imeiNum)??>
+                       		<li>IMEI：${iphoneMap.imeiNum!}</li>
+                       	</#if>
                         </ul>
                     <#else>
                         <span class="label label-warning">无图片</span>

@@ -42,6 +42,7 @@ public class JiLiangBorrowDetailStatics extends QuartzJobBean {
 			String onlyKey=jilaingMap.get("onlyKey");
 			int jiliangId=Convert.strToInt(jilaingMap.get("id"), 0);
 			int successBorrowSum=0;
+			int successBorrowMemberSum=0;
 			int repaySum=0;
 			int overdueSums=0;
 			int dieSums=0;
@@ -53,11 +54,14 @@ public class JiLiangBorrowDetailStatics extends QuartzJobBean {
 				int overdueSum=Convert.strToInt(memberMap.get("overdueSum"), 0);
 				int dieSum=Convert.strToInt(memberMap.get("dieSum"), 0);
 				successBorrowSum=successBorrowSum+alreadyBorrowSum;
+				if(alreadyBorrowSum!=0) {
+					successBorrowMemberSum+=1;
+				}
 				repaySum=repaySum+alreadyRepaySum;
 				overdueSums=overdueSums+overdueSum;
 				dieSums=dieSums+dieSum;
 			}
-			memberService.updateJiliangBorrowDetail(jiliangId,successBorrowSum,repaySum,overdueSums,dieSums);
+			memberService.updateJiliangBorrowDetail(jiliangId,successBorrowMemberSum,successBorrowSum,repaySum,overdueSums,dieSums);
 		}
 		
 	}

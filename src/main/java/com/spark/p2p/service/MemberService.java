@@ -1569,9 +1569,10 @@ public class MemberService {
         return new Model("member").where("jiLiangNo=?", onlyKey).select();
     }
 
-    public void updateJiliangBorrowDetail(int jiliangId, int successBorrowSum, int repaySum, int overdueSum, int dieSum)
+    public void updateJiliangBorrowDetail(int jiliangId,int successBorrowMemberSum, int successBorrowSum, int repaySum, int overdueSum, int dieSum)
             throws SQLException {
         Model m = new Model("jiliang_extension");
+        m.set("successBorrowMemberSum", successBorrowMemberSum);
         m.set("successBorrowSum", successBorrowSum);
         m.set("repaySum", repaySum);
         m.set("overdueSum", overdueSum);

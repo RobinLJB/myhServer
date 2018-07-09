@@ -76,12 +76,11 @@ public class IphoneAuthService extends BaseService {
 		m.set("status", 0);
 		try {
 			/* ret=m.update(Convert.strToLong(auditMap.get("id"), 0)); */
-			if (m.where("member_id=? ", uid).find() != null) {
-				ret = m.where("member_id=?", uid).update();
+			if (m.where("member_id=? and iphone_key=0", uid).find() != null) {
+				ret = m.where("member_id=? and iphone_key=0", uid).update();
 				return ret;
 			} else {
-				m.set("member_id", uid);
-				ret = m.insert();
+				ret = m.where("member_id=? and iphone_key=0", uid).insert();
 				return ret;
 			}
 
@@ -92,7 +91,7 @@ public class IphoneAuthService extends BaseService {
 
 		return 0;
 	}
-
+	
 	/**
 	 * 根据路径和id查询iphone的身份认证信息
 	 *

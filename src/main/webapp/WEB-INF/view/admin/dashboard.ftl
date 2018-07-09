@@ -424,7 +424,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-12 col-sm-12">
+		<!--<div class="col-md-12 col-sm-12">
 			<div class="portlet light tasks-widget">
 				<div class="portlet-title">
 					<div class="caption">
@@ -461,7 +461,7 @@
 				<div class="scroller-footer">
 				</div>
 			</div>
-		</div>
+		</div>-->
 	</div>
 	
 	
